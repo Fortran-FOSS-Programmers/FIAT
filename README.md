@@ -38,7 +38,7 @@ While the absence of interfaces (of the type found in Java) or multiple
 inheritance (as found in C++) somewhat limits the flexibility of these data
 structures, thought has been put into how best to make these entities useful
 in a polymorphic way. A potential inheritance structure has been mapped out
-in UML using the software (Dia)[https://wiki.gnome.org/Apps/Dia]. A Dia
+in UML using the software [Dia](https://wiki.gnome.org/Apps/Dia). A Dia
 file is provided in the repository. (Note that,
 as the author of this file is inexperienced with UML, the direction of
 inheritance in the diagram may have accidentally been backwards. In any case,
