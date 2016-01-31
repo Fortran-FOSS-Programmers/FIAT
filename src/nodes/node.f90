@@ -52,7 +52,7 @@ contains
     class(node_type), intent(inout) :: this
     class(container_type), intent(in) :: contents
     call this%unset_contents()
-    allocate(this%contents, source=contents)
+    move_alloc(contents, this%contents)
   end subroutine set_contents
   
   subroutine unset_contents(this)

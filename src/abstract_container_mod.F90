@@ -188,6 +188,12 @@ contains
     class(*), allocatable   ::  tmp
     allocate(tmp, source=content)
     if (.not. allocated(this%storage)) allocate(this%storage(1))
+    if (same_type_as(this, content)) then
+      select type(content)
+        class is(container_type)
+          this%storage = content%storage
+      end select
+    end if
     if (this%typeguard(tmp)) then
       this%filled = .true.
       this%storage = transfer(content, this%storage)

@@ -30,16 +30,24 @@ module iterator_mod
     procedure(has_func), deferred :: has_next
     procedure(next_func), deferred :: next
     procedure(empty_sub), deferred :: reset
+    procedure(copy_func), deferred :: copy
   end type iterator_type
 
   abstract interface
-    function has_func()
+    elemental function has_func(this)
+      class(iterrator_type), intent(in) :: this
       logical :: has_func
     end function has_func
-    function next_func
+    function next_func(this)
+      class(iterrator_type), intent(inout) :: this
       type(container_type), allocatable :: next_func
     end function has_func
-    subroutine empty_sub()
+    subroutine empty_sub(this)
+      class(iterrator_type), intent(inout) :: this
     end subroutine empty_sub
+    elemental function copy_func(this)
+      class(iterator_type), intent(in) :: this
+      class(iterator_type), allocatable :: copy_func
+    end function copy_func
   end interface
 end module iterator_mod

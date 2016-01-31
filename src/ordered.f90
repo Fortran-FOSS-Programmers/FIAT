@@ -34,46 +34,51 @@ module ordered_mod
     procedure(cont_func), deferred :: pop
     procedure(cont_func), deferred :: peek
     procedure(blank_sub), deferred :: clear
-    procedure(array_sub), private, deferred :: array_extend
-    procedure(iter_sub), private, deferred :: iterable_extend
+    procedure, private :: array_extend
+    procedure, private :: iterable_extend
     procedure(concat_func), private, deferred :: concat
-    procedure, private :: assign
     generic :: extend => array_extend, iterable_extend
     generic :: operator(//) => concat
-    generic :: assignment(=) => assign
   end type ordered_type
 
   abstract interface
-    subroutine push_sub(content)
-      class(*), intent(in) :: content
+    subroutine push_sub(this, item)
+      class(ordered_type), intent(inout) :: this
+      class(*), intent(in) :: item
     end subroutine push_sub
-    function cont_func()
+    function cont_func(this)
+      class(ordered_type), intent(inout) :: this
       type(container_type), allocatable :: cont_func
     end function cont_func
-    subroutine blank_sub()
+    subroutine blank_sub(this)
+      class(ordered_type), intent(inout) :: this
     end subroutine blank_sub
-    subroutine array_sub(contents)
-      class(*), dimension(:), intent(in) :: contents
-    end subroutine array_sub
-    subroutine iter_sub(contents)
-      class(iterable_type), intent(in) :: contents
-    end subroutine iter_sub
     function concat_func(lhs, rhs)
       class(ordered_type), intent(in) :: lhs, rhs
-      class(ordered_type), allocatable :: concat_func
+      class(ordered_type) :: concat_func
     end function concat_func
   end interface
 
 contains
 
-  subroutine assign(lhs, rhs)
-    class(ordered_type), intent(out) :: lhs
-    class(ordered_type), intent(in) :: rhs
-    call rhs%reset()
-    do while(rhs%has_next)
-      rhs%push(rhs%next)
+  subroutine array_extend(this, items)
+    class(iterable), intent(inout) :: this
+    class(*), dimension(*), intent(in) :: items
+    integer :: i
+    do i = 1, size(items)
+      this%push(items(i))
     end do
-    call rhs%reset()
-  end subroutine assign
+  end subroutine stack_array_extend
+  
+  subroutine iterable_extend(this, items)
+    class(iterable), intent(inout) :: this
+    class(iterable), intent(inout) :: this
+    type(linked_node) :: tail
+    call items%reset()
+    do while (items%has_next())
+      this%push(items%next())
+    end do
+    call items%reset()
+  end subroutine stack_iterable_extend
 
 end module ordered_mod

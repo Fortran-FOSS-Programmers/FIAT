@@ -52,22 +52,22 @@ contains
     end if
   end function get_next
   
-  subroutine set_next(this, new_next, nullify_old)
+  subroutine set_next(this, new_next, deallocate_old)
     class(linked_node), intent(inout) :: this
     class(linked_node), pointer, intent(in) :: new_next
-    logical, optional, intent(in) :: nullify_old
-    call this%unset_next(nullify_old)
+    logical, optional, intent(in) :: deallocate_old
+    call this%unset_next(deallocate_old)
     this%next => new_next
   end subroutine set_next
   
-  subroutine unset_next(this, nullify_old)
+  subroutine unset_next(this, deallocate_old)
     class(linked_node), intent(inout) :: this
-    logical, optional, intent(in) :: nullify_old
+    logical, optional, intent(in) :: deallocate_old
     if (.not. this%has_next()) return
-    if (present(nullify_old)) then
-      if (nullify_old) this%next%unset_next(.true.)
+    if (present(deallocate_old)) then
+      if (deallocate_old) this%next%unset_next(.true.)
     end if
-    nullify(this%next)
+    deallocate(this%next)
   end subroutine unset_next
 
 end module linked_node_mod
