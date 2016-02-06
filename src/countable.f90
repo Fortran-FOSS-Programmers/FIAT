@@ -21,17 +21,19 @@
 !  
 
 module countable_mod
-  use iterator_mod only: iterator_type
+  use iterator_mod only: iterator
   implicit none
   private
 
-  type, extends(iterator_type), abstract, public :: countable_type
+  type, extends(iterator), abstract, public :: countable
   contains
     procedure(int_func), deferred :: size
-  end type countable_type
+  end type countable
 
   abstract interface
-    function int_func()
+    function int_func(this)
+      import countable
+      class(countable), intent(in) :: this
       integer :: int_func
     end function int_func
   end interface

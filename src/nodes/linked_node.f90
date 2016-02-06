@@ -21,11 +21,11 @@
 !  
 
 module linked_node_mod
-  use node_mod only: node_type
+  use node_mod only: node
   implicit none
   private
   
-  type, extends(node_type), public :: linked_node
+  type, extends(node), public :: linked_node
     private
     class(linked_node), pointer :: next => null()
   contains

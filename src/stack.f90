@@ -21,15 +21,15 @@
 !  
 
 module stack_mod
-  use ordered_mod only: ordered_type
-  use abstract_container_mod only: container_type
-  use linked_node_mod only: linked_node
+  use ordered_mod only: ordered
+  use abstract_container_mod only: container
+  use linked_node_mod only: linked
   private
   implicit none
   
-  type, extends(ordered_type), public :: stack_type
+  type, extends(ordered), public :: stack
     private
-    class(container_type), allocatable :: container
+    class(container), allocatable :: container
     type(linked_node), pointer :: head => null()
     type(linked_node), pointer :: iter_pos => head
     integer :: num_nodes = 0
@@ -46,28 +46,28 @@ module stack_mod
     procedure, private :: concat => stack_concat
     procedure, private :: move_head => stack_move_head
     final :: stack_final
-  end type stack_type
+  end type stack
 
-  interface stack_type
+  interface stack
     module procedure :: constructor
-  end interface stack_type
+  end interface stack
     
 contains
   
   function constructor(container) result(new)
-    class(container_type), intent(in) :: container
-    type(stack_type) :: new
+    class(container), intent(in) :: container
+    type(stack) :: new
     allocate(new%container, mold=container)
   end function constructor
   
   elemental logical function stack_has_next(this)
-    class(stack_type), intent(in) :: this
+    class(stack), intent(in) :: this
     stack_has_next = associated(this%iter_pos)
   end function stack_has_next
   
   function stack_next(this)
-    class(stack_type), intent(inout) :: this
-    class(container_type), allocatable :: stack_next
+    class(stack), intent(inout) :: this
+    class(container), allocatable :: stack_next
     if (.not. this%has_next()) then
       write(stderr,*) "ERROR: Bottom of stack reached."
 #ifdef __GFORTRAN__
@@ -84,13 +84,13 @@ contains
   end function stack_next
   
   subroutine stack_reset(this)
-    class(stack_type), intent(inout) :: this
+    class(stack), intent(inout) :: this
     this%iter_pos => this%head
   end subroutine stack_reset
   
   elemental function stack_copy(this)
-    class(stack_type), intent(in) :: this
-    class(stack_type), allocatable :: stack_copy
+    class(stack), intent(in) :: this
+    class(stack), allocatable :: stack_copy
     type(linked_node), pointer :: node1, node2 => null()
     stack_copy = this
     allocate(node1, source=this%head)
@@ -105,15 +105,15 @@ contains
   end function stack_copy
   
   elemental integer function stack_size(this)
-    class(stack_type), intent(in) :: this
+    class(stack), intent(in) :: this
     stack_size = this%num_nodes
   end function stack_size
   
   subroutine stack_push(this, item)
-    class(stack_type), intent(inout) :: this
+    class(stack), intent(inout) :: this
     class(*), intent(in) :: item
     type(linked_node), pointer :: newnode
-    type(container_type), allocatable :: newcont
+    type(container), allocatable :: newcont
     allocate(newnode)
     allocate(newcont, source=this%container)
     call newcont%set(item)
@@ -124,8 +124,8 @@ contains
   end subroutine stack_push
   
   function stack_pop(this) result(item)
-    class(stack_type), intent(inout) :: this
-    class(container_type), allocatable :: item
+    class(stack), intent(inout) :: this
+    class(container), allocatable :: item
     type(linked_node), pointer :: tmp
     move_alloc(this%peek(), item)
     tmp => this%head
@@ -135,20 +135,20 @@ contains
   end function stack_pop
   
   subroutine stack_clear(this)
-    class(stack_type), intent(out) :: this
+    class(stack), intent(out) :: this
     continue
   end subroutine clear
   
   pure function stack_peek(this) result(item)
-    class(stack_type), intent(in) :: this
-    class(container_type), allocatable :: item
+    class(stack), intent(in) :: this
+    class(container), allocatable :: item
     move_alloc(this%head%get_contents(), item)
   end function stack_peek
   
   elemental function stack_concat(lhs, rhs)
-    class(stack_type), intent(in) :: lhs, rhs
-    type(stack_type) :: stack_concat
-    type(stack_type) :: tmp
+    class(stack), intent(in) :: lhs, rhs
+    type(stack) :: stack_concat
+    type(stack) :: tmp
     type(linked_node), pointer :: tail
     stack_concat%head => lhs%copy()%move_head()
     if (stack_concat%size() == 0) then
@@ -164,14 +164,14 @@ contains
   end function stack_concat
 
   function stack_move_head(this)
-    class(stack_type), intent(inout) :: this
+    class(stack), intent(inout) :: this
     type(linked_node), pointer :: move_head
     move_head => this%head
     nullify(this%head)
   end function move_head
   
   elemental subroutine stack_final(this)
-    class(stack_type), intent(inout) :: this
+    class(stack), intent(inout) :: this
     nullify(this%iter_pos)
     this%head%unset_next(.true.)
     deallocate(this%head)

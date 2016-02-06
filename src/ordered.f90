@@ -22,13 +22,13 @@
   
 
 module ordered_mod
-  use iterable_mod only: iterable_type
-  use countable_mod only: countable_type
-  use abstract_container_mod only: container_type
+  use iterable_mod only: iterable
+  use countable_mod only: countable
+  use abstract_container_mod only: container
   implicit none
   private
 
-  type, extends(countable_type), abstract, public :: ordered_type
+  type, extends(countable), abstract, public :: ordered
   contains
     procedure(push_sub), deferred :: push
     procedure(cont_func), deferred :: pop
@@ -39,23 +39,27 @@ module ordered_mod
     procedure(concat_func), private, deferred :: concat
     generic :: extend => array_extend, iterable_extend
     generic :: operator(//) => concat
-  end type ordered_type
+  end type ordered
 
   abstract interface
     subroutine push_sub(this, item)
-      class(ordered_type), intent(inout) :: this
+      import ordered
+      class(ordered), intent(inout) :: this
       class(*), intent(in) :: item
     end subroutine push_sub
     function cont_func(this)
-      class(ordered_type), intent(inout) :: this
-      type(container_type), allocatable :: cont_func
+      import ordered
+      class(ordered), intent(inout) :: this
+      class(container), allocatable :: cont_func
     end function cont_func
     subroutine blank_sub(this)
-      class(ordered_type), intent(inout) :: this
+      import ordered
+      class(ordered), intent(inout) :: this
     end subroutine blank_sub
     function concat_func(lhs, rhs)
-      class(ordered_type), intent(in) :: lhs, rhs
-      class(ordered_type) :: concat_func
+      import ordered
+      class(ordered), intent(in) :: lhs, rhs
+      class(ordered) :: concat_func
     end function concat_func
   end interface
 

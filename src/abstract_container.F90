@@ -28,7 +28,7 @@ module abstract_container_mod
   !! Provides an abstract container derived type which can be used 
   !! as a sort of unlimited polymorphic entity whose contents are
   !! retrievable with type-guards. Different subclasses are created
-  !! in order to hold different data-types. See [[container_type]] for 
+  !! in order to hold different data-types. See [[container]] for 
   !! instructions on creating concrete subclasses. See [[container_mod]]
   !! for subclasses containing the built-in data-types.
 
@@ -36,7 +36,7 @@ module abstract_container_mod
   implicit none
   private
 
-  type, abstract ::   container_type
+  type, abstract ::   container
     !! Author: Chris MacMackin
     !! Date: December 2015
     !! Display: Public
@@ -46,7 +46,7 @@ module abstract_container_mod
     !! used for a sort of unlimited polymorphism. It is extended to
     !! create different classes capable of holding particular 
     !! data-types. Extensions must implement the procedure 
-    !! [[container_type:typeguard]] in order to provide the ability to
+    !! [[container:typeguard]] in order to provide the ability to
     !! transfer data out of the container and into a variable. Assuming
     !! that you are creating a concrete class called 
     !! `example_container`, this should be implemented as follows:
@@ -62,7 +62,7 @@ module abstract_container_mod
     !!     integer, public :: i
     !!   end type example
     !! 
-    !!   type, extends(container_type) :: example_container
+    !!   type, extends(container) :: example_container
     !!   contains
     !!     private
     !!     procedure :: typeguard => example_guard
@@ -102,30 +102,34 @@ module abstract_container_mod
     procedure, pass(rhs)    ::  assign_container
       !! Assigns container contents to another variable.
     procedure   ::  is_equal
+      !! Check whether two containers have the same contents.
     generic, public :: assignment(=) => assign_container
     generic, public :: operator(==) => is_equal
-  end type container_type
+  end type container
 
   abstract interface
     logical function guard(this, lhs)
-      import container_type
-      class(container_type), intent(in) ::  this
+      import container
+      class(container), intent(in) ::  this
       class(*), intent(inout) ::  lhs
         !! The variable which the container contents are to be 
         !! transferred to.
     end function guard
   end interface
   
-  public    ::  container_type
+  public    ::  container
   
 contains
   
   subroutine assign_container(lhs, rhs)
+    !! Author: Chris MacMackin
+    !! Date: December 2015
+    !!
     !! Transfers the contents of the container to another variable.
     !! If the other variable is another container of the same type
     !! then the contents will be transferred. If the other variable is
     !! the same type as the contents of the container (as determined
-    !! by the [[container_type:typeguard]] routine provided for that 
+    !! by the [[container:typeguard]] routine provided for that 
     !! concrete type extension) then it will be given the value held by
     !! the container. Otherwise, an error message will be printed and 
     !! the program stopped. If compiled with `gfortran` then a backtrace
@@ -133,11 +137,11 @@ contains
     !! set to a value, then this also constitutes an error.
     class(*), intent(inout) ::  lhs
       !! The variable which the container contents will be assigned to.
-    class(container_type), intent(in)  ::  rhs
+    class(container), intent(in)  ::  rhs
       !! The container variable.
     !-------------------------------------------------------------------
     select type(lhs)
-      class is(container_type)
+      class is(container)
         if (same_type_as(lhs, rhs)) then
           lhs%storage = rhs%storage
           return
@@ -167,22 +171,28 @@ contains
   end subroutine assign_container
 
   pure function contents(this)
+    !! Author: Chris MacMackin
+    !! Date: December 2015
+    !!
     !! Returns the contents, encoded as a character array, of the 
     !! container.
-    class(container_type), intent(in)   ::  this
+    class(container), intent(in)   ::  this
     integer(i1), dimension(:), allocatable  ::  contents
     contents = this%storage
   end function contents
 
   subroutine set(this, content)
-    !! Sets the contents of the array to value passed. The type of the 
-    !! variable provided must be the same as the container variable is
-    !! designed to accept (as determined by the implementation of the
-    !! [[container_type:typeguard]] method in the concrete type 
-    !! extension), or else an error message will be printed and the
-    !! program will exit. If `gfortran` was used to compile then a 
-    !! backtrace will also be printed.
-    class(container_type), intent(out)  ::  this
+    !! Author: Chris MacMackin
+    !! Date: December 2015
+    !!
+    !! Sets the contents of the storage array to value passed. The type
+    !! of the variable provided must be the same as the container
+    !! variable is designed to accept (as determined by the
+    !! concrete type implementation of the [[container:typeguard]]
+    !! method in the extension), or else an error message will be
+    !! printed and the program will exit. If `gfortran` was used to
+    !! compile then a backtrace will also be printed.
+    class(container), intent(out)  ::  this
     class(*), intent(in)    ::  content
       !! The value to be placed in the container
     class(*), allocatable   ::  tmp
@@ -190,7 +200,7 @@ contains
     if (.not. allocated(this%storage)) allocate(this%storage(1))
     if (same_type_as(this, content)) then
       select type(content)
-        class is(container_type)
+        class is(container)
           this%storage = content%storage
       end select
     end if
@@ -206,8 +216,13 @@ contains
     end if
   end subroutine set
 
-  logical function is_equal(lhs, rhs)
-    class(container_type), intent(in) :: lhs, rhs
+  elemental logical function is_equal(lhs, rhs)
+    !! Author: Chris MacMackin
+    !! Date: December 2015
+    !!
+    !! Checks whether two containers are of the same type and are
+    !! storing the same contents.
+    class(container), intent(in) :: lhs, rhs
     if (.not.same_type_as(lhs, rhs)) then
       is_equal = .false.
       return

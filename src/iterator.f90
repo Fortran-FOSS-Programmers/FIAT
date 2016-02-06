@@ -21,33 +21,38 @@
 !  
 
 module iterator_mod
-  use abstract_container_mod only: container_type
+  use abstract_container_mod only: container
   implicit none
   private
 
-  type, abstract, public :: iterator_type
+  type, abstract, public :: iterator
   contains
     procedure(has_func), deferred :: has_next
     procedure(next_func), deferred :: next
     procedure(empty_sub), deferred :: reset
     procedure(copy_func), deferred :: copy
-  end type iterator_type
+  end type iterator
 
   abstract interface
     elemental function has_func(this)
-      class(iterrator_type), intent(in) :: this
+      import iterator
+      class(iterator), intent(in) :: this
       logical :: has_func
     end function has_func
     function next_func(this)
-      class(iterrator_type), intent(inout) :: this
-      type(container_type), allocatable :: next_func
+      import iterator
+      import container
+      class(iterator), intent(inout) :: this
+      class(container), allocatable :: next_func
     end function has_func
     subroutine empty_sub(this)
-      class(iterrator_type), intent(inout) :: this
+      import iterator
+      class(iterator), intent(inout) :: this
     end subroutine empty_sub
     elemental function copy_func(this)
-      class(iterator_type), intent(in) :: this
-      class(iterator_type), allocatable :: copy_func
+      import iterator
+      class(iterator), intent(in) :: this
+      class(iterator), allocatable :: copy_func
     end function copy_func
   end interface
 end module iterator_mod
