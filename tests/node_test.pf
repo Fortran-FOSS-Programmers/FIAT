@@ -1,0 +1,78 @@
+!
+!  node_test.f90
+!  This file is part of FIAT.
+!
+!  Copyright 2016 Christopher MacMackin <cmacmackin@gmail.com>
+!  
+!  This program is free software; you can redistribute it and/or modify
+!  it under the terms of the GNU Lesser General Public License as
+!  published by the Free Software Foundation; either version 3 of the 
+!  License, or (at your option) any later version.
+!  
+!  This program is distributed in the hope that it will be useful,
+!  but WITHOUT ANY WARRANTY; without even the implied warranty of
+!  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!  GNU Lesser General Public License for more details.
+!  
+!  You should have received a copy of the GNU Lesser General Public
+!  License along with this program; if not, write to the Free Software
+!  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+!  MA 02110-1301, USA.
+!  
+
+module node_test_mod
+  use node_mod
+  use container_mod only: real_container
+  use pfunit_mod
+  implicit none
+  private
+
+@TestCase
+  type, extends(testcase) :: test_node
+    type(node) :: node_obj
+  contains
+    procedure :: setup
+    procedure :: teardown
+  end type test_node
+
+  public :: test_node
+  
+contains
+
+  subroutine setup(this)
+    class(test_node), intent(inout) :: this
+  end subroutine setup(this)
+  
+  subroutine teardown(this)
+    class(test_node), intent(inout) :: this
+    this%node_obj%unset_contents()
+  end subroutine teardown(this)
+
+@Test
+  subroutine test_has_contents(this)
+    class(test_node), intent(inout) :: this
+    type(real_container), allocatable :: cont
+    @assertFalse(this%node_obj%has_contents(), message="Node should not have any contents.")
+    allocate(cont)
+    this%node_obj%set_contents(cont)
+    @assertTrue(this%node_obj%has_contents(), message="Node should have contents.")
+    this%node_obj%unset_contents()
+    @assertFalse(this%node_obj%has_contents(), message="Node should not have any contents.")
+  end subroutine test_has_contents
+  
+@Test
+  subroutine test_get_contents(this)
+    class(test_node), intent(inout) :: this
+    type(real_container), allocatable :: cont
+    real, parameter :: contval = 3.14159
+    real :: retval
+    retval = 0.0
+    allocate(cont)
+    cont%set(contval)
+    this%node_obj%set_contents(cont)
+    @assertNotAssociated(cont,message="Container not deallocated after setting node.")
+    retval = this%node_object%get_contents()
+    @assertEqual(retval,contval, message="Node did not return same contents as  set with.")
+  end subroutine test_get_contents
+  
+end module node_test_mod
