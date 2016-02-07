@@ -22,23 +22,23 @@
   
 
 module ordered_mod
-  use iterable_mod only: iterable
-  use countable_mod only: countable
-  use abstract_container_mod only: container
+  use iterator_mod, only: iterator
+  use countable_mod, only: countable
+  use abstract_container_mod, only: container
   implicit none
   private
 
   type, extends(countable), abstract, public :: ordered
   contains
     procedure(push_sub), deferred :: push
-    procedure(cont_func), deferred :: pop
-    procedure(cont_func), deferred :: peek
+    procedure(pop_func), deferred :: pop
+    procedure(peek_func), deferred :: peek
     procedure(blank_sub), deferred :: clear
     procedure, private :: array_extend
-    procedure, private :: iterable_extend
-    procedure(concat_func), private, deferred :: concat
-    generic :: extend => array_extend, iterable_extend
-    generic :: operator(//) => concat
+    procedure, private :: iterator_extend
+!~     procedure(concat_func), private, deferred :: concat
+    generic :: extend => array_extend, iterator_extend
+!~     generic :: operator(//) => concat
   end type ordered
 
   abstract interface
@@ -47,11 +47,18 @@ module ordered_mod
       class(ordered), intent(inout) :: this
       class(*), intent(in) :: item
     end subroutine push_sub
-    function cont_func(this)
+    function pop_func(this)
       import ordered
+      import container
       class(ordered), intent(inout) :: this
-      class(container), allocatable :: cont_func
-    end function cont_func
+      class(container), allocatable :: pop_func
+    end function pop_func
+    function peek_func(this)
+      import ordered
+      import container
+      class(ordered), intent(in) :: this
+      class(container), allocatable :: peek_func
+    end function peek_func
     subroutine blank_sub(this)
       import ordered
       class(ordered), intent(inout) :: this
@@ -59,30 +66,30 @@ module ordered_mod
     function concat_func(lhs, rhs)
       import ordered
       class(ordered), intent(in) :: lhs, rhs
-      class(ordered) :: concat_func
+      class(ordered), allocatable :: concat_func
     end function concat_func
   end interface
 
 contains
 
   subroutine array_extend(this, items)
-    class(iterable), intent(inout) :: this
-    class(*), dimension(*), intent(in) :: items
+    class(ordered), intent(inout) :: this
+    !FIXME: I've switched this from dimension(*) to dimension(:) because gfortran does not yet support dimension(*) for unlimited polymorphic variables. Add logic to allow dimension(*) for compilers supporting it, maybe.
+    class(*), dimension(:), intent(in) :: items
     integer :: i
     do i = 1, size(items)
-      this%push(items(i))
+      call this%push(items(i))
     end do
-  end subroutine stack_array_extend
+  end subroutine array_extend
   
-  subroutine iterable_extend(this, items)
-    class(iterable), intent(inout) :: this
-    class(iterable), intent(inout) :: this
-    type(linked_node) :: tail
+  subroutine iterator_extend(this, items)
+    class(ordered), intent(inout) :: this
+    class(iterator), intent(inout) :: items
     call items%reset()
     do while (items%has_next())
-      this%push(items%next())
+      call this%push(items%next())
     end do
     call items%reset()
-  end subroutine stack_iterable_extend
+  end subroutine iterator_extend
 
 end module ordered_mod

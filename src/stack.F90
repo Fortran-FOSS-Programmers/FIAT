@@ -21,17 +21,19 @@
 !  
 
 module stack_mod
-  use ordered_mod only: ordered
-  use abstract_container_mod only: container
-  use linked_node_mod only: linked
-  private
+  use iso_fortran_env, only: stderr => error_unit
+  use iterator_mod, only: iterator
+  use ordered_mod, only: ordered
+  use abstract_container_mod, only: container
+  use linked_node_mod, only: linked_node
   implicit none
+  private
   
   type, extends(ordered), public :: stack
     private
     class(container), allocatable :: container
     type(linked_node), pointer :: head => null()
-    type(linked_node), pointer :: iter_pos => head
+    type(linked_node), pointer :: iter_pos => null()
     integer :: num_nodes = 0
   contains
     procedure :: has_next => stack_has_next
@@ -43,7 +45,7 @@ module stack_mod
     procedure :: pop => stack_pop
     procedure :: peek => stack_peek
     procedure :: clear => stack_clear
-    procedure, private :: concat => stack_concat
+!~     procedure, private :: concat => stack_concat
     procedure, private :: move_head => stack_move_head
     final :: stack_final
   end type stack
@@ -54,10 +56,11 @@ module stack_mod
     
 contains
   
-  function constructor(container) result(new)
-    class(container), intent(in) :: container
+  function constructor(container_obj) result(new)
+    class(container), intent(in) :: container_obj
     type(stack) :: new
-    allocate(new%container, mold=container)
+    allocate(new%container, mold=container_obj)
+    new%iter_pos => new%head
   end function constructor
   
   elemental logical function stack_has_next(this)
@@ -88,23 +91,26 @@ contains
     this%iter_pos => this%head
   end subroutine stack_reset
   
-  elemental function stack_copy(this)
+  function stack_copy(this)
     class(stack), intent(in) :: this
-    class(stack), allocatable :: stack_copy
+    class(iterator), allocatable :: stack_copy
+    class(stack), allocatable :: tmp
     type(linked_node), pointer :: node1, node2 => null()
-    stack_copy = this
+    allocate(tmp, source=this)
     allocate(node1, source=this%head)
-    stack_copy%head => node1
+    tmp%head => node1
     allocate(node2, source=node1%get_next())
     do while (associated(node2))
-      node1%set_next(node2)
+      call node1%set_next(node2)
       nullify(node1)
-      move_alloc(node2, node1)
+      node1 => node2
+      nullify(node2)
       allocate(node2, source=node1%get_next())
     end do
+    call move_alloc(tmp, stack_copy)
   end function stack_copy
   
-  elemental integer function stack_size(this)
+  integer function stack_size(this)
     class(stack), intent(in) :: this
     stack_size = this%num_nodes
   end function stack_size
@@ -113,7 +119,7 @@ contains
     class(stack), intent(inout) :: this
     class(*), intent(in) :: item
     type(linked_node), pointer :: newnode
-    type(container), allocatable :: newcont
+    class(container), allocatable :: newcont
     allocate(newnode)
     allocate(newcont, source=this%container)
     call newcont%set(item)
@@ -127,7 +133,7 @@ contains
     class(stack), intent(inout) :: this
     class(container), allocatable :: item
     type(linked_node), pointer :: tmp
-    move_alloc(this%peek(), item)
+    item = this%peek()
     tmp => this%head
     this%head => this%head%get_next()
     deallocate(tmp)
@@ -135,45 +141,53 @@ contains
   end function stack_pop
   
   subroutine stack_clear(this)
-    class(stack), intent(out) :: this
-    continue
-  end subroutine clear
+    class(stack), intent(inout) :: this
+  contains
+    subroutine blank_stack(s)
+      class(stack), intent(out) :: s
+    end subroutine blank_stack
+  end subroutine stack_clear
   
-  pure function stack_peek(this) result(item)
+  function stack_peek(this) result(item)
     class(stack), intent(in) :: this
     class(container), allocatable :: item
-    move_alloc(this%head%get_contents(), item)
+    item = this%head%get_contents()
   end function stack_peek
   
-  elemental function stack_concat(lhs, rhs)
-    class(stack), intent(in) :: lhs, rhs
-    type(stack) :: stack_concat
-    type(stack) :: tmp
-    type(linked_node), pointer :: tail
-    stack_concat%head => lhs%copy()%move_head()
-    if (stack_concat%size() == 0) then
-      stack_concat%head => rhs%copy()%move_head()
-    else
-      tail => stack_concat%head
-      do while(tail%has_next)
-        tail => tail%get_next()
-      end do
-      tail%set_next(rhs%copy()%move_head())
-    end if
-    nullify(tail)
-  end function stack_concat
+!~   function stack_concat(lhs, rhs)
+!~     class(stack), intent(in) :: lhs, rhs
+!~     class(ordered), allocatable :: stack_concat
+!~     type(stack), allocatable :: tmp_concat
+!~     type(stack) :: tmp_stack
+!~     type(linked_node), pointer :: tail
+!~     tmp_stack = lhs%copy()
+!~     tmp_concat%head => tmp%move_head()
+!~     if (stack_concat%size() == 0) then
+!~       tmp_stack = rhs%copy()
+!~       tmp_concat%head => tmp%move_head()
+!~     else
+!~       tail => tmp_concat%head
+!~       do while(tail%has_next())
+!~         tail => tail%get_next()
+!~       end do
+!~       tmp_stack = rhs%copy()
+!~       call tail%set_next(tmp_stack%move_head())
+!~     end if
+!~     nullify(tail)
+!~     call move_alloc(tmp_concat, stack_concat)
+!~   end function stack_concat
 
-  function stack_move_head(this)
+  function stack_move_head(this) result(move_head)
     class(stack), intent(inout) :: this
     type(linked_node), pointer :: move_head
     move_head => this%head
     nullify(this%head)
-  end function move_head
+  end function stack_move_head
   
-  elemental subroutine stack_final(this)
-    class(stack), intent(inout) :: this
+  subroutine stack_final(this)
+    type(stack), intent(inout) :: this
     nullify(this%iter_pos)
-    this%head%unset_next(.true.)
+    call this%head%unset_next(.true.)
     deallocate(this%head)
   end subroutine stack_final
 

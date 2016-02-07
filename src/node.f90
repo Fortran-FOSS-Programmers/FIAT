@@ -21,7 +21,7 @@
 !  
 
 module node_mod
-  use abstract_container_mod only: container
+  use abstract_container_mod, only: container
   implicit none
   private
   
@@ -42,7 +42,7 @@ contains
     has_contents = allocated(this%contents)
   end function has_contents
   
-  elemental function get_contents(this)
+  pure function get_contents(this)
     class(node), intent(in) :: this
     class(container), allocatable :: get_contents
     if (this%has_contents()) allocate(get_contents, source=this%contents)
@@ -52,7 +52,7 @@ contains
     class(node), intent(inout) :: this
     class(container), intent(inout), allocatable :: contents
     call this%unset_contents()
-    move_alloc(contents, this%contents)
+    call move_alloc(contents, this%contents)
   end subroutine set_contents
   
   subroutine unset_contents(this)

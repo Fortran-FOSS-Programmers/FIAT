@@ -21,7 +21,7 @@
 !  
 
 module iterator_mod
-  use abstract_container_mod only: container
+  use abstract_container_mod, only: container
   implicit none
   private
 
@@ -44,12 +44,12 @@ module iterator_mod
       import container
       class(iterator), intent(inout) :: this
       class(container), allocatable :: next_func
-    end function has_func
+    end function next_func
     subroutine empty_sub(this)
       import iterator
       class(iterator), intent(inout) :: this
     end subroutine empty_sub
-    elemental function copy_func(this)
+    function copy_func(this)
       import iterator
       class(iterator), intent(in) :: this
       class(iterator), allocatable :: copy_func

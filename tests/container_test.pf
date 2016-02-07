@@ -42,29 +42,29 @@ module container_test_mod
   type, extends(parameterizedtestcase) :: test_container
     class(container), allocatable :: container_obj
     class(*), allocatable :: inval, outval
-  end type test_containers
+  end type test_container
 
-  interface container_case
-    module procedure case_constructor
-  end interface container_case
+!~   interface container_case
+!~     module procedure constructor
+!~   end interface container_case
 
 contains
 
-  elemental type(container_case) function constructor(cont, inval, outval, cont_name)
-    class(container), intent(in) :: container_obj
-    class(*), intent(in) :: inval, outval
-    character(len=32), intent(in) :: container_obj
+  type(container_case) function constructor(cont, inval, outval, cont_name)
+    class(container), intent(inout) :: cont
+    class(*), intent(inout) :: inval, outval
+    character(len=*), intent(in) :: cont_name
     allocate(constructor%container_obj, source=cont)
     allocate(constructor%inval, source=inval)
     allocate(constructor%outval, source=outval)
     constructor%container_name = cont_name
   end function constructor
   
-  elemental function type(test_container) new_test(param)
+  type(test_container) function new_test(param)
     type(container_case), intent(in) :: param
-    allocate(new_test%container_obj, param%container_obj)
-    allocate(new_test%inval, param%inval)
-    allocate(new_test%outval, param%outval)
+    allocate(new_test%container_obj, source=param%container_obj)
+    allocate(new_test%inval, source=param%inval)
+    allocate(new_test%outval, source=param%outval)
   end function new_test
 
   function tostring(this) result(string)
@@ -105,78 +105,70 @@ contains
     real(r4) :: real4in = 1.0_r4, real4out = 0.0_r4
     real(r8) :: real8in = 1.0_r8, real8out = 0.0_r8
     real(r16) :: real16in = 1.0_r16, real16out = 0.0_r16
-    params = [ container_case(char_c, charin, charout, 'character_container'), &
-               container_case(comp_c, compin, compout, 'complex_container'), &
-               container_case(comp4_c, comp4in, comp4out, 'complex4_container'), &
-               container_case(comp8_c, comp8in, comp8out, 'complex8_container'), &
-               container_case(comp16_c, comp16in, comp16out, 'complex16_container'), &
-               container_case(log_c, login, logout, 'logical_container'), &
-               container_case(int_c, intin, intout, 'int_container'), &
-               container_case(int1_c, int1in, int1out, 'int1_container'), &
-               container_case(int2_c, int2in, int2out, 'int2_container'), &
-               container_case(int4_c, int4in, int4out, 'int4_container'), &
-               container_case(int8_c, int8in, int8out, 'int8_container'), &
-               container_case(real_c, realin, realout, 'real_container'), &
-               container_case(real4_c, real4in, real4out, 'real4_container'), &
-               container_case(real8_c, real8in, real8out, 'real8_container'), &
-               container_case(real16_c, real16in, real16out, 'real16_container') ]
+    params = [ constructor(char_c, charin, charout, 'character_container'), &
+               constructor(comp_c, compin, compout, 'complex_container'), &
+               constructor(comp4_c, comp4in, comp4out, 'complex4_container'), &
+               constructor(comp8_c, comp8in, comp8out, 'complex8_container'), &
+               constructor(comp16_c, comp16in, comp16out, 'complex16_container'), &
+               constructor(log_c, login, logout, 'logical_container'), &
+               constructor(int_c, intin, intout, 'int_container'), &
+               constructor(int1_c, int1in, int1out, 'int1_container'), &
+               constructor(int2_c, int2in, int2out, 'int2_container'), &
+               constructor(int4_c, int4in, int4out, 'int4_container'), &
+               constructor(int8_c, int8in, int8out, 'int8_container'), &
+               constructor(real_c, realin, realout, 'real_container'), &
+               constructor(real4_c, real4in, real4out, 'real4_container'), &
+               constructor(real8_c, real8in, real8out, 'real8_container'), &
+               constructor(real16_c, real16in, real16out, 'real16_container') ]
   end function get_params
 
 @Test
   subroutine test_storage(this)
-    class(test_container), intent(in) :: this
+    class(test_container), intent(inout) :: this
     class(container), allocatable :: test_subject1, test_subject2
-    class(*), allocatable :: outval
-    character, dimension(1) :: mold
+    class(*), allocatable :: original_outval
+    integer, dimension(1) :: mold
     allocate(test_subject1, source=this%container_obj)
-    allocate(outval, source=this%outval)
+    allocate(original_outval, source=this%outval)
     call test_subject1%set(this%inval)
-    @assertFalse(all(transfer(this%outval, mold) == transfer(this%inval, mold)), &
-                 message='OUTVAL should not have been set equal to INVAL.')
-    outval == test_subject1
-    @assertEqual(transfer(this%inval, mold), transfer(outval, mold), &
-                 message='Container not returning same value placed in it.')
+    @assertFalse(all(transfer(this%outval, mold) == transfer(this%inval, mold)), message='OUTVAL set equal to INVAL.')
+    this%outval = test_subject1
+    @assertEqual(transfer(this%inval, mold), transfer(this%outval, mold), message='Container not returning value placed in it.')
     allocate(test_subject2, source=this%container_obj)
     call test_subject2%set(test_subject1)
-    outval = this%outval
-    outval = test_subject2
-    @assertEqual(transfer(this%inval, mold), transfer(outval, mold), &
-                 message='Container not set to value of new container placed in it.')
-    call test_subject2%set(this%outval)
+    allocate(this%outval, source=original_outval)
+    this%outval = test_subject2
+    @assertEqual(transfer(this%inval, mold), transfer(this%outval, mold), message='Container not set to new contents.')
+    call test_subject2%set(original_outval)
     test_subject2 = test_subject1
-    outval = this%outval
-    outval = test_subject2
-    @assertEqual(transfer(this%inval, mold), transfer(outval, mold), &
-                 message='Container assigned value of other container.')
+    allocate(this%outval, source=original_outval)
+    this%outval = test_subject2
+    @assertEqual(transfer(this%inval, mold), transfer(this%outval, mold), message='Container not assigned new value.')
   end subroutine test_storage
 
 @Test
   subroutine test_equal_operator(this)
-    class(test_container), intent(in)
+    class(test_container), intent(inout) :: this
     class(container), allocatable :: test_subject1, test_subject2
+    integer, dimension(1) :: mold
     allocate(test_subject1, source=this%container_obj)
     allocate(test_subject2, source=this%container_obj)
-    @assertFalse(all(transfer(outval, mold) == transfer(this%inval, mold)), &
-                 message='OUTVAL should not have been set equal to INVAL.')
-    test_subject1%set(this%inval)
-    test_subject2%set(this%outval)
-    @assertFalse(test_subject1 == test_subject2, &
-                 message='Containers with different contents should not be equal.')
-    test_subject2%set(this%inval)
-    @assertTrue(test_subject1 == test_subject2, &
-                message='Containers with the same contents should be equal.')
+    @assertFalse(all(transfer(this%outval, mold) == transfer(this%inval, mold)), message='OUTVAL set equal to INVAL.')
+    call test_subject1%set(this%inval)
+    call test_subject2%set(this%outval)
+    @assertFalse(test_subject1 == test_subject2, message='Containers with different contents should not be equal.')
+    call test_subject2%set(this%inval)
+    @assertTrue(test_subject1 == test_subject2, message='Containers with the same contents should be equal.')
   end subroutine test_equal_operator
 
 @Test
   subroutine test_contents(this)
-    class(test_container), intent(in)
+    class(test_container), intent(inout) :: this
     class(container), allocatable :: test_subject
     integer(i1), dimension(1) :: mold
     allocate(test_subject, source=this%container_obj)
-    test_subject%set(this%inval)
-    @assertEqual(transfer(this%inval, mold), test_subject%contents(), &
-                message='Integer representation of container contents &
-                &not the same as for value assigned to container.')
-  end subroutine test_equal_operator
+    call test_subject%set(this%inval)
+    @assertEqual(int(transfer(this%inval, mold)), int(test_subject%contents()), message='Bad array representation of contents.')
+  end subroutine test_contents
 
 end module container_test_mod

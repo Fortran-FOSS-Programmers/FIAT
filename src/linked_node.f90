@@ -21,7 +21,7 @@
 !  
 
 module linked_node_mod
-  use node_mod only: node
+  use node_mod, only: node
   implicit none
   private
   
@@ -42,7 +42,7 @@ contains
     has_next = associated(this%next)
   end function has_next
   
-  elemental function get_next(this)
+  function get_next(this)
     class(linked_node), intent(in) :: this
     class(linked_node), pointer :: get_next
     if (this%has_next()) then
@@ -65,7 +65,7 @@ contains
     logical, optional, intent(in) :: deallocate_old
     if (.not. this%has_next()) return
     if (present(deallocate_old)) then
-      if (deallocate_old) this%next%unset_next(.true.)
+      if (deallocate_old) call this%next%unset_next(.true.)
     end if
     deallocate(this%next)
   end subroutine unset_next

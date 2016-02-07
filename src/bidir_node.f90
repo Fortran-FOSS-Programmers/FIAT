@@ -21,7 +21,7 @@
 !  
 
 module bidir_node_mod
-  use linked_node_mod only: linked_node
+  use linked_node_mod, only: linked_node
   implicit none
   private
   
@@ -42,7 +42,7 @@ contains
     has_prev = associated(this%prev)
   end function has_prev
   
-  elemental function get_prev(this)
+  function get_prev(this)
     class(bidir_node), intent(in) :: this
     class(bidir_node), pointer :: get_prev
     if (this%has_prev()) then
@@ -65,7 +65,7 @@ contains
     logical, optional, intent(in) :: nullify_old
     if (.not. this%has_prev()) return
     if (present(nullify_old)) then
-      if (nullify_old) this%prev%unset_prev(.true.)
+      if (nullify_old) call this%prev%unset_prev(.true.)
     end if
     nullify(this%prev)
   end subroutine unset_prev

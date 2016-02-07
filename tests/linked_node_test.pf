@@ -21,11 +21,9 @@
 !  
 
 module linked_node_test_mod
-  implicit none
   use linked_node_mod
   use pfunit_mod
   implicit none
-  private
 
 @TestCase
   type, extends(testcase) :: test_linked_node
@@ -35,8 +33,6 @@ module linked_node_test_mod
     procedure :: teardown
   end type test_linked_node
 
-  public :: test_linked_node
-  
 contains
 
   subroutine setup(this)
@@ -44,26 +40,23 @@ contains
     allocate(this%node1)
     allocate(this%node2)
     allocate(this%node3)
-  end subroutine setup(this)
+  end subroutine setup
   
   subroutine teardown(this)
     class(test_linked_node), intent(inout) :: this
     if (associated(this%node1)) deallocate(this%node1)
     if (associated(this%node2)) deallocate(this%node2)
     if (associated(this%node3)) deallocate(this%node3)
-  end subroutine teardown(this)
+  end subroutine teardown
 
 @Test
   subroutine test_has_next(this)
     class(test_linked_node), intent(inout) :: this
-    @assertFalse(this%node1%has_next(), message="Node should not &
-                 &indicate it has next before one has been set.")
-    this%node1%set_next(this%node2)
-    @assertTrue(this%node1%has_next(), message="Node should indicate it &
-                &has next after one has been set.")
-    this%node1%unset_next()
-    @assertFalse(this%node1%has_next(), message="Node should not indicate &
-                 &it has next after next has been unset.")
+    @assertFalse(this%node1%has_next(), message="Node should not indicate it has next before one has been set.")
+    call this%node1%set_next(this%node2)
+    @assertTrue(this%node1%has_next(), message="Node should indicate it has next after one has been set.")
+    call this%node1%unset_next()
+    @assertFalse(this%node1%has_next(), message="Node should not indicate it has next after next has been unset.")
   end subroutine test_has_next
   
 @Test
@@ -71,51 +64,43 @@ contains
     class(test_linked_node), intent(inout) :: this
     type(linked_node), pointer :: retval
     retval => this%node1%get_next()
-    @assertNotAssociated(retval,message="Node should return null until &
-                         &it is associated with the next node.")
-    this%set_next(this%node2)
-    retval => this%node%get_next()
-    @assertAssociated(retval, this%node2, message="Node not returning the &
-                      &node which was set to be next.")
+    @assertNotAssociated(retval,message="Node should return null until it is associated with the next node.")
+    call this%node1%set_next(this%node2)
+    retval => this%node1%get_next()
+    @assertAssociated(retval, this%node2, message="Node not returning the node which was set to be next.")
   end subroutine test_get_next
   
 @Test
   subroutine test_unset_next(this)
     class(test_linked_node), intent(inout) :: this
-    this%node1%set_next(this%node2)
-    this%node2%set_next(this%node3)
-    this%node1%unset_next()
-    @assertNotAssociated(this%node1%get_next(), this%node2, &
-                         message="The next node has not be unset.")
+    call this%node1%set_next(this%node2)
+    call this%node2%set_next(this%node3)
+    call this%node1%unset_next()
+    @assertNotAssociated(this%node1%get_next(), this%node2, message="The next node has not be unset.")
     @assertAssociated(this%node2, message="The next node was disassociated.")
-    @assertAssociated(this%node2%get_next(), this%node3, &
-                      message="The next node's next was disassociated.")
-    this%node1%set_next(this%node2)
-    this%node1%unset_next(.true.)
+    @assertAssociated(this%node2%get_next(), this%node3, message="The next node's next was disassociated.")
+    call this%node1%set_next(this%node2)
+    call this%node1%unset_next(.true.)
     @assertNotAssociated(this%node2, message="The next node was not disassociated")
-    @assertNotAssociated(this%node3, message="The next node's next was &
-                         &not disassociated.")
-  end subrouutine test_unset_next
+    @assertNotAssociated(this%node3, message="The next node's next was not disassociated.")
+  end subroutine test_unset_next
 
 @Test
   subroutine test_unset_on_assign(this)
     class(test_linked_node), intent(inout) :: this
     type(linked_node), pointer :: new_next
     allocate(new_next)
-    this%node1%set_next(this%node2)
-    this%node2%set_next(this%node3)
-    this%node1%set_next(new_next)
-    @assertNotAssociated(this%node1%get_next(), this%node2, &
-                         message="The next node has not been changed.")
+    call this%node1%set_next(this%node2)
+    call this%node2%set_next(this%node3)
+    call this%node1%set_next(new_next)
+    @assertNotAssociated(this%node1%get_next(), this%node2, message="The next node has not been changed.")
     @assertAssociated(this%node2, message="The next node was disassociated.")
-    @assertAssociated(this%node2%get_next(), this%node3, &
-                      message="The next node's next was disassociated.")
-    this%node1%set_next(this%node2)
-    this%node1%set_next(new_next,.true.)
+    @assertAssociated(this%node2%get_next(), this%node3, message="The next node's next was disassociated.")
+    call this%node1%set_next(this%node2)
+    call this%node1%set_next(new_next,.true.)
     @assertNotAssociated(this%node2, message="The next node was not disassociated")
-    @assertNotAssociated(this%node3, message="The next node's next was &
-                         &not disassociated.")
+    @assertNotAssociated(this%node3, message="The next node's next was not disassociated.")
     deallocate(new_next)
-  end subrouutine test_unset_next
+  end subroutine test_unset_on_assign
 
 end module linked_node_test_mod

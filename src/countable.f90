@@ -21,7 +21,7 @@
 !  
 
 module countable_mod
-  use iterator_mod only: iterator
+  use iterator_mod, only: iterator
   implicit none
   private
 
