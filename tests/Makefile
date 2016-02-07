@@ -16,13 +16,14 @@ TESTS := $(PFFILES:%.pf=%.o)
 
 # "make" builds all
 
+.PRECIOUS: %.F90
+
+all: tests
+
 tests: $(TESTS)
 
 %.F90: %.pf
 	$(PFUNIT)/bin/pFUnitParser.py $<  $@
-
-%: $(ODIR)/%.o
-	$(F90) $(FCFLAGS) -o $@ $^ $(LDFLAGS)
 
 %.o: %.f90
 	$(F90) $(FCFLAGS) -o $@ -c $<

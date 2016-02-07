@@ -65,9 +65,13 @@ contains
     logical, optional, intent(in) :: deallocate_old
     if (.not. this%has_next()) return
     if (present(deallocate_old)) then
-      if (deallocate_old) call this%next%unset_next(.true.)
+      if (deallocate_old) then
+        call this%next%unset_next(.true.)
+        deallocate(this%next)
+        return
+      end if
     end if
-    deallocate(this%next)
+    nullify(this%next)
   end subroutine unset_next
 
 end module linked_node_mod

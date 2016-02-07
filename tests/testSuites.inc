@@ -1,4 +1,4 @@
-ADD_TEST_SUITE(container_test_mod_suite)
+!ADD_TEST_SUITE(container_test_mod_suite)
 ADD_TEST_SUITE(node_test_mod_suite)
 ADD_TEST_SUITE(linked_node_test_mod_suite)
-!ADD_TEST_SUITE(bidir_node_test_mod_suite)
+ADD_TEST_SUITE(bidir_node_test_mod_suite)

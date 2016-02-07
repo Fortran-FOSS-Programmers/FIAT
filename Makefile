@@ -28,8 +28,11 @@ lib:
 tests: $(EXE)
 	./$(EXE) 
 
-$(EXE): $(ARCHIVE)
+SUT: lib
 	make -C $(TEST) tests
+
+
+$(EXE): SUT 
 	$(F90) -o $@ -I$(PFUNIT)/mod -I$(PFUNIT)/include -I$(INC) \
 		-I$(TEST) -I$(TESTINC) \
 		$(PFUNIT)/include/driver.F90 $(TEST)/*.o $(FCFLAGS) \

@@ -85,23 +85,23 @@ module abstract_container_mod
     !! end module example_container_mod
     !!```
     private
-    integer(i1), dimension(:), allocatable  ::  storage
+    integer(i1), dimension(:), allocatable :: storage
       !! Variable in which to place data contents
     logical ::  filled = .false.
       !! `.true.` if container is set, `.false.` otherwise
   contains
     private
-    procedure(guard), deferred ::  typeguard
+    procedure(guard), deferred :: typeguard
       !! Performs the actual transfer of the container's contents to 
       !! another variable.
-    procedure, public   ::  contents
+    procedure, public :: contents
       !! Retrieves the contents of the container, in the form of an
       !! integer array.
-    procedure, public   ::  set
+    procedure, public :: set
       !! Sets the contents of the container.
-    procedure, pass(rhs)    ::  assign_container
+    procedure, pass(rhs) :: assign_container
       !! Assigns container contents to another variable.
-    procedure   ::  is_equal
+    procedure :: is_equal
       !! Check whether two containers have the same contents.
     generic, public :: assignment(=) => assign_container
     generic, public :: operator(==) => is_equal
@@ -201,10 +201,10 @@ contains
     if (same_type_as(this, content)) then
       select type(content)
         class is(container)
+          this%filled = .true.
           this%storage = content%storage
       end select
-    end if
-    if (this%typeguard(tmp)) then
+    else if (this%typeguard(tmp)) then
       this%filled = .true.
       this%storage = transfer(content, this%storage)
     else
