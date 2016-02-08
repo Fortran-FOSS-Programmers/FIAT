@@ -52,20 +52,24 @@ contains
     end if
   end function get_prev
   
-  subroutine set_prev(this, new_prev, nullify_old)
+  subroutine set_prev(this, new_prev, deallocate_old)
     class(bidir_node), intent(inout) :: this
     class(bidir_node), pointer, intent(in) :: new_prev
-    logical, optional, intent(in) :: nullify_old
-    call this%unset_prev(nullify_old)
+    logical, optional, intent(in) :: deallocate_old
+    call this%unset_prev(deallocate_old)
     this%prev => new_prev
   end subroutine set_prev
   
-  subroutine unset_prev(this, nullify_old)
+  subroutine unset_prev(this, deallocate_old)
     class(bidir_node), intent(inout) :: this
-    logical, optional, intent(in) :: nullify_old
+    logical, optional, intent(in) :: deallocate_old
     if (.not. this%has_prev()) return
-    if (present(nullify_old)) then
-      if (nullify_old) call this%prev%unset_prev(.true.)
+    if (present(deallocate_old)) then
+      if (deallocate_old) then
+        call this%prev%unset_prev(.true.)
+        deallocate(this%prev)
+        return
+      end if
     end if
     nullify(this%prev)
   end subroutine unset_prev

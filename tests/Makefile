@@ -16,7 +16,7 @@ TESTS := $(PFFILES:%.pf=%.o)
 
 # "make" builds all
 
-.PRECIOUS: %.F90
+#.PRECIOUS: %.F90
 
 all: tests
 

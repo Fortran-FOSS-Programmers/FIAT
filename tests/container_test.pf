@@ -36,6 +36,7 @@ module container_test_mod
     character(len=32) :: container_name
   contains
     procedure :: tostring
+    final :: container_case_final
   end type container_case
   
 @TestCase(testParameters={get_params()}, constructor=new_test)
@@ -44,8 +45,6 @@ module container_test_mod
     class(*), allocatable :: inval, outval
     character(len=32) :: container_name
   end type test_container
-
-  private :: i1_test, i2_test, c16_test
 
 contains
 
@@ -58,6 +57,13 @@ contains
     allocate(constructor%outval, source=outval)
     constructor%container_name = cont_name
   end function constructor
+  
+  subroutine container_case_final(this)
+    type(container_case), intent(inout) :: this
+    if (allocated(this%container_obj)) deallocate(this%container_obj)
+    if (allocated(this%inval)) deallocate(this%inval)
+    if (allocated(this%outval)) deallocate(this%outval)
+  end subroutine container_case_final
   
   type(test_container) function new_test(param)
     type(container_case), intent(in) :: param
@@ -127,84 +133,56 @@ contains
     class(test_container), intent(inout) :: this
     class(container), allocatable :: test_subject1, test_subject2
     class(*), allocatable :: original_outval
-    integer, dimension(1) :: mold
+    integer(i1), dimension(1) :: mold
     allocate(test_subject1, source=this%container_obj)
     allocate(original_outval, source=this%outval)
-    ! FIXME: this is a massive cludge to make up for the fact that between pFUnit and GFortran I can't seem to compare transferred data from these datatypes in a way which won't insert random padding, cause a segfault, or produce a runtime warning about exceeding memory limits.
-    select type(inval => this%inval)
-      type is(integer(i1))
-        select type(outval => this%inval)
-          type is(integer(i1))
-            call i1_test(test_subject1, inval, outval)
-            return
-          class default
-            @assertTrue(.false.,message='INVAL and OUTVAL are not of matching types')
-        end select
-      type is(integer(i2))
-        select type(outval => this%inval)
-          type is(integer(i2))
-            call i2_test(test_subject1, inval, outval)
-            return
-          class default
-            @assertTrue(.false.,message='INVAL and OUTVAL are not of matching types')
-        end select
-      type is(complex(r16))
-        select type(outval => this%inval)
-          type is(complex(r16))
-            call c16_test(test_subject1, inval, outval)
-            return
-          class default
-            @assertTrue(.false.,message='INVAL and OUTVAL are not of matching types')
-        end select
-    end select
     call test_subject1%set(this%inval)
     @assertFalse(all(transfer(this%outval, mold) == transfer(this%inval, mold)), message='OUTVAL set equal to INVAL.')
     this%outval = test_subject1
-    @assertEqual(int(transfer(this%inval,mold)),int(transfer(this%outval,mold)), message='Getting wrong value from container.')
+    ! FIXME: This is a cludge to make up for the fact that 16-byte complex numbers don't play nicely with TRANSFER (in this program) and end up leaving the last four array elements not equal.
+    select type(inval => this%inval)
+      type is(complex(r16))
+        select type(outval => this%outval)
+          type is(complex(r16))
+            @assertEqual(real(inval,r8),real(outval,r8), message='Getting wrong value from container.')
+            @assertEqual(real(aimag(inval),r8),real(aimag(outval),r8), message='Getting wrong value from container.')
+        end select
+      class default
+        @assertAll(transfer(this%inval,mold)==transfer(this%outval,mold), message='Getting wrong value from container.')
+    end select
     allocate(test_subject2, source=this%container_obj)
     call test_subject2%set(test_subject1)
     deallocate(this%outval)
     allocate(this%outval, source=original_outval)
     this%outval = test_subject2
-    @assertEqual(int(transfer(this%inval, mold)), int(transfer(this%outval, mold)), message='Container not set to new value.')
+    ! FIXME: And here's the cludge again
+    select type(inval => this%inval)
+      type is(complex(r16))
+        select type(outval => this%outval)
+          type is(complex(r16))
+            @assertEqual(real(inval,r8),real(outval,r8), message='Container not set to new value.')
+            @assertEqual(real(aimag(inval),r8),real(aimag(outval),r8), message='Container not set to new value.')
+        end select
+      class default
+        @assertAll(transfer(this%inval, mold)==transfer(this%outval, mold), message='Container not set to new value.')
+    end select
     call test_subject2%set(original_outval)
     test_subject2 = test_subject1
     deallocate(this%outval)
     allocate(this%outval, source=original_outval)
     this%outval = test_subject2
-    @assertEqual(int(transfer(this%inval, mold)), int(transfer(this%outval, mold)), message='Container not assigned new value.')
+    ! FIXME: And here's the cludge again
+    select type(inval => this%inval)
+      type is(complex(r16))
+        select type(outval => this%outval)
+          type is(complex(r16))
+            @assertEqual(real(inval,r8),real(outval,r8), message='Container not assigned new value.')
+            @assertEqual(real(aimag(inval),r8),real(aimag(outval),r8), message='Container not assigned new value.')
+        end select
+      class default
+        @assertAll(transfer(this%inval, mold)==transfer(this%outval, mold), message='Container not assigned new value.')
+    end select
   end subroutine test_storage
-
-  subroutine i1_test(cont, inval, outval)
-    class(container), intent(inout) :: cont
-    integer(i1), intent(inout) :: inval, outval
-    class(container), allocatable :: cont2
-    if (outval==inval) outval = inval - 1_i1
-    call cont%set(inval)
-    outval = cont
-    @assertEqual(int(inval),int(outval), message='Getting wrong value from container.')
-  end subroutine i1_test
-
-  subroutine i2_test(cont, inval, outval)
-    class(container), intent(inout) :: cont
-    integer(i2), intent(inout) :: inval, outval  
-    class(container), allocatable :: cont2
-    if (outval==inval) outval = inval - 1_i2
-    call cont%set(inval)
-    outval = cont
-    @assertEqual(int(inval),int(outval), message='Getting wrong value from container.')
-  end subroutine i2_test
-
-  subroutine c16_test(cont, inval, outval)
-    class(container), intent(inout) :: cont
-    complex(r16), intent(inout) :: inval, outval  
-    class(container), allocatable :: cont2
-    if (outval==inval) outval = inval - 1.0_r16
-    call cont%set(inval)
-    outval = cont
-    @assertEqual(real(inval,r8),real(outval,r8), message='Getting wrong value from container.')
-    @assertEqual(real(aimag(inval),r8),real(aimag(outval),r8), message='Getting wrong value from container.')
-  end subroutine c16_test
 
 @Test
   subroutine test_equal_operator(this)
@@ -228,7 +206,7 @@ contains
     integer(i1), dimension(1) :: mold
     allocate(test_subject, source=this%container_obj)
     call test_subject%set(this%inval)
-    @assertEqual(int(transfer(this%inval, mold)), int(test_subject%contents()), message='Bad array representation of contents.')
+    @assertAll(transfer(this%inval, mold) == int(test_subject%contents()), message='Bad array representation of contents.')
   end subroutine test_contents
 
 end module container_test_mod

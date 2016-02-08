@@ -189,9 +189,17 @@ contains
     !! of the variable provided must be the same as the container
     !! variable is designed to accept (as determined by the
     !! concrete type implementation of the [[container:typeguard]]
-    !! method in the extension), or else an error message will be
-    !! printed and the program will exit. If `gfortran` was used to
-    !! compile then a backtrace will also be printed.
+    !! method in the extension) or be of the same type of container.
+    !! Otherwise an error message will be printed and the program will 
+    !! exit. If `gfortran` was used to compile then a backtrace will
+    !! also be printed.
+    !!
+    !! @Warning During the initial phase of writing unit tests for the 
+    !! containers, I found that when content is class(container) then
+    !! ~5GB of memory would end up being allocated at line 204. After
+    !! various experiments which involved moving the code around, it
+    !! stopped doing this when I changed it back. I have no idea why
+    !! it works now and suspect that this is a bug with gfortran 5.3.0.
     class(container), intent(out)  ::  this
     class(*), intent(in)    ::  content
       !! The value to be placed in the container
@@ -201,8 +209,14 @@ contains
     if (same_type_as(this, content)) then
       select type(content)
         class is(container)
-          this%filled = .true.
-          this%storage = content%storage
+          if (content%filled) then
+            this%filled = .true.
+            this%storage = content%storage
+          else
+            this%filled = .false.
+            if (allocated(this%storage)) deallocate(this%storage)
+          endif
+          return
       end select
     else if (this%typeguard(tmp)) then
       this%filled = .true.
@@ -235,7 +249,8 @@ contains
       is_equal = .false.
       return
     end if
-    is_equal = all(lhs%storage == rhs%storage)
+    is_equal = (size(lhs%storage) == size(rhs%storage) .and. &
+                all(lhs%storage == rhs%storage))
   end function is_equal
 
 end module abstract_container_mod
