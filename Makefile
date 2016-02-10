@@ -1,4 +1,4 @@
-PFUNIT = /opt/pfunit-gfortran-5
+#PFUNIT = /opt/pfunit-gfortran-5
 export PFUNIT
 
 # The compiler

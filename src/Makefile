@@ -3,6 +3,9 @@ SOURCES := $(shell find -name '*.f90')
 SOURCESPP := $(shell find -name '*.F90')
 OBJS = $(SOURCES:%.f90=%.o) $(SOURCESPP:%.F90=%.o)
 
+# The compiler
+F90 = gfortran-5
+
 # List of executables to be built within the package
 INC = ../mod
 FCFLAGS = -Og -g -I$(INC) -J$(INC)
