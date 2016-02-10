@@ -1,4 +1,4 @@
-PFUNIT = /opt/pfunit-gfortran-5
+#PFUNIT = /opt/pfunit-gfortran-5
 F90 = gfortran-5
 include $(PFUNIT)/include/base.mk
 
