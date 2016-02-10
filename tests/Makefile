@@ -20,7 +20,7 @@ TESTS := $(PFFILES:%.pf=%.o)
 
 all: tests
 
-tests: $(TESTS)
+tests: init $(TESTS)
 
 %.F90: %.pf
 	$(PFUNIT)/bin/pFUnitParser.py $<  $@
@@ -35,5 +35,4 @@ clean:
 	/bin/rm  -rf $(ODIR)/*.o ./tmp $(INC)/*.mod test $(PFFILES:%.pf=%.F90)
 
 init:
-	mkdir -p $(ODIR)
 	mkdir -p $(INC)
