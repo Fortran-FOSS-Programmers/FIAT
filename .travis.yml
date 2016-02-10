@@ -1,0 +1,47 @@
+sudo: false
+
+language: c
+
+os:
+  - linux
+
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - gcc-5
+      - gfortran-5
+      - python-pip
+      - graphviz
+
+install:
+  - export LOCAL_BIN=$HOME/.local/bin
+  - export PATH=$LOCAL_BIN:/usr/local/bin:/usr/bin:$PATH
+  - pip install --upgrade graphviz
+  - pip install --upgrade ford && ford --version
+  - pip install --upgrade ghp-import
+  - |
+    if ! [-d pFUnit]; then
+      git clone git://git.code.sf.net/p/pfunit/code pFUnit
+      cd pFUnit
+    else
+      cd pFUnit
+      git pull
+    fi
+  - cd pFUnit
+  - export F90_VENDOR=GNU
+  - export F90=gfortran-5
+  - make tests
+  - make install INSTALL_DIR=$LOCAL_BIN/pfunit-serial
+  - export PFUNIT=$LOCAL_BIN/pfunit-serial
+  - cd -
+
+script:
+  - make tests
+
+after_success:
+  - echo 'SUCCESS! Once the project is further along I\'ll regenerate and push documentation'
+
+notifications:
+  email: True
