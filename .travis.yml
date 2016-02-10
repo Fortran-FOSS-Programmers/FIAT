@@ -13,23 +13,32 @@ addons:
       - gcc-5
       - gfortran-5
       - python-pip
+      - python-virtualenv
       - graphviz
+
+cache:
+  apt: true
+  pip: true
+  directories:
+    - $HOME/.cache/pip
+    - $HOME/.local
 
 install:
   - export LOCAL_BIN=$HOME/.local/bin
   - export PATH=$LOCAL_BIN:/usr/local/bin:/usr/bin:$PATH
+  - if ! [-d $HOME/venv]; then virtualenv $HOME/venv; fi
+  - source $HOME/venv/bin/activate
   - pip install --upgrade graphviz
   - pip install --upgrade ford && ford --version
   - pip install --upgrade ghp-import
   - |
-    if ! [-d pFUnit]; then
-      git clone git://git.code.sf.net/p/pfunit/code pFUnit
-      cd pFUnit
+    if ! [-d $HOME/pFUnit]; then
+      git clone git://git.code.sf.net/p/pfunit/code $HOME/pFUnit
+      cd $HOME/pFUnit
     else
-      cd pFUnit
+      cd $HOME/pFUnit
       git pull
     fi
-  - cd pFUnit
   - export F90_VENDOR=GNU
   - export F90=gfortran-5
   - make tests
