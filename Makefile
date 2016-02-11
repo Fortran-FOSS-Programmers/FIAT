@@ -7,7 +7,7 @@ F90 = gfortran-5
 # flags for debugging or for maximum performance, comment as necessary
 INC = ../mod
 FCFLAGS = -Og -g -I$(INC) -J$(INC)
-LDFLAGS = -Og -g
+LDFLAGS = -Og -g 
 
 ARCHIVE = libfiat.a
 SRC = ./src
@@ -36,7 +36,7 @@ $(EXE): SUT
 	$(F90) -o $@ -I$(PFUNIT)/mod -I$(PFUNIT)/include -I$(INC) \
 		-I$(TEST) -I$(TESTINC) \
 		$(PFUNIT)/include/driver.F90 $(TEST)/*.o $(FCFLAGS) \
-		 -L. -lfiat -L$(PFUNIT)/lib -lpfunit
+		 -L. -lfiat -L$(PFUNIT)/lib -lpfunit -fprofile-arcs
 
 
 %: $(ODIR)/%.o

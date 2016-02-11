@@ -27,10 +27,11 @@ install:
   - export LOCAL_BIN=$HOME/.local/bin
   - export PATH=$LOCAL_BIN:/usr/local/bin:/usr/bin:$PATH
   - if [ ! -d $HOME/venv ]; then virtualenv $HOME/venv; fi
-  - source $HOME/venv/bin/activate
-  - pip install --upgrade graphviz
-  - pip install --upgrade ford && ford --version
-  - pip install --upgrade ghp-import
+#  - source $HOME/venv/bin/activate
+  - pip install --user --upgrade graphviz
+  - pip install --user --upgrade ford && ford --version
+  - pip install --user --upgrade ghp-import
+  - pip install --user --upgrade codecov
   - |
     if [ ! -d $HOME/pFUnit ]; then
       git clone git://git.code.sf.net/p/pfunit/code $HOME/pFUnit
@@ -50,7 +51,8 @@ script:
   - make tests
 
 after_success:
-  - echo 'SUCCESS! Once the project is further along I\'ll regenerate and push documentation'
+  - echo "SUCCESS! Once the project is further along I'll regenerate and push documentation"
+  - codecov
 
 notifications:
   email: True
