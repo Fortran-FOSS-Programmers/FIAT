@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.org/Fortran-FOSS-Programmers/FIAT.svg?branch=master)](https://travis-ci.org/Fortran-FOSS-Programmers/FIAT)
-[![codecov.io](https://codecov.io/github/Fortran-FOSS-Programmers/FIAT/coverage.svg?branch=master)](https://codecov.io/github/Fortran-FOSS-Programmers/FIAT?branch=master)
+[![Travis](https://img.shields.io/travis/Fortran-FOSS-Programmers/FIAT/master.svg)](https://travis-ci.org/Fortran-FOSS-Programmers/FIAT)
+[![Codecov](https://img.shields.io/codecov/c/github/Fortran-FOSS-Programmers/FIAT.svg)](https://codecov.io/github/Fortran-FOSS-Programmers/FIAT?branch=master)
 
 # FIAT: Fortran Implemented Abstract Types
 This library aims to implement the following data structures in Fortran.
