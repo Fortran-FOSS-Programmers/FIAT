@@ -52,9 +52,7 @@ script:
 
 after_success:
   - echo "SUCCESS! Once the project is further along I'll regenerate and push documentation"
-  - cd src
-  - gcov *.[Ff]90
-  - cd -
+  - make gcov
   - codecov -X gcov
 
 notifications:

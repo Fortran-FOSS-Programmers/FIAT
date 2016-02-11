@@ -32,6 +32,9 @@ countable.o: countable.f90 iterator.o
 ordered.o: ordered.f90 iterator.o countable.o abstract_container.o
 stack.o: stack.F90 ordered.o abstract_container.o linked_node.o
 
+gcov:
+	gcov *.gcno -pb
+
 %: $(ODIR)/%.o
 	$(F90) $(FCFLAGS) -o $@ $^ $(LDFLAGS)
 
@@ -42,7 +45,7 @@ stack.o: stack.F90 ordered.o abstract_container.o linked_node.o
 	$(F90) $(FCFLAGS) -o $@ -c $<
 
 clean:
-	/bin/rm  -rf *.o ./tmp $(INC)/*.mod $(ARCHIVE) *.gcno *.gcda *.gcov
+	/bin/rm  -rf *.o ./tmp $(INC)/*.mod *.gcno *.gcda *.gcov
 
 init:
 	mkdir -p $(INC)

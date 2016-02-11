@@ -38,6 +38,8 @@ $(EXE): SUT
 		$(PFUNIT)/include/driver.F90 $(TEST)/*.o $(FCFLAGS) \
 		 -L. -lfiat -L$(PFUNIT)/lib -lpfunit -fprofile-arcs
 
+gcov: tests
+	make -C $(SRC) gcov
 
 %: $(ODIR)/%.o
 	$(FC) $(FCFLAGS) -o $@ $^ $(LDFLAGS)
