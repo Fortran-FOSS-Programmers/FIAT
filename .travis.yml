@@ -26,13 +26,13 @@ cache:
 install:
   - export LOCAL_BIN=$HOME/.local/bin
   - export PATH=$LOCAL_BIN:/usr/local/bin:/usr/bin:$PATH
-  - if [! -d $HOME/venv]; then virtualenv $HOME/venv; fi
+  - if [ ! -d $HOME/venv ]; then virtualenv $HOME/venv; fi
   - source $HOME/venv/bin/activate
   - pip install --upgrade graphviz
   - pip install --upgrade ford && ford --version
   - pip install --upgrade ghp-import
   - |
-    if [! -d $HOME/pFUnit]; then
+    if [ ! -d $HOME/pFUnit ]; then
       git clone git://git.code.sf.net/p/pfunit/code $HOME/pFUnit
       cd $HOME/pFUnit
     else
