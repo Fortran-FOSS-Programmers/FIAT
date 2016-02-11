@@ -64,6 +64,7 @@ clean:
 	make -C $(SRC) clean
 	make -C $(TEST) clean
 	rm $(ARCHIVE)
+	rm *.gcov
 
 init:
 	mkdir -p $(ODIR)

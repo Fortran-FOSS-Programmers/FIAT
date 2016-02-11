@@ -52,7 +52,10 @@ script:
 
 after_success:
   - echo "SUCCESS! Once the project is further along I'll regenerate and push documentation"
-  - bash <(curl -s https://codecov.io/bash)
+  - cd src
+  - gcov *.[Ff]90
+  - cd -
+  - codecov -X gcov
 
 notifications:
   email: True
