@@ -27,7 +27,7 @@ install:
   - export LOCAL_BIN=$HOME/.local/bin
   - export PATH=$LOCAL_BIN:/usr/local/bin:/usr/bin:$PATH
   - if [ ! -d $HOME/venv ]; then virtualenv $HOME/venv; fi
-  - ln -s `where gcov-5` $LOCAL_BIN/gcov
+  - ln -s `which gcov-5` $LOCAL_BIN/gcov
 #  - source $HOME/venv/bin/activate
   - pip install --user --upgrade graphviz
   - pip install --user --upgrade ford && ford --version
