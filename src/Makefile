@@ -42,7 +42,7 @@ stack.o: stack.F90 ordered.o abstract_container.o linked_node.o
 	$(F90) $(FCFLAGS) -o $@ -c $<
 
 clean:
-	/bin/rm  -rf *.o ./tmp $(INC)/*.mod $(ARCHIVE)
+	/bin/rm  -rf *.o ./tmp $(INC)/*.mod $(ARCHIVE) *.gcno *.gcda *.gcov
 
 init:
 	mkdir -p $(INC)

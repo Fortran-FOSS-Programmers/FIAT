@@ -34,3 +34,4 @@
 # Profiling files
 *.gcda
 *.gcno
+*.gcov

@@ -196,7 +196,7 @@ contains
     !!
     !! @Warning During the initial phase of writing unit tests for the 
     !! containers, I found that when content is class(container) then
-    !! ~5GB of memory would end up being allocated at line 204. After
+    !! ~5GB of memory would end up being allocated at line 207. After
     !! various experiments which involved moving the code around, it
     !! stopped doing this when I changed it back. I have no idea why
     !! it works now and suspect that this is a bug with gfortran 5.3.0.
