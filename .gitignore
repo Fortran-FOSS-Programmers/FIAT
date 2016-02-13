@@ -30,6 +30,7 @@
 
 # Miscellanious files
 *~
+doc/
 
 # Profiling files
 *.gcda

@@ -23,10 +23,10 @@
 module container_mod
   !! Author: Chris MacMackin
   !! Date: December 2015
-  !! License: GPLv3
+  !! License: LGPLv3
   !!
   !! Provides implementations of the [[container]] abstract
-  !! derived type for all of the built-in variable types.
+  !! derived type for all of the intrinsic variable types.
 
   use abstract_container_mod, only: container
   use iso_fortran_env, only: i1 => int8, i2 => int16, i4 => int32, &

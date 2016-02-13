@@ -23,7 +23,7 @@
 module abstract_container_mod
   !! Author: Chris MacMackin
   !! Date: December 2015
-  !! License: GPLv3
+  !! License: LGPLv3
   !!
   !! Provides an abstract container derived type which can be used 
   !! as a sort of unlimited polymorphic entity whose contents are
