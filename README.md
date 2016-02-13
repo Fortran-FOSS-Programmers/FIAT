@@ -2,7 +2,7 @@
 [![Codecov](https://img.shields.io/codecov/c/github/Fortran-FOSS-Programmers/FIAT.svg)](https://codecov.io/github/Fortran-FOSS-Programmers/FIAT?branch=master)
 
 # FIAT: Fortran Implementation of Abstract Types
-This library aims to implement various common following data structures
+This library aims to implement various common data structures
 in Fortran.
 These will be implemented in a generic manner using a `container` type. This
 was originally developed in [PolyCon](https://github.com/cmacmackin/PolyCon),
