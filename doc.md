@@ -1,3 +1,4 @@
+project: FIAT
 project_dir: ./src
 output_dir: ./doc
 author: Chris MacMackin
@@ -8,5 +9,10 @@ email: cmacmackin@gmail.com
 summary: Fortran Implementation of Abstract Types: generic implementations of
          common data structures in modern, object oriented Fortran.
 project_github: https://github.com/Fortran-FOSS-Programmers/FIAT
+display: public
+         protected
+		 private
+graph: true
+source: true
 
 {! README.md !}
