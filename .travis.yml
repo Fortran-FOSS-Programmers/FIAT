@@ -27,6 +27,7 @@ install:
   - export LOCAL_BIN=$HOME/.local/bin
   - export PATH=$LOCAL_BIN:/usr/local/bin:/usr/bin:$PATH
   - if [ ! -d $HOME/venv ]; then virtualenv $HOME/venv; fi
+  - if [ -e $LOCAL_BIN/gcov ]; then rm $LOCAL_BIN/gcov; fi
   - ln -s `which gcov-5` $LOCAL_BIN/gcov
 #  - source $HOME/venv/bin/activate
   - pip install --user --upgrade graphviz
