@@ -2,6 +2,8 @@
 [![Codecov](https://img.shields.io/codecov/c/github/Fortran-FOSS-Programmers/FIAT.svg)](https://codecov.io/github/Fortran-FOSS-Programmers/FIAT?branch=master)
 
 # FIAT: Fortran Implementation of Abstract Types
+
+[![Join the chat at https://gitter.im/Fortran-FOSS-Programmers/FIAT](https://badges.gitter.im/Fortran-FOSS-Programmers/FIAT.svg)](https://gitter.im/Fortran-FOSS-Programmers/FIAT?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 This library aims to implement various common data structures
 in Fortran.
 These will be implemented in a generic manner using a `container` type. This
