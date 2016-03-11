@@ -1,5 +1,6 @@
 # FIAT: Fortran Implementation of Abstract Types
 
+[![GitHub license](https://img.shields.io/badge/license-LGPL_v3-blue.svg)](./LICENSE)
 [![Travis](https://img.shields.io/travis/Fortran-FOSS-Programmers/FIAT/master.svg)](https://travis-ci.org/Fortran-FOSS-Programmers/FIAT)
 [![Codecov](https://img.shields.io/codecov/c/github/Fortran-FOSS-Programmers/FIAT.svg)](https://codecov.io/github/Fortran-FOSS-Programmers/FIAT?branch=master)
 [![Join the chat at https://gitter.im/Fortran-FOSS-Programmers/FIAT](https://badges.gitter.im/Fortran-FOSS-Programmers/FIAT.svg)](https://gitter.im/Fortran-FOSS-Programmers/FIAT?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
