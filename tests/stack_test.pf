@@ -20,37 +20,37 @@
 !  MA 02110-1301, USA.
 !  
 
-module stack_test_mod
-  use stack_mod
-  use container_mod, only: real_container
-  use pfunit_mod
-  implicit none
-
-@TestCase
-  type, extends(testcase) :: test_stack
-    type(stack) :: stack_obj
-  contains
-    procedure :: setup
-    procedure :: teardown
-  end type test_stack
-  
-contains
-
-  subroutine setup(this)
-    class(test_stack), intent(inout) :: this
-    type(real_container) :: rcont
-    this%stack_obj = stack(rcont)
-  end subroutine setup
-  
-  subroutine teardown(this)
-    class(test_stack), intent(inout) :: this
-    call this%stack_obj%clear()
-  end subroutine teardown
-  
-@Test
-  subroutine has_next_test(this)
-    class(test_stack), intent(inout) :: this
-  end subroutine has_next_test
-  
-  
-end module stack_test_mod
+!!$module stack_test_mod
+!!$  use stack_mod
+!!$  use container_mod, only: real_container
+!!$  use pfunit_mod
+!!$  implicit none
+!!$
+!!$@TestCase
+!!$  type, extends(testcase) :: test_stack
+!!$    type(stack) :: stack_obj
+!!$  contains
+!!$    procedure :: setup
+!!$    procedure :: teardown
+!!$  end type test_stack
+!!$  
+!!$contains
+!!$
+!!$  subroutine setup(this)
+!!$    class(test_stack), intent(inout) :: this
+!!$    type(real_container) :: rcont
+!!$    this%stack_obj = stack(rcont)
+!!$  end subroutine setup
+!!$  
+!!$  subroutine teardown(this)
+!!$    class(test_stack), intent(inout) :: this
+!!$    call this%stack_obj%clear()
+!!$  end subroutine teardown
+!!$  
+!!$@Test
+!!$  subroutine has_next_test(this)
+!!$    class(test_stack), intent(inout) :: this
+!!$  end subroutine has_next_test
+!!$  
+!!$  
+!!$end module stack_test_mod
