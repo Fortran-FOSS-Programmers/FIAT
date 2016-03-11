@@ -20,97 +20,97 @@
 !  MA 02110-1301, USA.
 !  
 
-module stack_mod
-  use iso_fortran_env, only: stderr => error_unit
-  use iterator_mod, only: iterator
-  use ordered_mod, only: ordered
-  use abstract_container_mod, only: container
-  use linked_node_mod, only: linked_node
-  implicit none
-  private
+!~ module stack_mod
+!~   use iso_fortran_env, only: stderr => error_unit
+!~   use iterator_mod, only: iterator
+!~   use ordered_mod, only: ordered
+!~   use abstract_container_mod, only: container
+!~   use linked_node_mod, only: linked_node
+!~   implicit none
+!~   private
   
-  type, extends(ordered), public :: stack
-    private
-    class(container), allocatable :: container_obj
-    type(linked_node), pointer :: head => null()
-    type(linked_node), pointer :: iter_pos => null()
-    integer :: num_nodes = 0
-  contains
-    procedure :: has_next => stack_has_next
-    procedure :: next => stack_next
-    procedure :: reset => stack_reset
-    procedure :: copy => stack_copy
-    procedure :: size => stack_size
-    procedure :: push => stack_push
-    procedure :: pop => stack_pop
-    procedure :: peek => stack_peek
-    procedure :: clear => stack_clear
+!~   type, extends(ordered), public :: stack
+!~     private
+!~     class(container), allocatable :: container_obj
+!~     type(linked_node), pointer :: head => null()
+!~     type(linked_node), pointer :: iter_pos => null()
+!~     integer :: num_nodes = 0
+!~   contains
+!~     procedure :: has_next => stack_has_next
+!~     procedure :: next => stack_next
+!~     procedure :: reset => stack_reset
+!~     procedure :: copy => stack_copy
+!~     procedure :: size => stack_size
+!~     procedure :: push => stack_push
+!~     procedure :: pop => stack_pop
+!~     procedure :: peek => stack_peek
+!~     procedure :: clear => stack_clear
 !~     procedure, private :: stack_assign
 !~     generic :: assignment(=) =>  stack_assign
 !~     procedure, private :: concat => stack_concat
-    procedure, private :: move_head => stack_move_head
-    final :: stack_final
-  end type stack
+!~     procedure, private :: move_head => stack_move_head
+!~     final :: stack_final
+!~   end type stack
 
-  interface stack
-    module procedure :: constructor
-  end interface stack
+!~   interface stack
+!~     module procedure :: constructor
+!~   end interface stack
     
-contains
+!~ contains
   
-  function constructor(container_obj) result(new)
-    class(container), intent(in) :: container_obj
-    type(stack) :: new
-    allocate(new%container_obj, mold=container_obj)
-    new%iter_pos => new%head
-  end function constructor
+!~   function constructor(container_obj) result(new)
+!~     class(container), intent(in) :: container_obj
+!~     type(stack) :: new
+!~     allocate(new%container_obj, mold=container_obj)
+!~     new%iter_pos => new%head
+!~   end function constructor
   
-  elemental logical function stack_has_next(this)
-    class(stack), intent(in) :: this
-    stack_has_next = associated(this%iter_pos)
-  end function stack_has_next
+!~   elemental logical function stack_has_next(this)
+!~     class(stack), intent(in) :: this
+!~     stack_has_next = associated(this%iter_pos)
+!~   end function stack_has_next
   
-  function stack_next(this)
-    class(stack), intent(inout) :: this
-    class(container), allocatable :: stack_next
-    if (.not. this%has_next()) then
-      write(stderr,*) "ERROR: Bottom of stack reached."
-#ifdef __GFORTRAN__
-      call backtrace
-#endif
-      stop
-    end if
-    allocate(stack_next, source=this%iter_pos%get_contents())
-    if (this%iter_pos%has_next()) then
-      this%iter_pos => this%iter_pos%get_next()
-    else
-      this%iter_pos => null()
-    end if
-  end function stack_next
+!~   function stack_next(this)
+!~     class(stack), intent(inout) :: this
+!~     class(container), allocatable :: stack_next
+!~     if (.not. this%has_next()) then
+!~       write(stderr,*) "ERROR: Bottom of stack reached."
+!~ #ifdef __GFORTRAN__
+!~       call backtrace
+!~ #endif
+!~       stop
+!~     end if
+!~     allocate(stack_next, source=this%iter_pos%get_contents())
+!~     if (this%iter_pos%has_next()) then
+!~       this%iter_pos => this%iter_pos%get_next()
+!~     else
+!~       this%iter_pos => null()
+!~     end if
+!~   end function stack_next
   
-  subroutine stack_reset(this)
-    class(stack), intent(inout) :: this
-    this%iter_pos => this%head
-  end subroutine stack_reset
+!~   subroutine stack_reset(this)
+!~     class(stack), intent(inout) :: this
+!~     this%iter_pos => this%head
+!~   end subroutine stack_reset
   
-  function stack_copy(this)
-    class(stack), intent(in) :: this
-    class(iterator), allocatable :: stack_copy
-    class(stack), allocatable :: tmp
-    type(linked_node), pointer :: node1, node2 => null()
-    allocate(tmp, source=this)
-    allocate(node1, source=this%head)
-    tmp%head => node1
-    allocate(node2, source=node1%get_next())
-    do while (associated(node2))
-      call node1%set_next(node2)
-      nullify(node1)
-      node1 => node2
-      nullify(node2)
-      allocate(node2, source=node1%get_next())
-    end do
-    call move_alloc(tmp, stack_copy)
-  end function stack_copy
+!~   function stack_copy(this)
+!~     class(stack), intent(in) :: this
+!~     class(iterator), allocatable :: stack_copy
+!~     class(stack), allocatable :: tmp
+!~     type(linked_node), pointer :: node1, node2 => null()
+!~     allocate(tmp, source=this)
+!~     allocate(node1, source=this%head)
+!~     tmp%head => node1
+!~     allocate(node2, source=node1%get_next())
+!~     do while (associated(node2))
+!~       call node1%set_next(node2)
+!~       nullify(node1)
+!~       node1 => node2
+!~       nullify(node2)
+!~       allocate(node2, source=node1%get_next())
+!~     end do
+!~     call move_alloc(tmp, stack_copy)
+!~   end function stack_copy
   
 !~   subroutine stack_assign(lhs, rhs)
 !~     class(stack), intent(out) :: lhs
@@ -130,49 +130,49 @@ contains
 !~     end if
 !~   end subroutine stack_assign
   
-  integer function stack_size(this)
-    class(stack), intent(in) :: this
-    stack_size = this%num_nodes
-  end function stack_size
+!~   integer function stack_size(this)
+!~     class(stack), intent(in) :: this
+!~     stack_size = this%num_nodes
+!~   end function stack_size
   
-  subroutine stack_push(this, item)
-    class(stack), intent(inout) :: this
-    class(*), intent(in) :: item
-    type(linked_node), pointer :: newnode
-    class(container), allocatable :: newcont
-    allocate(newnode)
-    allocate(newcont, source=this%container_obj)
-    call newcont%set(item)
-    call newnode%set_contents(newcont)
-    call newnode%set_next(this%head)
-    this%head => newnode
-    this%num_nodes = this%num_nodes + 1
-  end subroutine stack_push
+!~   subroutine stack_push(this, item)
+!~     class(stack), intent(inout) :: this
+!~     class(*), intent(in) :: item
+!~     type(linked_node), pointer :: newnode
+!~     class(container), allocatable :: newcont
+!~     allocate(newnode)
+!~     allocate(newcont, source=this%container_obj)
+!~     call newcont%set(item)
+!~     call newnode%set_contents(newcont)
+!~     call newnode%set_next(this%head)
+!~     this%head => newnode
+!~     this%num_nodes = this%num_nodes + 1
+!~   end subroutine stack_push
   
-  function stack_pop(this) result(item)
-    class(stack), intent(inout) :: this
-    class(container), allocatable :: item
-    type(linked_node), pointer :: tmp
-    item = this%peek()
-    tmp => this%head
-    this%head => this%head%get_next()
-    deallocate(tmp)
-    this%num_nodes = this%num_nodes - 1
-  end function stack_pop
+!~   function stack_pop(this) result(item)
+!~     class(stack), intent(inout) :: this
+!~     class(container), allocatable :: item
+!~     type(linked_node), pointer :: tmp
+!~     item = this%peek()
+!~     tmp => this%head
+!~     this%head => this%head%get_next()
+!~     deallocate(tmp)
+!~     this%num_nodes = this%num_nodes - 1
+!~   end function stack_pop
   
-  subroutine stack_clear(this)
-    class(stack), intent(inout) :: this
-  contains
-    subroutine blank_stack(s)
-      class(stack), intent(out) :: s
-    end subroutine blank_stack
-  end subroutine stack_clear
+!~   subroutine stack_clear(this)
+!~     class(stack), intent(inout) :: this
+!~   contains
+!~     subroutine blank_stack(s)
+!~       class(stack), intent(out) :: s
+!~     end subroutine blank_stack
+!~   end subroutine stack_clear
   
-  function stack_peek(this) result(item)
-    class(stack), intent(in) :: this
-    class(container), allocatable :: item
-    item = this%head%get_contents()
-  end function stack_peek
+!~   function stack_peek(this) result(item)
+!~     class(stack), intent(in) :: this
+!~     class(container), allocatable :: item
+!~     item = this%head%get_contents()
+!~   end function stack_peek
   
 !~   function stack_concat(lhs, rhs)
 !~     class(stack), intent(in) :: lhs, rhs
@@ -197,18 +197,18 @@ contains
 !~     call move_alloc(tmp_concat, stack_concat)
 !~   end function stack_concat
 
-  function stack_move_head(this) result(move_head)
-    class(stack), intent(inout) :: this
-    type(linked_node), pointer :: move_head
-    move_head => this%head
-    nullify(this%head)
-  end function stack_move_head
+!~   function stack_move_head(this) result(move_head)
+!~     class(stack), intent(inout) :: this
+!~     type(linked_node), pointer :: move_head
+!~     move_head => this%head
+!~     nullify(this%head)
+!~   end function stack_move_head
   
-  subroutine stack_final(this)
-    type(stack), intent(inout) :: this
-    nullify(this%iter_pos)
-    call this%head%unset_next(.true.)
-    deallocate(this%head)
-  end subroutine stack_final
+!~   subroutine stack_final(this)
+!~     type(stack), intent(inout) :: this
+!~     nullify(this%iter_pos)
+!~     call this%head%unset_next(.true.)
+!~     deallocate(this%head)
+!~   end subroutine stack_final
 
-end module stack_mod
+!~ end module stack_mod
