@@ -21,38 +21,81 @@
 !  
 
 module iterator_mod
+  !* Author: Chris MacMackin
+  !  Date: March 2016
+  !  License: LGPLv3
+  !
+  ! Provides the [[iterator]] data type which can be used to access a
+  ! collection of data.
+  !
   use abstract_container_mod, only: container
   implicit none
   private
 
-  type, abstract, public :: iterator
+  type, public :: iterator
+  !* Author: Chris MacMackin
+  !  Date: March 2016
+  !
+  ! A data type which provides a collection of data to the user. Objects
+  ! of this type are returned using the [[iterable:iter]] method of
+  ! FIAT's other data types. The contents of the iterator are set to be
+  ! the same as the iterable at the time when the `iter` method was 
+  ! called. If new items are later added to the iterable object, this
+  ! will not be reflected in the iterator object.
+  !
+  !##Example
+  ! If `list_obj` is some sort of [[list]] which contains character
+  ! strings, then the following would print all strings held in the
+  ! list.
+  !```fortran
+  !iterator_obj = list_obj%iter()
+  !do while(iterator_obj%has_next())
+  !    string = iterator_obj%next()
+  !    write(*,*) string
+  !end do
+  !```
+  !
   contains
-    procedure(has_func), deferred :: has_next
-    procedure(next_func), deferred :: next
-    procedure(empty_sub), deferred :: reset
-    procedure(copy_func), deferred :: copy
+    procedure :: has_next
+    procedure :: next
+    procedure :: reset
   end type iterator
 
-  abstract interface
-    elemental function has_func(this)
-      import iterator
-      class(iterator), intent(in) :: this
-      logical :: has_func
-    end function has_func
-    function next_func(this)
-      import iterator
-      import container
-      class(iterator), intent(inout) :: this
-      class(container), allocatable :: next_func
-    end function next_func
-    subroutine empty_sub(this)
-      import iterator
-      class(iterator), intent(inout) :: this
-    end subroutine empty_sub
-    function copy_func(this)
-      import iterator
-      class(iterator), intent(in) :: this
-      class(iterator), allocatable :: copy_func
-    end function copy_func
-  end interface
+contains
+
+  elemental function has_next(this)
+    !* Author: Chris MacMackin
+    !  Date: March 2016
+    !
+    ! Returns `.true.` if there are any remaining objects through which
+    ! to iterate, and `.false.` otherwise.
+    !
+    class(iterator), intent(in) :: this
+    logical :: has_next
+      !! Whether there are additional items to iterate through
+  end function has_next
+
+  function next(this)
+    !* Author: Chris MacMackin
+    !  Date: March 2016
+    !
+    ! Returns the next item stored in the iterator. If there are no
+    ! more items present then an unallocated [[container]] is returned.
+    !
+    class(iterator), intent(inout) :: this
+    class(container), allocatable :: next
+      !! The next item held in the iterator, if present. Otherwise
+      !! an unallocated container.
+  end function next
+
+  subroutine reset(this)
+    !* Author: Chris MacMackin
+    !  Date: March 2016
+    !
+    ! Resets the position of the iterator to the start, so it is as
+    ! though the [[iterator:next]] routine has never been called.
+    !
+    class(iterator), intent(inout) :: this
+  end subroutine reset
+
 end module iterator_mod

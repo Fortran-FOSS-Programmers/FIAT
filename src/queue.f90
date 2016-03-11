@@ -1,5 +1,5 @@
 !
-!  countable.f90
+!  queue.f90
 !  This file is part of FIAT.
 !
 !  Copyright 2016 Christopher MacMackin <cmacmackin@gmail.com>
@@ -20,39 +20,43 @@
 !  MA 02110-1301, USA.
 !  
 
-module countable_mod
+module queue_mod
   !* Author: Chris MacMackin
   !  Date: February 2016
   !  License: LGPLv3
   !
-  ! Provides the [[countable]] abstract type. For a type to be
-  ! countable, the number of individual pieces of data stored within
-  ! must be known in advance.
+  ! Provides an abstract data type representing a queue (first in first 
+  ! out) data structure.
   !
-  use iterable_mod, only: iterable
+  use ordered_mod, only: ordered
   implicit none
   private
-
-  type, extends(iterable), abstract, public :: countable
-  !* Author: Chris MacMackin
-  !  Date: February 2016
-  !  License: LGPLv3
-  !
-  ! An abstract data type which can be iterated, for which the number of
-  ! pieces of items of data stored within is known.
-  !
-  contains
-    procedure(int_func), deferred :: size
-      !! Return the number of items stored within this object
-  end type countable
-
-  abstract interface
-    function int_func(this)
-      import :: countable
-      class(countable), intent(in) :: this
-      integer :: int_func
-        !! The number of items stored in this object.
-    end function int_func
-  end interface
   
-end module countable_mod
+  type, public, abstract :: queue
+    !* Author: Chris MacMackin
+    !  Date: February 2016
+    !
+    ! An abstract data type representing the queue structure. This is 
+    ! largely a placeholder type, in case some methods specific to queues
+    ! are added at a later time. However, it does implement the 
+    ! [[ordered:is_fifo]] method.
+    !
+  contains
+    private
+    procedure, nopass :: is_fifo => queue_is_fifo
+      !! Returns true, as queues are a first in first out data type.
+  end type queue
+
+contains
+
+  pure logical function queue_is_fifo()
+    !* Author: Chris MacMackin
+    !  Date: February 2016
+    !
+    ! Returns `.true.`, indicating that queues are a "first in first 
+    ! out" data structure.
+    !
+    queue_is_fifo = .true.
+  end function queue_is_fifo
+
+end module queue_mod

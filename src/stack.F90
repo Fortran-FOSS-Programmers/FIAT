@@ -31,7 +31,7 @@ module stack_mod
   
   type, extends(ordered), public :: stack
     private
-    class(container), allocatable :: container
+    class(container), allocatable :: container_obj
     type(linked_node), pointer :: head => null()
     type(linked_node), pointer :: iter_pos => null()
     integer :: num_nodes = 0
@@ -45,6 +45,8 @@ module stack_mod
     procedure :: pop => stack_pop
     procedure :: peek => stack_peek
     procedure :: clear => stack_clear
+!~     procedure, private :: stack_assign
+!~     generic :: assignment(=) =>  stack_assign
 !~     procedure, private :: concat => stack_concat
     procedure, private :: move_head => stack_move_head
     final :: stack_final
@@ -59,7 +61,7 @@ contains
   function constructor(container_obj) result(new)
     class(container), intent(in) :: container_obj
     type(stack) :: new
-    allocate(new%container, mold=container_obj)
+    allocate(new%container_obj, mold=container_obj)
     new%iter_pos => new%head
   end function constructor
   
@@ -110,6 +112,24 @@ contains
     call move_alloc(tmp, stack_copy)
   end function stack_copy
   
+!~   subroutine stack_assign(lhs, rhs)
+!~     class(stack), intent(out) :: lhs
+!~     class(stack), intent(in) :: rhs
+!~     class(iterator), allocatable :: copy
+!~     lhs%num_nodes = rhs%num_nodes
+!~     lhs%container_obj = rhs%container_obj
+!~     if (lhs%num_nodes > 0) then
+!~       call move_alloc(rhs%copy(), copy)
+!~       select type(copy)
+!~         class is(stack)
+!~           lhs%head => copy%head
+!~           lhs%iter_pos => copy%iter_pos
+!~           if (associated(copy%head)) nullify(copy%head)
+!~           if (associated(copy%iter_pos)) nullify(copy%iter_pos)
+!~       end select
+!~     end if
+!~   end subroutine stack_assign
+  
   integer function stack_size(this)
     class(stack), intent(in) :: this
     stack_size = this%num_nodes
@@ -121,7 +141,7 @@ contains
     type(linked_node), pointer :: newnode
     class(container), allocatable :: newcont
     allocate(newnode)
-    allocate(newcont, source=this%container)
+    allocate(newcont, source=this%container_obj)
     call newcont%set(item)
     call newnode%set_contents(newcont)
     call newnode%set_next(this%head)
@@ -162,9 +182,9 @@ contains
 !~     type(linked_node), pointer :: tail
 !~     tmp_stack = lhs%copy()
 !~     tmp_concat%head => tmp%move_head()
-!~     if (stack_concat%size() == 0) then
+!~     if (tmp_concat%size() == 0) then
 !~       tmp_stack = rhs%copy()
-!~       tmp_concat%head => tmp%move_head()
+!~       tmp_concat%head => tmp_stack%move_head()
 !~     else
 !~       tail => tmp_concat%head
 !~       do while(tail%has_next())
