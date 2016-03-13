@@ -59,6 +59,7 @@ module iterator_mod
     procedure :: has_next
     procedure :: next
     procedure :: reset
+    procedure :: contents_type
   end type iterator
 
 contains
@@ -97,5 +98,19 @@ contains
     !
     class(iterator), intent(inout) :: this
   end subroutine reset
+  
+  pure function contents_type(this)
+    !* Author: Chris MacMackin
+    !  Date: March 2016
+    !
+    ! Returns a container with the dynamic type of that used to hold
+    ! the contents of this iterator
+    !
+    class(iterator), intent(in) :: this
+    class(container), allocatable :: contents_type
+      !! A container with the dynamic type of that used to hold the
+      !! contents of the iterator.
+  end function contents_type
+  
 
 end module iterator_mod

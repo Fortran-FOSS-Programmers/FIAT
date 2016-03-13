@@ -143,14 +143,14 @@ module data_set_mod
     pure function diff_func(this, other)
       import :: data_set
       class(data_set), intent(in) :: this, other !! A second set
-      class(data_set), allocatable :: union_func
+      class(data_set), allocatable :: diff_func
         !! A set containing elements found in this one and not the other
     end function diff_func
     
     pure function pure_diff_func(this, other)
       import :: data_set
       class(data_set), intent(in) :: this, other !! A second set
-      class(data_set), allocatable :: union_func
+      class(data_set), allocatable :: pure_diff_func
         !! A set containing elements found in one, but not both, of this
         !! set or the other set
     end function pure_diff_func

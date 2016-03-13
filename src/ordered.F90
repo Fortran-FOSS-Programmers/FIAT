@@ -87,7 +87,7 @@ module ordered_mod
   end type ordered
 
   abstract interface
-    subroutine push_sub(this, item)
+    pure subroutine push_sub(this, item)
       import :: ordered
       class(ordered), intent(inout) :: this
       class(*), intent(in) :: item
@@ -102,7 +102,7 @@ module ordered_mod
         !! The next item in the data structure, which has been removed
     end function pop_func
     
-    function peek_func(this)
+    pure function peek_func(this)
       import :: ordered
       import :: container
       class(ordered), intent(in) :: this
@@ -110,7 +110,7 @@ module ordered_mod
         !! The next item in the data structure
     end function peek_func
     
-    subroutine blank_sub(this)
+    pure subroutine blank_sub(this)
       import ordered
       class(ordered), intent(inout) :: this
     end subroutine blank_sub
@@ -122,7 +122,7 @@ module ordered_mod
         !! first out
     end function logical_return
     
-    function concat_func(lhs, rhs)
+    pure function concat_func(lhs, rhs)
       import :: ordered
       class(ordered), intent(in) :: lhs !! This object
       class(ordered), intent(in) :: rhs !! The object being concatenated to this one

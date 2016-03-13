@@ -35,12 +35,15 @@ stack.o: stack.F90 ordered.o abstract_container.o linked_node.o
 queue.o: queue.f90 ordered.o
 deque.o: deque.f90 queue.o abstract_container.o
 list.o: list.f90 deque.o abstract_container.o
-array_list.o: array_list.f90 list.o abstract_container.o
 data_set.o: data_set.f90 array_list.o countable.o abstract_container.o
 dictionary.o: dictionary.f90 array_list.o data_set.o abstract_container.o
 dynamic_set.o: dynamic_set.F90 data_set.o iterable.o abstract_container.o
 map.o: map.f90 dictionary.o abstract_container.o
-multimap.p: multimap.f90 map.f90 dictionary.o array_list.o
+multimap.o: multimap.f90 map.o dictionary.o array_list.o
+multiset.o: multiset.f90 dynamic_set.o 
+
+array_list.o: array_list.f90 list.o iterator.o ordered.o abstract_container.o
+
 
 gcov:
 	gcov *.gcno -pb

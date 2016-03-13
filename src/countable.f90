@@ -42,17 +42,17 @@ module countable_mod
   ! pieces of items of data stored within is known.
   !
   contains
-    procedure(int_func), deferred :: size
+    procedure(size_func), deferred :: size
       !! Return the number of items stored within this object
   end type countable
 
   abstract interface
-    function int_func(this)
+    pure function size_func(this)
       import :: countable
       class(countable), intent(in) :: this
-      integer :: int_func
+      integer :: size_func
         !! The number of items stored in this object.
-    end function int_func
+    end function size_func
   end interface
   
 end module countable_mod

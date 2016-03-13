@@ -36,7 +36,7 @@ module list_mod
   implicit none
   private
   
-  type, abstract, public :: list
+  type, abstract, extends(deque), public :: list
     !* Author: Chris MacMackin
     !  Date: March 2016
     !

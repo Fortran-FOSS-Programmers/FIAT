@@ -32,7 +32,7 @@ module queue_mod
   implicit none
   private
   
-  type, public, abstract :: queue
+  type, public, extends(ordered), abstract :: queue
     !* Author: Chris MacMackin
     !  Date: February 2016
     !
@@ -41,8 +41,8 @@ module queue_mod
     ! are added at a later time. However, it does implement the 
     ! [[ordered:is_fifo]] method.
     !
-  contains
     private
+  contains
     procedure, nopass :: is_fifo => queue_is_fifo
       !! Returns true, as queues are a first in first out data type.
   end type queue

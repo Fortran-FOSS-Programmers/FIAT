@@ -44,13 +44,13 @@ module iterable_mod
   contains
     procedure(iterator_return), deferred :: iter
       !! Return an [[iterator]] object with the contents of the iterable 
-    procedure(container_return), deferred :: container_prototype
+    procedure(container_return), deferred :: contents_type
       !! Return a [[container]] object with the dynamic type of that
       !! used in this iterable
   end type iterable
   
   abstract interface
-    function iterator_return(this)
+    pure function iterator_return(this)
       import :: iterable
       import :: iterator
       class(iterable), intent(in) :: this
@@ -58,7 +58,7 @@ module iterable_mod
         !! An [[iterator]] with the contents of this object
     end function iterator_return
     
-    function container_return(this)
+    pure function container_return(this)
       import :: iterable
       import :: container
       class(iterable), intent(in) :: this

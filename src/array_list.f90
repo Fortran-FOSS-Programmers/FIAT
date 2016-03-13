@@ -33,10 +33,12 @@ module array_list_mod
   use abstract_container_mod, only: container, test_func, &
                                     addition_func, subtraction_func, &
                                     comparison_func,  action_sub
+  use iterator_mod, only: iterator
+  use ordered_mod, only: ordered
   implicit none
   private
   
-  type, public :: array_list
+  type, public, extends(list) :: array_list
     !* Author: Chris MacMackin
     !  Date: March 2016
     !
@@ -54,6 +56,20 @@ module array_list_mod
     class(container), allocatable, dimension(:) :: contents
     integer :: length
   contains
+    procedure :: iter => array_list_iter
+    procedure :: contents_type => array_list_contents_type
+    procedure :: size => array_list_size
+    procedure :: push => array_list_push
+    procedure :: pop => array_list_pop
+    procedure :: peek => array_list_peek
+    procedure, private :: concat => array_list_concat
+    procedure :: clear => array_list_clear
+    procedure :: pushleft => array_list_push
+    procedure :: pushright => array_list_append
+    procedure :: popleft => array_list_popleft
+    procedure :: popright => array_list_pop
+    procedure :: peekleft => array_list_peekleft
+    procedure :: peekright => array_list_peek
     procedure :: append => array_list_append
     procedure :: get => array_list_get
     procedure, private :: set_single  => array_list_set_single
@@ -68,7 +84,7 @@ module array_list_mod
     procedure :: remove_last => array_list_remove_last
     procedure :: remove_all => array_list_remove_all
     procedure, private :: delete_single => array_list_delete_single
-    procedure, private :: delete_multiple => array_list_delete_single
+    procedure, private :: delete_multiple => array_list_delete_multiple
     procedure, private :: delete_slice => array_list_delete_slice
     procedure :: has => array_list_has
     procedure :: sort => array_list_sort
@@ -82,7 +98,117 @@ module array_list_mod
 
 contains
 
-  subroutine array_list_append(this, item)
+  pure type(iterator) function array_list_iter(this)
+    !* Author: Chris MacMackin
+    !  Date: March 2016
+    !
+    ! Returns an [[iterator]] containing the contents of this list
+    ! as they were at the time this method was called.
+    !
+    class(array_list), intent(in) :: this
+  end function array_list_iter
+  
+  pure function array_list_contents_type(this) result(cont)
+    !* Author: Chris MacMackin
+    !  Date: March 2016
+    !
+    ! Returns a container with the dynamic type of the contents of this
+    ! list.
+    !
+    class(array_list), intent(in) :: this
+    class(container), allocatable :: cont
+  end function array_list_contents_type
+
+  pure integer function array_list_size(this)
+    !* Author: Chris MacMackin
+    !  Date: March 2016
+    !
+    ! Returns the number of items in the list
+    !
+    class(array_list), intent(in) :: this
+  end function array_list_size
+
+  pure subroutine array_list_push(this, item)
+    !* Author: Chris MacMackin
+    !  Date: March 2016
+    !
+    ! Adds an item to the beginning of the list.
+    !
+    class(array_list), intent(inout) :: this
+    class(*), intent(in) :: item
+      !! The value to place at the start of the list.
+  end subroutine array_list_push
+
+  function array_list_pop(this) result(pop)
+    !* Author: Chris MacMackin
+    !  Date: March 2016
+    !
+    ! Removes the item at the end of the list and returns it.
+    !
+    class(array_list), intent(inout) :: this
+    class(container), allocatable :: pop
+      !! The value from the end of the list
+  end function array_list_pop
+
+  pure function array_list_peek(this) result(peek)
+    !* Author: Chris MacMackin
+    !  Date: March 2016
+    !  
+    ! Returns the item at the end of the list, without removing it.
+    !
+    class(array_list), intent(in) :: this
+    class(container), allocatable :: peek
+      !! The element at the end of the list
+  end function array_list_peek
+  
+  pure function array_list_concat(lhs, rhs) result(concat)
+    !* Author: Chris MacMackin
+    !  Date: March 2016
+    !
+    ! Join this list with an [[ordered]] object, returning the result. The 
+    ! contents of the returned object are ordered such that applying 
+    ! [[ordered:pop]] until it is empty would return items in the same order as 
+    ! calling [[ordered:pop]] until the list is empty and then until the second 
+    ! object is empty.
+    !
+    class(array_list), intent(in) :: lhs !! The list
+    class(ordered), intent(in) :: rhs !! The object being concatenated to the list
+    class(ordered), allocatable :: concat
+     !! The concatenated object. Will have dynamic type [[array_list]]. 
+  end function array_list_concat
+
+  pure subroutine array_list_clear(this)
+    !* Author: Chris MacMackin
+    !  Date: March 2016
+    !
+    ! Removes all items from this list, but does not change its container type.
+    !
+    class(array_list), intent(inout) :: this
+  end subroutine array_list_clear
+
+  function array_list_popleft(this) result(pop)
+    !* Author: Chris MacMackin
+    !  Date: March 2016
+    !
+    ! Removes the item at the start of the list and returns it.
+    !
+    class(array_list), intent(inout) :: this
+    class(container), allocatable :: pop
+      !! The item just removed from the start of the list
+  end function array_list_popleft
+  
+  pure function array_list_peekleft(this) result(peek)
+    !* Author: Chris MacMackin
+    !  Date: March 2016
+    !
+    ! Returns the item at the start of the list.
+    !
+    class(array_list), intent(in) :: this
+    class(container), allocatable :: peek
+      !! The item at the start of the list
+  end function array_list_peekleft
+  
+  pure subroutine array_list_append(this, item)
     !* Author: Chris MacMackin
     !  Date: March 2016
     !

@@ -34,7 +34,7 @@ module deque_mod
   implicit none
   private
   
-  type, abstract, public :: deque
+  type, abstract, extends(queue), public :: deque
   !* Author: Chris MacMackin
   !  Date: March 2016
   !
@@ -64,7 +64,7 @@ module deque_mod
   end type deque
 
   abstract interface
-    subroutine push_sub(this, item)
+    pure subroutine push_sub(this, item)
       import :: deque
       class(deque), intent(inout) :: this
       class(*), intent(in) :: item !! The value to be added to the list
@@ -78,11 +78,11 @@ module deque_mod
         !! The next value, which has just been removed
     end function pop_func
     
-    function peek_func(this)
+    pure function peek_func(this)
       import :: deque
       import :: container
       class(deque), intent(in) :: this
-      class(container), allocatable :: pop_func
+      class(container), allocatable :: peek_func
         !! The next value, which is not removed
     end function peek_func
   end interface
