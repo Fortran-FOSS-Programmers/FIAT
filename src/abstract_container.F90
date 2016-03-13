@@ -36,7 +36,7 @@ module abstract_container_mod
   implicit none
   private
 
-  type, abstract ::   container
+  type, public, abstract ::   container
     !! Author: Chris MacMackin
     !! Date: December 2015
     !! Display: Public
@@ -115,9 +115,68 @@ module abstract_container_mod
         !! The variable which the container contents are to be 
         !! transferred to.
     end function guard
+
+    pure function test_func(item)
+      !* An abstract interface for a function which tests a
+      !  [[container]] object in some way
+      import :: container
+      class(container), intent(in) :: item
+        !! The item which is being evaluated
+      logical :: test_func
+        !! Whether the item passes the test or not
+    end function test_func
+    
+    pure function addition_func(item1, item2)
+      !* Performs an addition operation on two [[container]] objects,
+      !  returning the result in a container.
+      import :: container
+      class(container), intent(in) :: item1
+        !! One of the items in the addition
+      class(container), intent(in) :: item2
+        !! The other item in the addition
+      class(container), allocatable :: addition_func
+        !! The sum, `item1 + item2`
+    end function addition_func
+    
+    pure function subtraction_func(item1, item2)
+      !! An abstract interface for a procedure finding the difference
+      !! between two items, `item1 - item2`. Note that a procedure may
+      !! satisfy both this abstract interface and [[comparison_func]].
+      import :: container
+      class(container), intent(in) :: item1
+        !! The item which the other is subtracted from
+      class(container), intent(in) :: item2
+        !! The item subtracted from the other
+      real :: subtraction_func
+        !! A real number, the absolute value of which represents the
+        !! magnitude of the difference between `item1` and `item2`.
+    end function subtraction_func
+
+    pure function comparison_func(item1, item2)
+      !* An abstract interface for a procedure comparing two
+      !  [[container]] objects. Note that a procedure may satisfy both
+      !! this abstract interface and [[subtraction_func]].
+      import :: container
+      class(container), intent(in) :: item1
+        !! The first item in the comparison
+      class(container), intent(in) :: item2
+        !! The second item in the comparison
+      real :: comparison_func
+        !! negative if `item1 < item2`, 0 if `item1 == item2`, positive 
+        !! if `item1 > item2`
+    end function comparison_func
+  
+    subroutine action_sub(item)
+      !* An abstract interface for a procedure which will act on each
+      !  item in a list.
+      import :: container
+      class(container), intent(inout) :: item
+        !! A container object which is will be modified in some way
+    end subroutine action_sub
   end interface
   
-  public    ::  container
+  public :: test_func, addition_func, subtraction_func, &
+            comparison_func,  action_sub
   
 contains
   

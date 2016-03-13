@@ -30,20 +30,22 @@ module list_mod
   ! higher-level languages such as Python.
   !
   use deque_mod, only: deque
-  use abstract_container_mod, only: container
+  use abstract_container_mod, only: container, test_func, &
+                                    addition_func, subtraction_func, &
+                                    comparison_func,  action_sub
   implicit none
   private
   
   type, abstract, public :: list
-  !* Author: Chris MacMackin
-  !  Date: March 2016
-  !
-  ! An abstract data type representing a list. This is a fully dynamic
-  ! means of storing data of a single type and comes with many advanced
-  ! type-bound procedures for manipulating said data. This derived type
-  ! aims to provide many of the same features found in lists in 
-  ! higher-level languages such as Python
-  !
+    !* Author: Chris MacMackin
+    !  Date: March 2016
+    !
+    ! An abstract data type representing a list. This is a fully dynamic
+    ! means of storing data of a single type and comes with many advanced
+    ! type-bound procedures for manipulating said data. This derived type
+    ! aims to provide many of the same features found in lists in 
+    ! higher-level languages such as Python
+    !
   contains
     procedure(append_sub), deferred :: append
       !! Add an item to the end of the list
@@ -115,7 +117,7 @@ module list_mod
       class(*), intent(in) :: item !! Item to be appended to list
     end subroutine append_sub
   
-    function get_func(this, element)
+    pure function get_func(this, element)
       import :: list
       import :: container
       class(list), intent(in) :: this
@@ -177,15 +179,9 @@ module list_mod
         !! The index of the first element in the slice to be returned
       integer, intent(in) :: end_element
         !! The index of the last element in the slice to be returned
+      class(list), allocatable :: slice_func
+        !! A list containing the elements within the slice.
     end function slice_func
-    
-    subroutine action_sub(item)
-      !* An abstract interface for a procedure which will act on each
-      !  item in a list.
-      import :: container
-      class(container), intent(inout) :: item
-        !! A container object which is will be modified in some way
-    end subroutine action_sub
     
     subroutine foreach_sub(this, action)
       import :: list
@@ -259,21 +255,7 @@ module list_mod
       logical :: has_func
         !! `.true.` if `item` is present in list, `.false.` otherwise
     end function has_func
-    
-    pure function comparison_func(item1, item2)
-      !* An abstract interface for a procedure comparing two
-      !  [[container]] objects. Note that a procedure may satisfy both
-      !! this abstract interface and [[subtraction_func]].
-      import :: container
-      class(container), intent(in) :: item1
-        !! The first item in the comparison
-      class(container), intent(in) :: item2
-        !! The second item in the comparison
-      real :: comparison_func
-        !! negative if `item1 < item2`, 0 if `item1 == item2`, positive 
-        !! if `item1 > item2`
-    end function comparison_func
-    
+        
     subroutine sort_sub(this, comparison)
       import :: list
       import :: comparison_func
@@ -309,20 +291,6 @@ module list_mod
         !! `comparison` function
     end function max_func
     
-    pure function subtraction_func(item1, item2)
-      !! An abstract interface for a procedure finding the difference
-      !! between two items, `item1 - item2`. Note that a procedure may
-      !! satisfy both this abstract interface and [[comparison_func]].
-      import :: container
-      class(container), intent(in) :: item1
-        !! The item which the other is subtracted from
-      class(container), intent(in) :: item2
-        !! The item subtracted from the other
-      real :: subtraction_func
-        !! A real number, the absolute value of which represents the
-        !! magnitude of the difference between `item1` and `item2`.
-    end function subtraction_func
-    
     pure function nearest_func(this, item, subtraction)
       import :: list
       import :: container
@@ -338,18 +306,6 @@ module list_mod
         !! with `item` as the other argument, returns the smallest value
     end function nearest_func
     
-    pure function addition_func(item1, item2)
-      !* Performs an addition operation on two [[container]] objects,
-      !  returning the result in a container.
-      import :: container
-      class(container), intent(in) :: item1
-        !! One of the items in the addition
-      class(container), intent(in) :: item2
-        !! The other item in the addition
-      class(container), allocatable :: addition_func
-        !! The sum, `item1 + item2`
-    end function addition_func
-    
     pure function sum_func(this, addition)
       import :: list
       import :: container
@@ -363,16 +319,6 @@ module list_mod
         !! this list
     end function sum_func
 
-    pure function test_func(item)
-      !* An abstract interface for a function which tests a
-      !  [[container]] object in some way
-      import :: container
-      class(container), intent(in) :: item
-        !! The item which is being evaluated
-      logical :: test_func
-        !! Whether the item passes the test or not
-    end function test_func
-    
     pure function filter_func(this, test)
       import :: list
       import :: test_func
@@ -394,8 +340,5 @@ module list_mod
         !! this list
     end function to_array_func
   end interface
-
-  public :: action_sub, addition_func, comparison_func, filter_func, &
-            subtraction_func, test_func
   
 end module list_mod
