@@ -127,7 +127,8 @@ contains
     !  Date: March 2016
     !
     ! Resets the position of the iterator to the start, so it is as
-    ! though the [[iterator:next]] routine has never been called.
+    ! though the [[iterator(type):next(bound)]] routine has never been
+    ! called.
     !
     class(iterator), intent(inout) :: this
     this%location = 1
