@@ -136,7 +136,9 @@ contains
     integer(i1), dimension(1) :: mold
     allocate(test_subject1, source=this%container_obj)
     allocate(original_outval, source=this%outval)
+    @assertFalse(test_subject1%is_filled(),message='container%is_filled returned .true.')
     call test_subject1%set(this%inval)
+    @assertTrue(test_subject1%is_filled(),message='container%is_filled returned .false.')
     @assertFalse(all(transfer(this%outval, mold) == transfer(this%inval, mold)), message='OUTVAL set equal to INVAL.')
     this%outval = test_subject1
     ! FIXME: This is a cludge to make up for the fact that 16-byte complex numbers don't play nicely with TRANSFER (in this program) and end up leaving the last four array elements not equal.

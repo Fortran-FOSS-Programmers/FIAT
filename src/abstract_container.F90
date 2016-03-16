@@ -97,6 +97,8 @@ module abstract_container_mod
     procedure, public :: contents
       !! Retrieves the contents of the container, in the form of an
       !! integer array.
+    procedure, public :: is_filled
+      !! Returns whether contents have been assigned to the container
     procedure, public :: set
       !! Sets the contents of the container.
     procedure, pass(rhs) :: assign_container
@@ -202,7 +204,13 @@ contains
     select type(lhs)
       class is(container)
         if (same_type_as(lhs, rhs)) then
-          lhs%storage = rhs%storage
+          if (rhs%filled) then
+            lhs%storage = rhs%storage
+            lhs%filled = .true.
+          else if (lhs%filled) then
+            deallocate(lhs%storage)
+            lhs%filled = .false.
+          end if
           return
         else
           write(stderr,*) "ERROR: Can not assign to a different container subclass"
@@ -239,6 +247,16 @@ contains
     integer(i1), dimension(:), allocatable  ::  contents
     contents = this%storage
   end function contents
+  
+  elemental logical function is_filled(this)
+    !! Author: Chris MacMackin
+    !! Date: March 2016
+    !!
+    !! Returns `.true.` if a value has been assigned to the container,
+    !! `.false.` otherwise.
+    class(container), intent(in) :: this
+    is_filled = this%filled
+  end function is_filled
 
   subroutine set(this, content)
     !! Author: Chris MacMackin

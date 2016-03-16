@@ -1,0 +1,107 @@
+!
+!  iterator_test.f90
+!  This file is part of FIAT.
+!
+!  Copyright 2016 Christopher MacMackin <cmacmackin@gmail.com>
+!  
+!  This program is free software; you can redistribute it and/or modify
+!  it under the terms of the GNU Lesser General Public License as
+!  published by the Free Software Foundation; either version 3 of the 
+!  License, or (at your option) any later version.
+!  
+!  This program is distributed in the hope that it will be useful,
+!  but WITHOUT ANY WARRANTY; without even the implied warranty of
+!  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!  GNU Lesser General Public License for more details.
+!  
+!  You should have received a copy of the GNU Lesser General Public
+!  License along with this program; if not, write to the Free Software
+!  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+!  MA 02110-1301, USA.
+!  
+
+module iterator_test_mod
+  use pfunit_mod
+  use abstract_container_mod, only: container
+  use container_mod, only: int_container
+  use iterator_mod, only: iterator
+  implicit none
+  
+  public :: test_iterator
+  
+  integer, parameter :: length = 5
+  
+@TestCase
+  type, extends(testcase) :: test_iterator
+    type(iterator) :: iter
+    integer :: iterlen = length
+  contains
+    procedure :: setup
+  end type test_iterator
+  
+contains
+  
+  subroutine setup(this)
+    class(test_iterator), intent(inout) :: this
+    integer :: i
+    type(int_container), dimension(length) :: contents
+    do i = 1, length
+      call contents(i)%set(i)
+    end do
+    this%iter = iterator(contents)
+  end subroutine setup
+  
+  @Test
+  subroutine test_has_next(this)
+    class(test_iterator), intent(inout) :: this
+    integer :: i, tmp
+    do i = 1, length
+      @assertTrue(this%iter%has_next(),message="iterator%has_next() returns .false.")
+      tmp = this%iter%next()
+    end do
+    @assertFalse(this%iter%has_next(),message="iterator%has_next() returns .true.")
+  end subroutine test_has_next
+  
+  @Test
+  subroutine test_next(this)
+    class(test_iterator), intent(inout) :: this
+    type(int_container) :: cont
+    integer :: i, tmp
+    do i = 1, length
+      tmp = this%iter%next()
+      @assertEqual(i,tmp,message="iterator%next() returns wrong value")
+    end do
+    cont = this%iter%next()
+    @assertFalse(cont%is_filled(),message="iterator%next() returning allocated container when doesn't have next")
+  end subroutine test_next
+  
+  @Test
+  subroutine test_reset(this)
+    class(test_iterator), intent(inout) :: this
+    integer :: i, tmp
+    tmp = this%iter%next()
+    tmp = this%iter%next()
+    @assertEqual(2,tmp,message="iterator%next() returns wrong value")
+    call this%iter%reset()
+    tmp = this%iter%next()
+    @assertEqual(1,tmp,message="iterator%reset() did not work after 2 iterations")
+    do i = 1, length - 1
+      tmp = this%iter%next()
+    end do
+    call this%iter%reset()
+    tmp = this%iter%next()
+    @assertEqual(1,tmp,message="iterator%reset() did not work after complete iteration")    
+  end subroutine test_reset
+  
+  @Test
+  subroutine test_contents_type(this)
+    class(test_iterator), intent(inout) :: this
+    type(int_container) :: expected
+    class(container), pointer :: cont
+    cont => this%iter%contents_type()
+    @assertTrue(same_type_as(expected,cont),message="iteator%contents_type returns wrong type")
+    deallocate(cont)
+  end subroutine test_contents_type
+
+
+end module iterator_test_mod
