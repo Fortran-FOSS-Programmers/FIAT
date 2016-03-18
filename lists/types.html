@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	 
+	 <meta name="description" content="Fortran Implementation of Abstract Types: generic implementations of common data structures in modern, object oriented Fortran.">
+    
+    <meta name="author" content="Chris MacMackin" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>
+All Types &ndash; FIAT
+</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">FIAT </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+				
+                
+            <li><a href="../lists/files.html">Source Files</a></li>
+				
+				
+            <li><a href="../lists/modules.html">Modules</a></li>
+				
+				
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+				
+				
+            <li><a href="../lists/absint.html">Abstract Interfaces</a></li>
+								
+            <li><a href="../lists/types.html">Derived Types</a></li>
+				
+				
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+      <div class="row">
+        <div class="col-lg-12" id='text'>
+			 <h1>Derived Types</h1>
+			 <table class="table table-striped nostretched">
+			 <thead>
+			 <tr><th>Type</th><th>Location</th><th>Extends</th><th>Description</th></tr>
+			 </thead><tbody>
+			 
+			   <tr><td><a href='../type/array_list.html'>array_list</a></td><td><a href='../module/array_list_mod.html'>array_list_mod</a></td><td><a href='../type/list.html'>list</a></td><td><p>A concrete implementation of the <a href="../type/list.html">list</a> abstract data type.
+ This implementation stores list contents in an array. It is fast
+ to read from, but it is slow to insert elements into the middle
+ of the list or to add new items to the end (if doing so requires
+ the storage array to be expanded).</p></td></tr>
+			 
+			   <tr><td><a href='../type/bidir_node.html'>bidir_node</a></td><td><a href='../module/bidir_node_mod.html'>bidir_node_mod</a></td><td><a href='../type/linked_node.html'>linked_node</a></td><td><p>A node which, in addition to holding a value, points at two other
+ (the previous and next) bidir_node objects or objects of a
+ descendent type. This type can be built up into a chain, allowing
+ a doubly-linked list to be formed.</p></td></tr>
+			 
+			   <tr><td><a href='../type/character_container.html'>character_container</a></td><td><a href='../module/container_mod.html'>container_mod</a></td><td><a href='../type/container.html'>container</a></td><td><p>A container for holding the defualt character type.</p></td></tr>
+			 
+			   <tr><td><a href='../type/complex16_container.html'>complex16_container</a></td><td><a href='../module/container_mod.html'>container_mod</a></td><td><a href='../type/container.html'>container</a></td><td><p>A container for holding the 16 byte complex type.</p></td></tr>
+			 
+			   <tr><td><a href='../type/complex4_container.html'>complex4_container</a></td><td><a href='../module/container_mod.html'>container_mod</a></td><td><a href='../type/container.html'>container</a></td><td><p>A container for holding the 4 byte complex type.</p></td></tr>
+			 
+			   <tr><td><a href='../type/complex8_container.html'>complex8_container</a></td><td><a href='../module/container_mod.html'>container_mod</a></td><td><a href='../type/container.html'>container</a></td><td><p>A container for holding the 8 byte complex type.</p></td></tr>
+			 
+			   <tr><td><a href='../type/complex_container.html'>complex_container</a></td><td><a href='../module/container_mod.html'>container_mod</a></td><td><a href='../type/container.html'>container</a></td><td><p>A container for holding the defualt complex type.</p></td></tr>
+			 
+			   <tr><td><a href='../type/container.html'>container</a></td><td><a href='../module/abstract_container_mod.html'>abstract_container_mod</a></td><td>None</td><td><p>An abstract derived type which contains data. This type can be
+ used for a sort of unlimited polymorphism. It is extended to
+ create different classes capable of holding particular 
+ data-types. Extensions must implement the procedure 
+ <a href="../type/container.html#boundprocedure-typeguard">typeguard</a> in order to provide the ability to
+ transfer data out of the container and into a variable. Assuming
+ that you are creating a concrete class called 
+ <code>example_container</code>, this should be implemented as follows:</p></td></tr>
+			 
+			   <tr><td><a href='../type/countable.html'>countable</a></td><td><a href='../module/countable_mod.html'>countable_mod</a></td><td><a href='../type/iterable.html'>iterable</a></td><td><p>An abstract data type which can be iterated, for which the number of
+ pieces of items of data stored within is known.</p></td></tr>
+			 
+			   <tr><td><a href='../type/data_set.html'>data_set</a></td><td><a href='../module/data_set_mod.html'>data_set_mod</a></td><td><a href='../type/countable.html'>countable</a></td><td><p>An abstract type for set data structures. These sets support a 
+ similar selection of operations as do their mathematical
+ counterparts. The collection of methods for this type waas inspired
+ by those available for the
+ <a href="https://docs.python.org/2/library/stdtypes.html#frozenset">frozenset</a>
+ type in Python.</p></td></tr>
+			 
+			   <tr><td><a href='../type/deque.html'>deque</a></td><td><a href='../module/deque_mod.html'>deque_mod</a></td><td><a href='../type/queue.html'>queue</a></td><td><p>An abstract data type representing the double ended queue data
+ structure. Rather than just pushing items to one end (the "left 
+ end") and popping them from the other (the "right end"), items can
+ be pushed or popped to/from either the right or the left.</p></td></tr>
+			 
+			   <tr><td><a href='../type/dictionary.html'>dictionary</a></td><td><a href='../module/dictionary_mod.html'>dictionary_mod</a></td><td><a href='../type/data_set.html'>data_set</a></td><td><p>An abstract type for mapping data structures. These are data 
+ structures which consist of key-value pairs. Examples of such
+ structures are 
+ <a href="https://docs.python.org/2/library/stdtypes.html#mapping-types-dict">dictionaries</a> 
+ in Python or a
+ <a href="https://en.wikibooks.org/wiki/Perl_Programming/Hash_Variables">hash</a>
+ variable in Perl.</p></td></tr>
+			 
+			   <tr><td><a href='../type/dynamic_set.html'>dynamic_set</a></td><td><a href='../module/dynamic_set_mod.html'>dynamic_set_mod</a></td><td><a href='../type/data_set.html'>data_set</a></td><td><p>An abstract data type for dynamic sets. These are much like
+ mathematical sets, but differ from the parent <a href="../type/data_set.html">data_set</a> type
+ in that items can be added to or removed from the set. To
+ accomplish this, various additional methods are available. This
+ data type is similar to the 
+ <a href="https://docs.python.org/2/library/stdtypes.html#set">set</a> type in
+ Python.</p></td></tr>
+			 
+			   <tr><td><a href='../type/int1_container.html'>int1_container</a></td><td><a href='../module/container_mod.html'>container_mod</a></td><td><a href='../type/container.html'>container</a></td><td><p>A container for holding the 1 byte integer type.</p></td></tr>
+			 
+			   <tr><td><a href='../type/int2_container.html'>int2_container</a></td><td><a href='../module/container_mod.html'>container_mod</a></td><td><a href='../type/container.html'>container</a></td><td><p>A container for holding the 2 byte integer type.</p></td></tr>
+			 
+			   <tr><td><a href='../type/int4_container.html'>int4_container</a></td><td><a href='../module/container_mod.html'>container_mod</a></td><td><a href='../type/container.html'>container</a></td><td><p>A container for holding the 4 byte integer type.</p></td></tr>
+			 
+			   <tr><td><a href='../type/int8_container.html'>int8_container</a></td><td><a href='../module/container_mod.html'>container_mod</a></td><td><a href='../type/container.html'>container</a></td><td><p>A container for holding the 8 byte integer type.</p></td></tr>
+			 
+			   <tr><td><a href='../type/int_container.html'>int_container</a></td><td><a href='../module/container_mod.html'>container_mod</a></td><td><a href='../type/container.html'>container</a></td><td><p>A container for holding the defualt integer type.</p></td></tr>
+			 
+			   <tr><td><a href='../type/iterable.html'>iterable</a></td><td><a href='../module/iterable_mod.html'>iterable_mod</a></td><td>None</td><td><p>An abstract type which can return and <a href="../interface/iterator.html">iterator</a> object
+ representing its contents. All of the more complex public data 
+ structures in FIAT are descendants of this one.</p></td></tr>
+			 
+			   <tr><td><a href='../type/iterator.html'>iterator</a></td><td><a href='../module/iterator_mod.html'>iterator_mod</a></td><td>None</td><td><p>A data type which provides a collection of data to the user. Objects
+ of this type are returned using the <a href="../type/iterable.html#boundprocedure-iter">iter</a> method of
+ FIAT's other data types. The contents of the iterator are set to be
+ the same as the iterable at the time when the <code>iter</code> method was 
+ called. If new items are later added to the iterable object, this
+ will not be reflected in the iterator object.</p></td></tr>
+			 
+			   <tr><td><a href='../type/linked_node.html'>linked_node</a></td><td><a href='../module/linked_node_mod.html'>linked_node_mod</a></td><td><a href='../type/node.html'>node</a></td><td><p>A node which, in addition to holding a value, points at another
+ (the next) linked_node or descendent type. This type can be built
+ up into a chain, allowing a linked list to be formed.</p></td></tr>
+			 
+			   <tr><td><a href='../type/list.html'>list</a></td><td><a href='../module/list_mod.html'>list_mod</a></td><td><a href='../type/deque.html'>deque</a></td><td><p>An abstract data type representing a list. This is a fully dynamic
+ means of storing data of a single type and comes with many advanced
+ type-bound procedures for manipulating said data. This derived type
+ aims to provide many of the same features found in lists in 
+ higher-level languages such as Python</p></td></tr>
+			 
+			   <tr><td><a href='../type/logical_container.html'>logical_container</a></td><td><a href='../module/container_mod.html'>container_mod</a></td><td><a href='../type/container.html'>container</a></td><td><p>A container for holding the defualt logical type.</p></td></tr>
+			 
+			   <tr><td><a href='../type/map.html'>map</a></td><td><a href='../module/map_mod.html'>map_mod</a></td><td><a href='../type/dictionary.html'>dictionary</a></td><td><p>An abstract type for the standard map data structures. These are 
+ data structures which consist of key-value pairs, with only one 
+ value per key. It has similar functionality to the 
+ <a href="https://docs.python.org/2/library/stdtypes.html#mapping-types-dict">dictionary</a> 
+ type in Python.</p></td></tr>
+			 
+			   <tr><td><a href='../type/multimap.html'>multimap</a></td><td><a href='../module/multimap_mod.html'>multimap_mod</a></td><td><a href='../type/dictionary.html'>dictionary</a></td><td><p>An abstract type for the standard map data structures. These are 
+ data structures which consist of key-value pairs, potentially 
+ holding multiple values per key.</p></td></tr>
+			 
+			   <tr><td><a href='../type/multiset.html'>multiset</a></td><td><a href='../module/multiset_mod.html'>multiset_mod</a></td><td><a href='../type/dynamic_set.html'>dynamic_set</a></td><td><p>Provides an abstract type for a multi-set data structure. These 
+ behave like a normal set, except they keep count of the number of
+ times which an item has been added. When an item is removed, the
+ count will be decremented by 1. The item will only become absent
+ from the list (<a href="../type/data_set.html#boundprocedure-has">has</a> returns <code>.false.</code>) when the count
+ reaches zero.</p></td></tr>
+			 
+			   <tr><td><a href='../type/node.html'>node</a></td><td><a href='../module/node_mod.html'>node_mod</a></td><td>None</td><td><p>An object which contains a container that can be set to have
+ arbitrary contents. While of limited use on its own, various
+ derived types exist which are extensions of this one exist and
+ are used to build more complex data structures.</p></td></tr>
+			 
+			   <tr><td><a href='../type/ordered.html'>ordered</a></td><td><a href='../module/ordered_mod.html'>ordered_mod</a></td><td><a href='../type/countable.html'>countable</a></td><td><p>An abstract type which is an ancestor for any data structure in
+ which items are stored in a particular order. This means that 
+ the order in which items are placed in the structure will 
+ determine the order in which they are retrieved. Examples of data
+ structures descending from this one are a [[stack]], <a href="../type/queue.html">queue</a>, or
+ <a href="../type/list.html">list</a>.</p></td></tr>
+			 
+			   <tr><td><a href='../type/queue.html'>queue</a></td><td><a href='../module/queue_mod.html'>queue_mod</a></td><td><a href='../type/ordered.html'>ordered</a></td><td><p>An abstract data type representing the queue structure. This is 
+ largely a placeholder type, in case some methods specific to queues
+ are added at a later time. However, it does implement the 
+ <a href="../type/ordered.html#boundprocedure-is_fifo">is_fifo</a> method.</p></td></tr>
+			 
+			   <tr><td><a href='../type/real16_container.html'>real16_container</a></td><td><a href='../module/container_mod.html'>container_mod</a></td><td><a href='../type/container.html'>container</a></td><td><p>A container for holding the 16 byte real type.</p></td></tr>
+			 
+			   <tr><td><a href='../type/real4_container.html'>real4_container</a></td><td><a href='../module/container_mod.html'>container_mod</a></td><td><a href='../type/container.html'>container</a></td><td><p>A container for holding the 4 byte real type.</p></td></tr>
+			 
+			   <tr><td><a href='../type/real8_container.html'>real8_container</a></td><td><a href='../module/container_mod.html'>container_mod</a></td><td><a href='../type/container.html'>container</a></td><td><p>A container for holding the 8 byte real type.</p></td></tr>
+			 
+			   <tr><td><a href='../type/real_container.html'>real_container</a></td><td><a href='../module/container_mod.html'>container_mod</a></td><td><a href='../type/container.html'>container</a></td><td><p>A container for holding the defualt real type.</p></td></tr>
+			 
+			 </tbody></table>
+             
+                <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.26.3 (20100126.1600)
+ -->
+<!-- Title: type~~graph~~TypeGraph Pages: 1 -->
+<svg id="typegraphTypeGraph" width="855pt" height="713pt"
+ viewBox="0.00 0.00 855.00 713.40" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="type~~graph~~TypeGraph" class="graph" transform="scale(0.896226 0.896226) rotate(0) translate(4 792)">
+<title>type~~graph~~TypeGraph</title>
+<polygon fill="white" stroke="white" points="-4,5 -4,-792 951,-792 951,5 -4,5"/>
+<!-- type~node -->
+<g id="node1" class="node"><title>type~node</title>
+<a xlink:href="../type/node.html" xlink:title="node">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="705,-642 651,-642 651,-616 705,-616 705,-642"/>
+<text text-anchor="middle" x="678" y="-626.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">node</text>
+</a>
+</g>
+<!-- type~linked_node -->
+<g id="node5" class="node"><title>type~linked_node</title>
+<a xlink:href="../type/linked_node.html" xlink:title="linked_node">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="844,-642 774,-642 774,-616 844,-616 844,-642"/>
+<text text-anchor="middle" x="809" y="-626.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">linked_node</text>
+</a>
+</g>
+<!-- type~node&#45;&gt;type~linked_node -->
+<g id="edge12" class="edge"><title>type~node&#45;&gt;type~linked_node</title>
+<path fill="none" stroke="black" d="M705.143,-629C722.041,-629 744.198,-629 763.704,-629"/>
+<polygon fill="black" stroke="black" points="763.919,-632.5 773.919,-629 763.919,-625.5 763.919,-632.5"/>
+</g>
+<!-- type~array_list -->
+<g id="node2" class="node"><title>type~array_list</title>
+<a xlink:href="../type/array_list.html" xlink:title="array_list">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="706,-781 650,-781 650,-755 706,-755 706,-781"/>
+<text text-anchor="middle" x="678" y="-765.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">array_list</text>
+</a>
+</g>
+<!-- type~complex16_container -->
+<g id="node3" class="node"><title>type~complex16_container</title>
+<a xlink:href="../type/complex16_container.html" xlink:title="complex16_container">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="735,-554 621,-554 621,-528 735,-528 735,-554"/>
+<text text-anchor="middle" x="678" y="-538.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">complex16_container</text>
+</a>
+</g>
+<!-- type~iterable -->
+<g id="node4" class="node"><title>type~iterable</title>
+<a xlink:href="../type/iterable.html" xlink:title="iterable">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="54,-788 2.13163e-14,-788 0,-762 54,-762 54,-788"/>
+<text text-anchor="middle" x="27" y="-772.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">iterable</text>
+</a>
+</g>
+<!-- type~countable -->
+<g id="node6" class="node"><title>type~countable</title>
+<a xlink:href="../type/countable.html" xlink:title="countable">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="151,-788 93,-788 93,-762 151,-762 151,-788"/>
+<text text-anchor="middle" x="122" y="-772.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">countable</text>
+</a>
+</g>
+<!-- type~iterable&#45;&gt;type~countable -->
+<g id="edge14" class="edge"><title>type~iterable&#45;&gt;type~countable</title>
+<path fill="none" stroke="black" d="M54.2232,-775C63.0009,-775 72.916,-775 82.3988,-775"/>
+<polygon fill="black" stroke="black" points="82.4449,-778.5 92.4449,-775 82.4449,-771.5 82.4449,-778.5"/>
+</g>
+<!-- type~linked_node&#45;&gt;type~linked_node -->
+<g id="edge10" class="edge"><title>type~linked_node&#45;&gt;type~linked_node</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M799.864,-642.06C797.095,-651.1 800.141,-660 809,-660 814.399,-660 817.638,-656.695 818.719,-652.067"/>
+<polygon fill="black" stroke="black" points="822.212,-651.84 818.136,-642.06 815.224,-652.247 822.212,-651.84"/>
+<text text-anchor="middle" x="809" y="-664.45" font-family="Helvetica,sans-Serif" font-size="9.50">next</text>
+</g>
+<!-- type~bidir_node -->
+<g id="node13" class="node"><title>type~bidir_node</title>
+<a xlink:href="../type/bidir_node.html" xlink:title="bidir_node">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="945,-642 883,-642 883,-616 945,-616 945,-642"/>
+<text text-anchor="middle" x="914" y="-626.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">bidir_node</text>
+</a>
+</g>
+<!-- type~linked_node&#45;&gt;type~bidir_node -->
+<g id="edge30" class="edge"><title>type~linked_node&#45;&gt;type~bidir_node</title>
+<path fill="none" stroke="black" d="M844.256,-629C853.173,-629 862.836,-629 872.048,-629"/>
+<polygon fill="black" stroke="black" points="872.193,-632.5 882.193,-629 872.193,-625.5 872.193,-632.5"/>
+</g>
+<!-- type~ordered -->
+<g id="node27" class="node"><title>type~ordered</title>
+<a xlink:href="../type/ordered.html" xlink:title="ordered">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="244,-788 190,-788 190,-762 244,-762 244,-788"/>
+<text text-anchor="middle" x="217" y="-772.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ordered</text>
+</a>
+</g>
+<!-- type~countable&#45;&gt;type~ordered -->
+<g id="edge56" class="edge"><title>type~countable&#45;&gt;type~ordered</title>
+<path fill="none" stroke="black" d="M171,-775C173.682,-774.392 176.475,-773.947 179.3,-773.633"/>
+<polygon fill="black" stroke="black" points="179.766,-777.111 189.534,-773.009 179.34,-770.124 179.766,-777.111"/>
+</g>
+<!-- type~data_set -->
+<g id="node28" class="node"><title>type~data_set</title>
+<a xlink:href="../type/data_set.html" xlink:title="data_set">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="244,-744 190,-744 190,-718 244,-718 244,-744"/>
+<text text-anchor="middle" x="217" y="-728.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">data_set</text>
+</a>
+</g>
+<!-- type~countable&#45;&gt;type~data_set -->
+<g id="edge58" class="edge"><title>type~countable&#45;&gt;type~data_set</title>
+<path fill="none" stroke="black" d="M151.516,-777.117C157.996,-776.996 164.778,-776.411 171,-775"/>
+<path fill="none" stroke="black" d="M171,-775C183.599,-772.142 180.735,-762.004 190,-753 190.781,-752.242 191.585,-751.481 192.406,-750.722"/>
+<polygon fill="black" stroke="black" points="194.811,-753.268 200.045,-744.056 190.209,-747.994 194.811,-753.268"/>
+</g>
+<!-- type~real8_container -->
+<g id="node7" class="node"><title>type~real8_container</title>
+<a xlink:href="../type/real8_container.html" xlink:title="real8_container">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="721,-510 635,-510 635,-484 721,-484 721,-510"/>
+<text text-anchor="middle" x="678" y="-494.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">real8_container</text>
+</a>
+</g>
+<!-- type~deque -->
+<g id="node8" class="node"><title>type~deque</title>
+<a xlink:href="../type/deque.html" xlink:title="deque">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="449,-788 395,-788 395,-762 449,-762 449,-788"/>
+<text text-anchor="middle" x="422" y="-772.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">deque</text>
+</a>
+</g>
+<!-- type~list -->
+<g id="node12" class="node"><title>type~list</title>
+<a xlink:href="../type/list.html" xlink:title="list">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="544,-788 490,-788 490,-762 544,-762 544,-788"/>
+<text text-anchor="middle" x="517" y="-772.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">list</text>
+</a>
+</g>
+<!-- type~deque&#45;&gt;type~list -->
+<g id="edge26" class="edge"><title>type~deque&#45;&gt;type~list</title>
+<path fill="none" stroke="black" d="M449.223,-775C458.664,-775 469.42,-775 479.54,-775"/>
+<polygon fill="black" stroke="black" points="479.773,-778.5 489.773,-775 479.773,-771.5 479.773,-778.5"/>
+</g>
+<!-- type~int2_container -->
+<g id="node9" class="node"><title>type~int2_container</title>
+<a xlink:href="../type/int2_container.html" xlink:title="int2_container">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="718,-466 638,-466 638,-440 718,-440 718,-466"/>
+<text text-anchor="middle" x="678" y="-450.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">int2_container</text>
+</a>
+</g>
+<!-- type~dynamic_set -->
+<g id="node10" class="node"><title>type~dynamic_set</title>
+<a xlink:href="../type/dynamic_set.html" xlink:title="dynamic_set">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="355,-678 283,-678 283,-652 355,-652 355,-678"/>
+<text text-anchor="middle" x="319" y="-662.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dynamic_set</text>
+</a>
+</g>
+<!-- type~multiset -->
+<g id="node19" class="node"><title>type~multiset</title>
+<a xlink:href="../type/multiset.html" xlink:title="multiset">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="449,-656 395,-656 395,-630 449,-630 449,-656"/>
+<text text-anchor="middle" x="422" y="-640.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">multiset</text>
+</a>
+</g>
+<!-- type~dynamic_set&#45;&gt;type~multiset -->
+<g id="edge42" class="edge"><title>type~dynamic_set&#45;&gt;type~multiset</title>
+<path fill="none" stroke="black" d="M355.604,-657.182C365.116,-655.15 375.369,-652.96 384.906,-650.923"/>
+<polygon fill="black" stroke="black" points="385.856,-654.299 394.904,-648.787 384.394,-647.454 385.856,-654.299"/>
+</g>
+<!-- type~int_container -->
+<g id="node11" class="node"><title>type~int_container</title>
+<a xlink:href="../type/int_container.html" xlink:title="int_container">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="715,-422 641,-422 641,-396 715,-396 715,-422"/>
+<text text-anchor="middle" x="678" y="-406.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">int_container</text>
+</a>
+</g>
+<!-- type~list&#45;&gt;type~array_list -->
+<g id="edge6" class="edge"><title>type~list&#45;&gt;type~array_list</title>
+<path fill="none" stroke="black" d="M544.311,-773.813C570.44,-772.677 610.099,-770.952 639.442,-769.676"/>
+<polygon fill="black" stroke="black" points="639.903,-773.16 649.741,-769.229 639.599,-766.166 639.903,-773.16"/>
+</g>
+<!-- type~bidir_node&#45;&gt;type~bidir_node -->
+<g id="edge28" class="edge"><title>type~bidir_node&#45;&gt;type~bidir_node</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M905.541,-642.06C902.977,-651.1 905.797,-660 914,-660 918.999,-660 921.999,-656.695 922.999,-652.067"/>
+<polygon fill="black" stroke="black" points="926.493,-651.857 922.459,-642.06 919.503,-652.234 926.493,-651.857"/>
+<text text-anchor="middle" x="914" y="-664.45" font-family="Helvetica,sans-Serif" font-size="9.50">prev</text>
+</g>
+<!-- type~real4_container -->
+<g id="node14" class="node"><title>type~real4_container</title>
+<a xlink:href="../type/real4_container.html" xlink:title="real4_container">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="721,-378 635,-378 635,-352 721,-352 721,-378"/>
+<text text-anchor="middle" x="678" y="-362.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">real4_container</text>
+</a>
+</g>
+<!-- type~logical_container -->
+<g id="node15" class="node"><title>type~logical_container</title>
+<a xlink:href="../type/logical_container.html" xlink:title="logical_container">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="724,-334 632,-334 632,-308 724,-308 724,-334"/>
+<text text-anchor="middle" x="678" y="-318.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">logical_container</text>
+</a>
+</g>
+<!-- type~int1_container -->
+<g id="node16" class="node"><title>type~int1_container</title>
+<a xlink:href="../type/int1_container.html" xlink:title="int1_container">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="718,-290 638,-290 638,-264 718,-264 718,-290"/>
+<text text-anchor="middle" x="678" y="-274.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">int1_container</text>
+</a>
+</g>
+<!-- type~character_container -->
+<g id="node17" class="node"><title>type~character_container</title>
+<a xlink:href="../type/character_container.html" xlink:title="character_container">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="732,-246 624,-246 624,-220 732,-220 732,-246"/>
+<text text-anchor="middle" x="678" y="-230.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">character_container</text>
+</a>
+</g>
+<!-- type~real16_container -->
+<g id="node18" class="node"><title>type~real16_container</title>
+<a xlink:href="../type/real16_container.html" xlink:title="real16_container">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="724,-202 632,-202 632,-176 724,-176 724,-202"/>
+<text text-anchor="middle" x="678" y="-186.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">real16_container</text>
+</a>
+</g>
+<!-- type~complex8_container -->
+<g id="node20" class="node"><title>type~complex8_container</title>
+<a xlink:href="../type/complex8_container.html" xlink:title="complex8_container">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="732,-158 624,-158 624,-132 732,-132 732,-158"/>
+<text text-anchor="middle" x="678" y="-142.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">complex8_container</text>
+</a>
+</g>
+<!-- type~complex4_container -->
+<g id="node21" class="node"><title>type~complex4_container</title>
+<a xlink:href="../type/complex4_container.html" xlink:title="complex4_container">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="732,-114 624,-114 624,-88 732,-88 732,-114"/>
+<text text-anchor="middle" x="678" y="-98.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">complex4_container</text>
+</a>
+</g>
+<!-- type~container -->
+<g id="node22" class="node"><title>type~container</title>
+<a xlink:href="../type/container.html" xlink:title="container">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="545,-686 489,-686 489,-660 545,-660 545,-686"/>
+<text text-anchor="middle" x="517" y="-670.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">container</text>
+</a>
+</g>
+<!-- type~container&#45;&gt;type~node -->
+<g id="edge2" class="edge"><title>type~container&#45;&gt;type~node</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M545.659,-662.045C551.676,-659.911 558.013,-657.785 564,-656 589.354,-648.439 618.375,-641.591 640.791,-636.683"/>
+<polygon fill="black" stroke="black" points="641.551,-640.1 650.588,-634.57 640.075,-633.257 641.551,-640.1"/>
+<text text-anchor="middle" x="583" y="-660.45" font-family="Helvetica,sans-Serif" font-size="9.50">contents</text>
+</g>
+<!-- type~container&#45;&gt;type~array_list -->
+<g id="edge4" class="edge"><title>type~container&#45;&gt;type~array_list</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M529.712,-686.251C538.715,-695.14 551.387,-706.696 564,-715 587.927,-730.752 617.285,-744.284 640.216,-753.731"/>
+<polygon fill="black" stroke="black" points="639.032,-757.028 649.615,-757.524 641.652,-750.536 639.032,-757.028"/>
+<text text-anchor="middle" x="583" y="-740.45" font-family="Helvetica,sans-Serif" font-size="9.50">contents</text>
+</g>
+<!-- type~container&#45;&gt;type~complex16_container -->
+<g id="edge8" class="edge"><title>type~container&#45;&gt;type~complex16_container</title>
+<path fill="none" stroke="black" d="M583,-321C644.952,-256.375 562.568,-450.327 620,-519 620.725,-519.867 621.489,-520.701 622.286,-521.501"/>
+<polygon fill="black" stroke="black" points="620.254,-524.357 630.254,-527.856 624.619,-518.885 620.254,-524.357"/>
+</g>
+<!-- type~container&#45;&gt;type~real8_container -->
+<g id="edge16" class="edge"><title>type~container&#45;&gt;type~real8_container</title>
+<path fill="none" stroke="black" d="M583,-321C631.713,-270.186 573.478,-422.173 620,-475 621.744,-476.98 623.685,-478.783 625.77,-480.424"/>
+<polygon fill="black" stroke="black" points="624.107,-483.516 634.41,-485.985 627.896,-477.63 624.107,-483.516"/>
+</g>
+<!-- type~container&#45;&gt;type~int2_container -->
+<g id="edge20" class="edge"><title>type~container&#45;&gt;type~int2_container</title>
+<path fill="none" stroke="black" d="M583,-321C618.695,-283.765 584.228,-393.84 620,-431 622.619,-433.72 625.608,-436.108 628.818,-438.204"/>
+<polygon fill="black" stroke="black" points="627.274,-441.349 637.724,-443.095 630.643,-435.213 627.274,-441.349"/>
+</g>
+<!-- type~container&#45;&gt;type~int_container -->
+<g id="edge24" class="edge"><title>type~container&#45;&gt;type~int_container</title>
+<path fill="none" stroke="black" d="M583,-321C606.272,-296.725 594.524,-365.049 620,-387 623.49,-390.007 627.434,-392.624 631.582,-394.896"/>
+<polygon fill="black" stroke="black" points="630.359,-398.191 640.892,-399.34 633.374,-391.874 630.359,-398.191"/>
+</g>
+<!-- type~container&#45;&gt;type~real4_container -->
+<g id="edge32" class="edge"><title>type~container&#45;&gt;type~real4_container</title>
+<path fill="none" stroke="black" d="M583,-321C596.24,-307.189 602.769,-334.687 620,-343 623.607,-344.74 627.39,-346.439 631.222,-348.072"/>
+<polygon fill="black" stroke="black" points="630.194,-351.433 640.774,-351.98 632.845,-344.954 630.194,-351.433"/>
+</g>
+<!-- type~container&#45;&gt;type~logical_container -->
+<g id="edge34" class="edge"><title>type~container&#45;&gt;type~logical_container</title>
+<path fill="none" stroke="black" d="M583,-321C592.827,-310.749 606.791,-307.393 620.996,-307.455"/>
+<polygon fill="black" stroke="black" points="621.141,-310.969 631.327,-308.053 621.546,-303.98 621.141,-310.969"/>
+</g>
+<!-- type~container&#45;&gt;type~int1_container -->
+<g id="edge36" class="edge"><title>type~container&#45;&gt;type~int1_container</title>
+<path fill="none" stroke="black" d="M583,-321C595.407,-308.057 612.358,-298.556 628.508,-291.766"/>
+<polygon fill="black" stroke="black" points="629.861,-294.995 637.884,-288.076 627.297,-288.481 629.861,-294.995"/>
+</g>
+<!-- type~container&#45;&gt;type~character_container -->
+<g id="edge38" class="edge"><title>type~container&#45;&gt;type~character_container</title>
+<path fill="none" stroke="black" d="M583,-321C606.272,-296.725 594.524,-276.951 620,-255 621.499,-253.708 623.082,-252.489 624.729,-251.337"/>
+<polygon fill="black" stroke="black" points="626.628,-254.28 633.403,-246.134 623.027,-248.277 626.628,-254.28"/>
+</g>
+<!-- type~container&#45;&gt;type~real16_container -->
+<g id="edge40" class="edge"><title>type~container&#45;&gt;type~real16_container</title>
+<path fill="none" stroke="black" d="M583,-321C618.695,-283.765 584.228,-248.16 620,-211 621.05,-209.909 622.16,-208.871 623.32,-207.885"/>
+<polygon fill="black" stroke="black" points="625.416,-210.69 631.596,-202.084 621.398,-204.958 625.416,-210.69"/>
+</g>
+<!-- type~container&#45;&gt;type~complex8_container -->
+<g id="edge44" class="edge"><title>type~container&#45;&gt;type~complex8_container</title>
+<path fill="none" stroke="black" d="M583,-321C631.713,-270.186 573.478,-219.827 620,-167 620.861,-166.023 621.77,-165.088 622.72,-164.196"/>
+<polygon fill="black" stroke="black" points="624.865,-166.962 630.716,-158.129 620.634,-161.385 624.865,-166.962"/>
+</g>
+<!-- type~container&#45;&gt;type~complex4_container -->
+<g id="edge46" class="edge"><title>type~container&#45;&gt;type~complex4_container</title>
+<path fill="none" stroke="black" d="M583,-321C644.952,-256.375 562.568,-191.673 620,-123 620.725,-122.133 621.489,-121.299 622.286,-120.499"/>
+<polygon fill="black" stroke="black" points="624.619,-123.115 630.254,-114.144 620.254,-117.643 624.619,-123.115"/>
+</g>
+<!-- type~complex_container -->
+<g id="node23" class="node"><title>type~complex_container</title>
+<a xlink:href="../type/complex_container.html" xlink:title="complex_container">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="729,-70 627,-70 627,-44 729,-44 729,-70"/>
+<text text-anchor="middle" x="678" y="-54.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">complex_container</text>
+</a>
+</g>
+<!-- type~container&#45;&gt;type~complex_container -->
+<g id="edge48" class="edge"><title>type~container&#45;&gt;type~complex_container</title>
+<path fill="none" stroke="black" d="M583,-321C658.296,-242.456 551.585,-163.605 620,-79 620.711,-78.1207 621.461,-77.2765 622.246,-76.4661"/>
+<polygon fill="black" stroke="black" points="624.589,-79.0725 630.134,-70.0446 620.169,-73.6442 624.589,-79.0725"/>
+</g>
+<!-- type~int8_container -->
+<g id="node25" class="node"><title>type~int8_container</title>
+<a xlink:href="../type/int8_container.html" xlink:title="int8_container">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="718,-26 638,-26 638,-1.24345e-14 718,-3.55271e-15 718,-26"/>
+<text text-anchor="middle" x="678" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">int8_container</text>
+</a>
+</g>
+<!-- type~container&#45;&gt;type~int8_container -->
+<g id="edge52" class="edge"><title>type~container&#45;&gt;type~int8_container</title>
+<path fill="none" stroke="black" d="M517.596,-659.846C520.486,-602.033 534.917,-371.157 583,-321"/>
+<path fill="none" stroke="black" d="M583,-321C671.697,-228.477 540.563,-135.586 620,-35 622.519,-31.8108 625.555,-29.0838 628.902,-26.752"/>
+<polygon fill="black" stroke="black" points="630.774,-29.7136 637.742,-21.7318 627.317,-23.6266 630.774,-29.7136"/>
+</g>
+<!-- type~iterator -->
+<g id="node26" class="node"><title>type~iterator</title>
+<a xlink:href="../type/iterator.html" xlink:title="iterator">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="705,-730 651,-730 651,-704 705,-704 705,-730"/>
+<text text-anchor="middle" x="678" y="-714.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">iterator</text>
+</a>
+</g>
+<!-- type~container&#45;&gt;type~iterator -->
+<g id="edge54" class="edge"><title>type~container&#45;&gt;type~iterator</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M545.79,-681.735C551.798,-683.513 558.098,-685.345 564,-687 589.632,-694.188 618.649,-701.817 640.993,-707.583"/>
+<polygon fill="black" stroke="black" points="640.197,-710.992 650.754,-710.093 641.94,-704.212 640.197,-710.992"/>
+<text text-anchor="middle" x="583" y="-702.45" font-family="Helvetica,sans-Serif" font-size="9.50">contents</text>
+</g>
+<!-- type~real_container -->
+<g id="node32" class="node"><title>type~real_container</title>
+<a xlink:href="../type/real_container.html" xlink:title="real_container">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="718,-686 638,-686 638,-660 718,-660 718,-686"/>
+<text text-anchor="middle" x="678" y="-670.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">real_container</text>
+</a>
+</g>
+<!-- type~container&#45;&gt;type~real_container -->
+<g id="edge66" class="edge"><title>type~container&#45;&gt;type~real_container</title>
+<path fill="none" stroke="black" d="M545.784,-673C568.4,-673 600.462,-673 627.349,-673"/>
+<polygon fill="black" stroke="black" points="627.37,-676.5 637.37,-673 627.37,-669.5 627.37,-676.5"/>
+</g>
+<!-- type~int4_container -->
+<g id="node33" class="node"><title>type~int4_container</title>
+<a xlink:href="../type/int4_container.html" xlink:title="int4_container">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="718,-598 638,-598 638,-572 718,-572 718,-598"/>
+<text text-anchor="middle" x="678" y="-582.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">int4_container</text>
+</a>
+</g>
+<!-- type~container&#45;&gt;type~int4_container -->
+<g id="edge68" class="edge"><title>type~container&#45;&gt;type~int4_container</title>
+<path fill="none" stroke="black" d="M583,-321C658.296,-242.456 551.585,-478.395 620,-563 622.555,-566.16 625.617,-568.866 628.981,-571.184"/>
+<polygon fill="black" stroke="black" points="627.419,-574.321 637.849,-576.183 630.856,-568.223 627.419,-574.321"/>
+</g>
+<!-- type~multimap -->
+<g id="node24" class="node"><title>type~multimap</title>
+<a xlink:href="../type/multimap.html" xlink:title="multimap">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="450,-700 394,-700 394,-674 450,-674 450,-700"/>
+<text text-anchor="middle" x="422" y="-684.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">multimap</text>
+</a>
+</g>
+<!-- type~queue -->
+<g id="node30" class="node"><title>type~queue</title>
+<a xlink:href="../type/queue.html" xlink:title="queue">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="346,-788 292,-788 292,-762 346,-762 346,-788"/>
+<text text-anchor="middle" x="319" y="-772.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">queue</text>
+</a>
+</g>
+<!-- type~ordered&#45;&gt;type~queue -->
+<g id="edge62" class="edge"><title>type~ordered&#45;&gt;type~queue</title>
+<path fill="none" stroke="black" d="M244.066,-775C255.594,-775 269.231,-775 281.69,-775"/>
+<polygon fill="black" stroke="black" points="281.807,-778.5 291.807,-775 281.807,-771.5 281.807,-778.5"/>
+</g>
+<!-- type~data_set&#45;&gt;type~dynamic_set -->
+<g id="edge22" class="edge"><title>type~data_set&#45;&gt;type~dynamic_set</title>
+<path fill="none" stroke="black" d="M244.075,-733.377C250.372,-733.279 256.99,-732.639 263,-731"/>
+<path fill="none" stroke="black" d="M263,-731C263.363,-730.901 285.181,-705.104 301.472,-685.796"/>
+<polygon fill="black" stroke="black" points="304.266,-687.913 308.037,-678.012 298.915,-683.4 304.266,-687.913"/>
+</g>
+<!-- type~dictionary -->
+<g id="node29" class="node"><title>type~dictionary</title>
+<a xlink:href="../type/dictionary.html" xlink:title="dictionary">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="348,-744 290,-744 290,-718 348,-718 348,-744"/>
+<text text-anchor="middle" x="319" y="-728.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dictionary</text>
+</a>
+</g>
+<!-- type~data_set&#45;&gt;type~dictionary -->
+<g id="edge60" class="edge"><title>type~data_set&#45;&gt;type~dictionary</title>
+<path fill="none" stroke="black" d="M263,-731C268.335,-729.545 274.063,-728.737 279.747,-728.359"/>
+<polygon fill="black" stroke="black" points="279.929,-731.856 289.835,-728.099 279.748,-724.858 279.929,-731.856"/>
+</g>
+<!-- type~dictionary&#45;&gt;type~multimap -->
+<g id="edge50" class="edge"><title>type~dictionary&#45;&gt;type~multimap</title>
+<path fill="none" stroke="black" d="M348.04,-733.394C356.791,-733.477 366.364,-732.921 375,-731"/>
+<path fill="none" stroke="black" d="M375,-731C387.611,-728.195 384.655,-717.921 394,-709 394.783,-708.253 395.589,-707.505 396.412,-706.76"/>
+<polygon fill="black" stroke="black" points="398.74,-709.376 404.093,-700.233 394.206,-704.042 398.74,-709.376"/>
+</g>
+<!-- type~map -->
+<g id="node31" class="node"><title>type~map</title>
+<a xlink:href="../type/map.html" xlink:title="map">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="449,-744 395,-744 395,-718 449,-718 449,-744"/>
+<text text-anchor="middle" x="422" y="-728.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">map</text>
+</a>
+</g>
+<!-- type~dictionary&#45;&gt;type~map -->
+<g id="edge64" class="edge"><title>type~dictionary&#45;&gt;type~map</title>
+<path fill="none" stroke="black" d="M375,-731C378.186,-730.291 381.524,-729.804 384.888,-729.486"/>
+<polygon fill="black" stroke="black" points="385.121,-732.979 394.936,-728.99 384.776,-725.988 385.121,-732.979"/>
+</g>
+<!-- type~queue&#45;&gt;type~deque -->
+<g id="edge18" class="edge"><title>type~queue&#45;&gt;type~deque</title>
+<path fill="none" stroke="black" d="M346.062,-775C357.797,-775 371.735,-775 384.447,-775"/>
+<polygon fill="black" stroke="black" points="384.761,-778.5 394.761,-775 384.761,-771.5 384.761,-778.5"/>
+</g>
+</g>
+</svg>
+</div>
+                <script>var pantypegraphTypeGraph = svgPanZoom('#typegraphTypeGraph', {
+                    zoomEnabled: true,
+                    controlIconsEnabled: true,
+                    fit: true,
+                    center: true,});
+                    </script>
+                <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
+                <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                      </div>
+                      <div class="modal-body">
+                        
+Nodes of different colours represent the following:
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.26.3 (20100126.1600)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.80" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph1" class="graph" transform="scale(0.817602 0.817602) rotate(0) translate(4 30)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="white" points="-4,5 -4,-30 781,-30 781,5 -4,5"/>
+<!-- Module -->
+<g id="node1" class="node"><title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-26 2.13163e-14,-26 0,-1.24345e-14 54,-3.55271e-15 54,-26"/>
+<text text-anchor="middle" x="27" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node"><title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="138,-26 72,-26 72,-1.24345e-14 138,-3.55271e-15 138,-26"/>
+<text text-anchor="middle" x="105" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Type -->
+<g id="node3" class="node"><title>Type</title>
+<polygon fill="#5cb85c" stroke="#5cb85c" points="210,-26 156,-26 156,-1.24345e-14 210,-3.55271e-15 210,-26"/>
+<text text-anchor="middle" x="183" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type</text>
+</g>
+<!-- Subroutine -->
+<g id="node4" class="node"><title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="292,-26 228,-26 228,-1.24345e-14 292,-3.55271e-15 292,-26"/>
+<text text-anchor="middle" x="260" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node5" class="node"><title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="364,-26 310,-26 310,-1.24345e-14 364,-3.55271e-15 364,-26"/>
+<text text-anchor="middle" x="337" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node6" class="node"><title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="436,-26 382,-26 382,-1.24345e-14 436,-3.55271e-15 436,-26"/>
+<text text-anchor="middle" x="409" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node7" class="node"><title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="590,-26 454,-26 454,-1.24345e-14 590,-3.55271e-15 590,-26"/>
+<text text-anchor="middle" x="522" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node8" class="node"><title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="662,-26 608,-26 608,-1.24345e-14 662,-3.55271e-15 662,-26"/>
+<text text-anchor="middle" x="635" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node9" class="node"><title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="776,-26 680,-26 680,-1.24345e-14 776,-3.55271e-15 776,-26"/>
+<text text-anchor="middle" x="728" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<h5>Module Graph</h5>
+<p>Solid arrows point from a parent (sub)module to the submodule which is
+descended from it. Dashed arrows point from a module being used to the
+module using it.</p>
+<h5>Type Graph</h5>
+<p>Solid arrows point from one derived type to another which extends
+(inherits from) it. Dashed arrows point from a derived type to another
+type containing it as a components, with a label listing the name(s) of
+said component(s).</p>
+<h5>Call Graph</h5>
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.</p>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+        </div>
+      </div>
+
+    <hr>
+    <footer>
+        <div class="row">
+        <div class="col-md-4">&copy; 2016 </div>
+	<div class="col-md-4"><span class="text-center"> FIAT was developed by Chris MacMackin</span></div>
+        <div class="col-md-4"><span class="pull-right">Documentation generated by <a href="https://github.com/cmacmackin/ford">FORD</a></span></div>
+        </div>
+        <br>
+    </footer>
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js'],
+        'HTML-CSS': { 
+           styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: '#000000 ! important'} }
+        }
+      });
+    </script>
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  </body>
+</html>

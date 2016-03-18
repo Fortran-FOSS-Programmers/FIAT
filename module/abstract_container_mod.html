@@ -1,0 +1,1973 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	 
+	 <meta name="description" content="Fortran Implementation of Abstract Types: generic implementations of common data structures in modern, object oriented Fortran.">
+    
+    <meta name="author" content="Chris MacMackin" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>abstract_container_mod &ndash; FIAT</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">FIAT </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+				
+                
+            <li><a href="../lists/files.html">Source Files</a></li>
+				
+				
+            <li><a href="../lists/modules.html">Modules</a></li>
+				
+				
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+				
+				
+            <li><a href="../lists/absint.html">Abstract Interfaces</a></li>
+								
+            <li><a href="../lists/types.html">Derived Types</a></li>
+				
+				
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>abstract_container_mod 
+    <small>Module</small>
+    
+    </h1>
+	 
+<div class="row">
+<div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+    <li><i class="fa fa-pencil"></i> Chris MacMackin</li>
+     
+     
+    <li><i class="fa fa-calendar-o"></i> December 2015</li>
+     
+     
+    <li><i class="fa fa-legal"></i> LGPLv3</li>
+     
+     
+    
+    
+    <li><i class="fa fa-code"></i><a href="../src/abstract_container.F90"> Source File</a></li>
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+     <li><a href='../sourcefile/abstract_container.f90.html'>abstract_container.F90</a></li>
+  
+     <li class="active">abstract_container_mod</li>
+  </ol>
+</div>
+</div>
+</div>
+    
+  </div>
+  
+  <div class="row">
+    <div class="col-lg-3">
+    
+<div id="sidebar">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <div class="panel panel-primary">
+    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#absints">Abstract Interfaces</a></h3></div>
+    <div id="absints" class="panel-collapse collapse">
+        <div class="list-group">
+          
+          <a class="list-group-item" href="../module/abstract_container_mod.html#interface-action_sub">action_sub</a>
+          
+          <a class="list-group-item" href="../module/abstract_container_mod.html#interface-guard">guard</a>
+          
+          <a class="list-group-item" href="../module/abstract_container_mod.html#interface-test_func">test_func</a>
+          
+          <a class="list-group-item" href="../module/abstract_container_mod.html#interface-addition_func">addition_func</a>
+          
+          <a class="list-group-item" href="../module/abstract_container_mod.html#interface-subtraction_func">subtraction_func</a>
+          
+          <a class="list-group-item" href="../module/abstract_container_mod.html#interface-comparison_func">comparison_func</a>
+          
+        </div>
+    </div>
+  </div>
+  
+  
+  
+  <div class="panel panel-primary">
+    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#types">Derived Types</a></h3></div>
+    <div id="types" class="panel-collapse collapse">
+      <div class="list-group">
+        
+        <a class="list-group-item" href="../module/abstract_container_mod.html#type-container">container</a>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  <div class="panel panel-primary">
+    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#funcs">Functions</a></h3></div>
+    <div id="funcs" class="panel-collapse collapse">
+        <div class="list-group">
+          
+          <a class="list-group-item" href="../module/abstract_container_mod.html#proc-contents">contents</a>
+          
+          <a class="list-group-item" href="../module/abstract_container_mod.html#proc-is_filled">is_filled</a>
+          
+          <a class="list-group-item" href="../module/abstract_container_mod.html#proc-is_equal">is_equal</a>
+          
+        </div>
+    </div>
+  </div>
+  
+  
+  
+  <div class="panel panel-primary">
+    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#subs">Subroutines</a></h3></div>
+    <div class="list-group">
+        <div id="subs" class="panel-collapse collapse">
+          
+          <a class="list-group-item" href="../module/abstract_container_mod.html#proc-assign_container">assign_container</a>
+          
+          <a class="list-group-item" href="../module/abstract_container_mod.html#proc-set">set</a>
+          
+        </div>
+    </div>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  <hr>
+  
+  <div class="panel panel-default">
+    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#allmods">All Modules</a></h3></div>
+    <div id="allmods" class="panel-collapse collapse">
+        <div class="list-group">
+          
+          <a class="list-group-item" href="../module/abstract_container_mod.html">abstract_container_mod</a>
+          
+          <a class="list-group-item" href="../module/array_list_mod.html">array_list_mod</a>
+          
+          <a class="list-group-item" href="../module/bidir_node_mod.html">bidir_node_mod</a>
+          
+          <a class="list-group-item" href="../module/container_mod.html">container_mod</a>
+          
+          <a class="list-group-item" href="../module/countable_mod.html">countable_mod</a>
+          
+          <a class="list-group-item" href="../module/data_set_mod.html">data_set_mod</a>
+          
+          <a class="list-group-item" href="../module/deque_mod.html">deque_mod</a>
+          
+          <a class="list-group-item" href="../module/dictionary_mod.html">dictionary_mod</a>
+          
+          <a class="list-group-item" href="../module/dynamic_set_mod.html">dynamic_set_mod</a>
+          
+          <a class="list-group-item" href="../module/iterable_mod.html">iterable_mod</a>
+          
+          <a class="list-group-item" href="../module/iterator_mod.html">iterator_mod</a>
+          
+          <a class="list-group-item" href="../module/linked_node_mod.html">linked_node_mod</a>
+          
+          <a class="list-group-item" href="../module/list_mod.html">list_mod</a>
+          
+          <a class="list-group-item" href="../module/map_mod.html">map_mod</a>
+          
+          <a class="list-group-item" href="../module/multimap_mod.html">multimap_mod</a>
+          
+          <a class="list-group-item" href="../module/multiset_mod.html">multiset_mod</a>
+          
+          <a class="list-group-item" href="../module/node_mod.html">node_mod</a>
+          
+          <a class="list-group-item" href="../module/ordered_mod.html">ordered_mod</a>
+          
+          <a class="list-group-item" href="../module/queue_mod.html">queue_mod</a>
+          
+        </div>
+    </div>
+  </div>
+  
+</div>
+
+    </div>
+    
+    <div class="col-lg-9" id='text'>
+    
+    
+  
+    <ul class="list-inline">
+      <li><h4>Uses:</h4></li>
+      
+      <li><a href="https://software.intel.com/en-us/node/511041">iso_fortran_env</a></li>
+      
+    </ul>
+  
+
+    
+                <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.26.3 (20100126.1600)
+ -->
+<!-- Title: module~~abstract_container_mod~~UsesGraph Pages: 1 -->
+<svg id="moduleabstract_container_modUsesGraph" width="260pt" height="34pt"
+ viewBox="0.00 0.00 260.00 34.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~abstract_container_mod~~UsesGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 30)">
+<title>module~~abstract_container_mod~~UsesGraph</title>
+<polygon fill="white" stroke="white" points="-4,5 -4,-30 257,-30 257,5 -4,5"/>
+<!-- module~abstract_container_mod -->
+<g id="node1" class="node"><title>module~abstract_container_mod</title>
+<polygon fill="none" stroke="black" points="252,-26 124,-26 124,-1.24345e-14 252,-3.55271e-15 252,-26"/>
+<text text-anchor="middle" x="188" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50">abstract_container_mod</text>
+</g>
+<!-- iso_fortran_env -->
+<g id="node2" class="node"><title>iso_fortran_env</title>
+<a xlink:href="https://software.intel.com/en-us/node/511041" xlink:title="iso_fortran_env">
+<polygon fill="#337ab7" stroke="#337ab7" points="87,-26 1,-26 1,-1.24345e-14 87,-3.55271e-15 87,-26"/>
+<text text-anchor="middle" x="44" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">iso_fortran_env</text>
+</a>
+</g>
+<!-- iso_fortran_env&#45;&gt;module~abstract_container_mod -->
+<g id="edge2" class="edge"><title>iso_fortran_env&#45;&gt;module~abstract_container_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M87.5955,-13C95.8954,-13 104.795,-13 113.741,-13"/>
+<polygon fill="black" stroke="black" points="113.832,-16.5001 123.832,-13 113.832,-9.5001 113.832,-16.5001"/>
+</g>
+</g>
+</svg>
+</div>
+                <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
+                <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                      </div>
+                      <div class="modal-body">
+                        
+Nodes of different colours represent the following:
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.26.3 (20100126.1600)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.80" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph1" class="graph" transform="scale(0.817602 0.817602) rotate(0) translate(4 30)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="white" points="-4,5 -4,-30 781,-30 781,5 -4,5"/>
+<!-- Module -->
+<g id="node1" class="node"><title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-26 2.13163e-14,-26 0,-1.24345e-14 54,-3.55271e-15 54,-26"/>
+<text text-anchor="middle" x="27" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node"><title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="138,-26 72,-26 72,-1.24345e-14 138,-3.55271e-15 138,-26"/>
+<text text-anchor="middle" x="105" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Type -->
+<g id="node3" class="node"><title>Type</title>
+<polygon fill="#5cb85c" stroke="#5cb85c" points="210,-26 156,-26 156,-1.24345e-14 210,-3.55271e-15 210,-26"/>
+<text text-anchor="middle" x="183" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type</text>
+</g>
+<!-- Subroutine -->
+<g id="node4" class="node"><title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="292,-26 228,-26 228,-1.24345e-14 292,-3.55271e-15 292,-26"/>
+<text text-anchor="middle" x="260" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node5" class="node"><title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="364,-26 310,-26 310,-1.24345e-14 364,-3.55271e-15 364,-26"/>
+<text text-anchor="middle" x="337" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node6" class="node"><title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="436,-26 382,-26 382,-1.24345e-14 436,-3.55271e-15 436,-26"/>
+<text text-anchor="middle" x="409" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node7" class="node"><title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="590,-26 454,-26 454,-1.24345e-14 590,-3.55271e-15 590,-26"/>
+<text text-anchor="middle" x="522" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node8" class="node"><title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="662,-26 608,-26 608,-1.24345e-14 662,-3.55271e-15 662,-26"/>
+<text text-anchor="middle" x="635" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node9" class="node"><title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="776,-26 680,-26 680,-1.24345e-14 776,-3.55271e-15 776,-26"/>
+<text text-anchor="middle" x="728" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<h5>Module Graph</h5>
+<p>Solid arrows point from a parent (sub)module to the submodule which is
+descended from it. Dashed arrows point from a module being used to the
+module using it.</p>
+<h5>Type Graph</h5>
+<p>Solid arrows point from one derived type to another which extends
+(inherits from) it. Dashed arrows point from a derived type to another
+type containing it as a components, with a label listing the name(s) of
+said component(s).</p>
+<h5>Call Graph</h5>
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.</p>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+    
+    <p>Provides an abstract container derived type which can be used 
+ as a sort of unlimited polymorphic entity whose contents are
+ retrievable with type-guards. Different subclasses are created
+ in order to hold different data-types. See <a href="../type/container.html">container</a> for 
+ instructions on creating concrete subclasses. See <a href="../module/container_mod.html">container_mod</a>
+ for subclasses containing the built-in data-types.</p>
+    
+    
+    <h3>Used By</h3>
+    
+                <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.26.3 (20100126.1600)
+ -->
+<!-- Title: module~~abstract_container_mod~~UsedByGraph Pages: 1 -->
+<svg id="moduleabstract_container_modUsedByGraph" width="641pt" height="163pt"
+ viewBox="0.00 0.00 641.00 162.77" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~abstract_container_mod~~UsedByGraph" class="graph" transform="scale(0.416775 0.416775) rotate(0) translate(4 386.538)">
+<title>module~~abstract_container_mod~~UsedByGraph</title>
+<polygon fill="white" stroke="white" points="-4,5 -4,-386.538 1535,-386.538 1535,5 -4,5"/>
+<!-- module~abstract_container_mod -->
+<g id="node1" class="node"><title>module~abstract_container_mod</title>
+<polygon fill="none" stroke="black" points="128,-111 6.39488e-14,-111 0,-85 128,-85 128,-111"/>
+<text text-anchor="middle" x="64" y="-95.55" font-family="Helvetica,sans-Serif" font-size="10.50">abstract_container_mod</text>
+</g>
+<!-- module~iterator_mod -->
+<g id="node2" class="node"><title>module~iterator_mod</title>
+<a xlink:href="../module/iterator_mod.html" xlink:title="iterator_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="242,-152 170,-152 170,-126 242,-126 242,-152"/>
+<text text-anchor="middle" x="206" y="-136.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">iterator_mod</text>
+</a>
+</g>
+<!-- module~abstract_container_mod&#45;&gt;module~iterator_mod -->
+<g id="edge50" class="edge"><title>module~abstract_container_mod&#45;&gt;module~iterator_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M109.32,-111.085C125.318,-115.704 143.325,-120.904 159.425,-125.552"/>
+<polygon fill="black" stroke="black" points="158.589,-128.954 169.167,-128.365 160.531,-122.229 158.589,-128.954"/>
+</g>
+<!-- module~container_mod -->
+<g id="node3" class="node"><title>module~container_mod</title>
+<a xlink:href="../module/container_mod.html" xlink:title="container_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="248,-70 164,-70 164,-44 248,-44 248,-70"/>
+<text text-anchor="middle" x="206" y="-54.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">container_mod</text>
+</a>
+</g>
+<!-- module~abstract_container_mod&#45;&gt;module~container_mod -->
+<g id="edge52" class="edge"><title>module~abstract_container_mod&#45;&gt;module~container_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M109.32,-84.9146C123.433,-80.8398 139.11,-76.3132 153.662,-72.1117"/>
+<polygon fill="black" stroke="black" points="154.886,-75.4012 163.523,-69.2645 152.945,-68.6759 154.886,-75.4012"/>
+</g>
+<!-- module~array_list_mod -->
+<g id="node4" class="node"><title>module~array_list_mod</title>
+<a xlink:href="../module/array_list_mod.html" xlink:title="array_list_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="1043,-310 961,-310 961,-284 1043,-284 1043,-310"/>
+<text text-anchor="middle" x="1002" y="-294.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">array_list_mod</text>
+</a>
+</g>
+<!-- module~abstract_container_mod&#45;&gt;module~array_list_mod -->
+<g id="edge54" class="edge"><title>module~abstract_container_mod&#45;&gt;module~array_list_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M463,-379C516.175,-374.894 530.513,-388.464 583,-379"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M583,-379C643.01,-368.18 632.375,-303.55 693,-297"/>
+</g>
+<!-- module~iterable_mod -->
+<g id="node5" class="node"><title>module~iterable_mod</title>
+<a xlink:href="../module/iterable_mod.html" xlink:title="iterable_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="370,-152 296,-152 296,-126 370,-126 370,-152"/>
+<text text-anchor="middle" x="333" y="-136.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">iterable_mod</text>
+</a>
+</g>
+<!-- module~abstract_container_mod&#45;&gt;module~iterable_mod -->
+<g id="edge56" class="edge"><title>module~abstract_container_mod&#45;&gt;module~iterable_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M206,-98C237.194,-100.501 270.826,-111.777 295.639,-121.871"/>
+<polygon fill="black" stroke="black" points="294.452,-125.169 305.027,-125.806 297.157,-118.713 294.452,-125.169"/>
+</g>
+<!-- module~map_mod -->
+<g id="node6" class="node"><title>module~map_mod</title>
+<a xlink:href="../module/map_mod.html" xlink:title="map_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="1402,-351 1342,-351 1342,-325 1402,-325 1402,-351"/>
+<text text-anchor="middle" x="1372" y="-335.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">map_mod</text>
+</a>
+</g>
+<!-- module~abstract_container_mod&#45;&gt;module~map_mod -->
+<g id="edge58" class="edge"><title>module~abstract_container_mod&#45;&gt;module~map_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M1121,-379C1199.87,-372.676 1220.43,-375.56 1298,-360 1309.07,-357.78 1320.86,-354.64 1331.71,-351.425"/>
+<polygon fill="black" stroke="black" points="1332.81,-354.747 1341.35,-348.476 1330.77,-348.053 1332.81,-354.747"/>
+</g>
+<!-- module~dictionary_mod -->
+<g id="node7" class="node"><title>module~dictionary_mod</title>
+<a xlink:href="../module/dictionary_mod.html" xlink:title="dictionary_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="1290,-351 1206,-351 1206,-325 1290,-325 1290,-351"/>
+<text text-anchor="middle" x="1248" y="-335.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dictionary_mod</text>
+</a>
+</g>
+<!-- module~abstract_container_mod&#45;&gt;module~dictionary_mod -->
+<g id="edge60" class="edge"><title>module~abstract_container_mod&#45;&gt;module~dictionary_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M799,-379C941.351,-364.271 978.347,-390.439 1121,-379"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M1121,-379C1152.19,-376.499 1185.83,-365.223 1210.64,-355.129"/>
+<polygon fill="black" stroke="black" points="1212.16,-358.287 1220.03,-351.194 1209.45,-351.831 1212.16,-358.287"/>
+</g>
+<!-- module~node_mod -->
+<g id="node8" class="node"><title>module~node_mod</title>
+<a xlink:href="../module/node_mod.html" xlink:title="node_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="238,-26 174,-26 174,-1.24345e-14 238,-3.55271e-15 238,-26"/>
+<text text-anchor="middle" x="206" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">node_mod</text>
+</a>
+</g>
+<!-- module~abstract_container_mod&#45;&gt;module~node_mod -->
+<g id="edge62" class="edge"><title>module~abstract_container_mod&#45;&gt;module~node_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M83.6371,-84.9766C103.598,-71.8942 135.547,-51.3798 164,-35 166.327,-33.6602 168.744,-32.3045 171.188,-30.9588"/>
+<polygon fill="black" stroke="black" points="172.918,-34.0028 180.058,-26.1756 169.595,-27.8415 172.918,-34.0028"/>
+</g>
+<!-- module~list_mod -->
+<g id="node9" class="node"><title>module~list_mod</title>
+<a xlink:href="../module/list_mod.html" xlink:title="list_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="924,-351 870,-351 870,-325 924,-325 924,-351"/>
+<text text-anchor="middle" x="897" y="-335.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">list_mod</text>
+</a>
+</g>
+<!-- module~abstract_container_mod&#45;&gt;module~list_mod -->
+<g id="edge64" class="edge"><title>module~abstract_container_mod&#45;&gt;module~list_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M693,-379C739.896,-374.507 752.139,-383.849 799,-379"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M799,-379C823.011,-376.516 848.087,-365.854 866.863,-356.026"/>
+<polygon fill="black" stroke="black" points="868.694,-359.015 875.804,-351.16 865.347,-352.866 868.694,-359.015"/>
+</g>
+<!-- module~ordered_mod -->
+<g id="node10" class="node"><title>module~ordered_mod</title>
+<a xlink:href="../module/ordered_mod.html" xlink:title="ordered_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="621,-310 545,-310 545,-284 621,-284 621,-310"/>
+<text text-anchor="middle" x="583" y="-294.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ordered_mod</text>
+</a>
+</g>
+<!-- module~abstract_container_mod&#45;&gt;module~ordered_mod -->
+<g id="edge66" class="edge"><title>module~abstract_container_mod&#45;&gt;module~ordered_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M72.1138,-111.132C109.974,-170.569 275.363,-410.17 463,-379"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M463,-379C505.534,-375.716 544.225,-341.005 565.599,-317.81"/>
+<polygon fill="black" stroke="black" points="568.378,-319.952 572.414,-310.156 563.15,-315.296 568.378,-319.952"/>
+</g>
+<!-- module~dynamic_set_mod -->
+<g id="node11" class="node"><title>module~dynamic_set_mod</title>
+<a xlink:href="../module/dynamic_set_mod.html" xlink:title="dynamic_set_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="1298,-250 1198,-250 1198,-224 1298,-224 1298,-250"/>
+<text text-anchor="middle" x="1248" y="-234.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dynamic_set_mod</text>
+</a>
+</g>
+<!-- module~abstract_container_mod&#45;&gt;module~dynamic_set_mod -->
+<g id="edge68" class="edge"><title>module~abstract_container_mod&#45;&gt;module~dynamic_set_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M128.059,-95.8287C152.487,-95.5701 180.566,-95.9605 206,-98"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M206,-98C262.264,-102.512 277.756,-86.4209 333,-98"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M333,-98C392.295,-110.428 402.602,-134.267 463,-139"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M463,-139C564.91,-146.986 590.778,-139 693,-139 693,-139 693,-139 1002,-139 1086.94,-139 1177.42,-190.052 1221.19,-218.461"/>
+<polygon fill="black" stroke="black" points="1219.28,-221.395 1229.56,-223.986 1223.14,-215.554 1219.28,-221.395"/>
+</g>
+<!-- module~deque_mod -->
+<g id="node12" class="node"><title>module~deque_mod</title>
+<a xlink:href="../module/deque_mod.html" xlink:title="deque_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="834,-351 764,-351 764,-325 834,-325 834,-351"/>
+<text text-anchor="middle" x="799" y="-335.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">deque_mod</text>
+</a>
+</g>
+<!-- module~abstract_container_mod&#45;&gt;module~deque_mod -->
+<g id="edge70" class="edge"><title>module~abstract_container_mod&#45;&gt;module~deque_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M583,-379C631.113,-370.325 644.334,-383.663 693,-379"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M693,-379C718.943,-376.514 746.333,-365.679 766.77,-355.772"/>
+<polygon fill="black" stroke="black" points="768.561,-358.79 775.924,-351.172 765.417,-352.535 768.561,-358.79"/>
+</g>
+<!-- module~data_set_mod -->
+<g id="node13" class="node"><title>module~data_set_mod</title>
+<a xlink:href="../module/data_set_mod.html" xlink:title="data_set_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="1161,-259 1081,-259 1081,-233 1161,-233 1161,-259"/>
+<text text-anchor="middle" x="1121" y="-243.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">data_set_mod</text>
+</a>
+</g>
+<!-- module~abstract_container_mod&#45;&gt;module~data_set_mod -->
+<g id="edge72" class="edge"><title>module~abstract_container_mod&#45;&gt;module~data_set_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M333,-98C355.814,-103.011 362.432,-104.245 382,-117 400.956,-129.356 399.077,-140.593 418,-153 434.479,-163.804 563.366,-216.335 583,-218"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M583,-218C678.552,-227.268 703,-218 799,-218 799,-218 799,-218 897,-218 956.937,-218 1025.2,-227.993 1070.46,-236.039"/>
+<polygon fill="black" stroke="black" points="1069.85,-239.486 1080.32,-237.826 1071.1,-232.598 1069.85,-239.486"/>
+</g>
+<!-- module~iterator_mod&#45;&gt;module~array_list_mod -->
+<g id="edge6" class="edge"><title>module~iterator_mod&#45;&gt;module~array_list_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M211.118,-152.173C224.806,-185.172 265.849,-270.621 333,-297"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M333,-297C368.636,-310.999 379.959,-287.33 418,-283 508.154,-272.739 532.286,-261.419 622,-275 654.664,-279.945 660.027,-299.04 693,-297"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M693,-297C783.202,-289.401 888.741,-291.819 950.21,-294.351"/>
+<polygon fill="black" stroke="black" points="950.283,-297.857 960.424,-294.79 950.583,-290.864 950.283,-297.857"/>
+</g>
+<!-- module~iterator_mod&#45;&gt;module~iterable_mod -->
+<g id="edge2" class="edge"><title>module~iterator_mod&#45;&gt;module~iterable_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M242.734,-139C256.056,-139 271.303,-139 285.426,-139"/>
+<polygon fill="black" stroke="black" points="285.468,-142.5 295.468,-139 285.468,-135.5 285.468,-142.5"/>
+</g>
+<!-- module~iterator_mod&#45;&gt;module~ordered_mod -->
+<g id="edge4" class="edge"><title>module~iterator_mod&#45;&gt;module~ordered_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M333,-297C386.777,-318.125 407.362,-281.42 463,-297"/>
+</g>
+<!-- module~array_list_mod&#45;&gt;module~dictionary_mod -->
+<g id="edge12" class="edge"><title>module~array_list_mod&#45;&gt;module~dictionary_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M1121,-297C1152.19,-299.501 1185.83,-310.777 1210.64,-320.871"/>
+<polygon fill="black" stroke="black" points="1209.45,-324.169 1220.03,-324.806 1212.16,-317.713 1209.45,-324.169"/>
+</g>
+<!-- module~array_list_mod&#45;&gt;module~data_set_mod -->
+<g id="edge10" class="edge"><title>module~array_list_mod&#45;&gt;module~data_set_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M1032.34,-283.999C1047.05,-277.693 1064.92,-270.033 1080.76,-263.247"/>
+<polygon fill="black" stroke="black" points="1082.49,-266.311 1090.3,-259.155 1079.73,-259.877 1082.49,-266.311"/>
+</g>
+<!-- module~multimap_mod -->
+<g id="node17" class="node"><title>module~multimap_mod</title>
+<a xlink:href="../module/multimap_mod.html" xlink:title="multimap_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="1529,-330 1447,-330 1447,-304 1529,-304 1529,-330"/>
+<text text-anchor="middle" x="1488" y="-314.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">multimap_mod</text>
+</a>
+</g>
+<!-- module~array_list_mod&#45;&gt;module~multimap_mod -->
+<g id="edge8" class="edge"><title>module~array_list_mod&#45;&gt;module~multimap_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M1043.64,-295.373C1066.51,-294.888 1095.36,-294.944 1121,-297"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M1121,-297C1232.2,-305.917 1260.45,-296.615 1372,-297"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M1372,-297C1393.33,-296.99 1416.55,-300.312 1436.57,-304.251"/>
+<polygon fill="black" stroke="black" points="1435.92,-307.691 1446.42,-306.288 1437.33,-300.836 1435.92,-307.691"/>
+</g>
+<!-- module~iterable_mod&#45;&gt;module~ordered_mod -->
+<g id="edge20" class="edge"><title>module~iterable_mod&#45;&gt;module~ordered_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M337.876,-152.469C351.297,-186.984 392.535,-277.268 463,-297"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M463,-297C485.861,-303.402 512.146,-304.104 534.278,-302.913"/>
+<polygon fill="black" stroke="black" points="534.712,-306.391 544.451,-302.219 534.236,-299.408 534.712,-306.391"/>
+</g>
+<!-- module~iterable_mod&#45;&gt;module~dynamic_set_mod -->
+<g id="edge22" class="edge"><title>module~iterable_mod&#45;&gt;module~dynamic_set_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M370.607,-137.449C396.599,-136.757 431.949,-136.567 463,-139"/>
+</g>
+<!-- module~countable_mod -->
+<g id="node21" class="node"><title>module~countable_mod</title>
+<a xlink:href="../module/countable_mod.html" xlink:title="countable_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="506,-231 420,-231 420,-205 506,-205 506,-231"/>
+<text text-anchor="middle" x="463" y="-215.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">countable_mod</text>
+</a>
+</g>
+<!-- module~iterable_mod&#45;&gt;module~countable_mod -->
+<g id="edge18" class="edge"><title>module~iterable_mod&#45;&gt;module~countable_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M354.278,-152.087C371.452,-162.633 396.25,-177.823 418,-191 422.558,-193.762 427.383,-196.671 432.115,-199.517"/>
+<polygon fill="black" stroke="black" points="430.63,-202.707 441.005,-204.854 434.233,-196.706 430.63,-202.707"/>
+</g>
+<!-- module~map_mod&#45;&gt;module~multimap_mod -->
+<g id="edge24" class="edge"><title>module~map_mod&#45;&gt;module~multimap_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M1402.78,-332.428C1413.06,-330.567 1424.81,-328.439 1436.24,-326.37"/>
+<polygon fill="black" stroke="black" points="1436.94,-329.801 1446.15,-324.576 1435.69,-322.913 1436.94,-329.801"/>
+</g>
+<!-- module~dictionary_mod&#45;&gt;module~map_mod -->
+<g id="edge28" class="edge"><title>module~dictionary_mod&#45;&gt;module~map_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M1290.67,-338C1303.83,-338 1318.28,-338 1331.3,-338"/>
+<polygon fill="black" stroke="black" points="1331.38,-341.5 1341.38,-338 1331.38,-334.5 1331.38,-341.5"/>
+</g>
+<!-- module~dictionary_mod&#45;&gt;module~multimap_mod -->
+<g id="edge26" class="edge"><title>module~dictionary_mod&#45;&gt;module~multimap_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M1271.93,-324.975C1296.35,-312.922 1335.72,-296.875 1372,-297"/>
+</g>
+<!-- module~linked_node_mod -->
+<g id="node30" class="node"><title>module~linked_node_mod</title>
+<a xlink:href="../module/linked_node_mod.html" xlink:title="linked_node_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="381,-26 285,-26 285,-1.24345e-14 381,-3.55271e-15 381,-26"/>
+<text text-anchor="middle" x="333" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">linked_node_mod</text>
+</a>
+</g>
+<!-- module~node_mod&#45;&gt;module~linked_node_mod -->
+<g id="edge32" class="edge"><title>module~node_mod&#45;&gt;module~linked_node_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M238.047,-13C248.955,-13 261.519,-13 273.862,-13"/>
+<polygon fill="black" stroke="black" points="274.137,-16.5001 284.137,-13 274.137,-9.5001 274.137,-16.5001"/>
+</g>
+<!-- module~list_mod&#45;&gt;module~array_list_mod -->
+<g id="edge34" class="edge"><title>module~list_mod&#45;&gt;module~array_list_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M924.04,-327.441C934.78,-323.248 947.395,-318.322 959.312,-313.669"/>
+<polygon fill="black" stroke="black" points="960.627,-316.913 968.669,-310.015 958.081,-310.392 960.627,-316.913"/>
+</g>
+<!-- module~ordered_mod&#45;&gt;module~array_list_mod -->
+<g id="edge40" class="edge"><title>module~ordered_mod&#45;&gt;module~array_list_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M621.726,-298.167C642.818,-298.508 669.365,-298.463 693,-297"/>
+</g>
+<!-- module~queue_mod -->
+<g id="node35" class="node"><title>module~queue_mod</title>
+<a xlink:href="../module/queue_mod.html" xlink:title="queue_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="728,-351 658,-351 658,-325 728,-325 728,-351"/>
+<text text-anchor="middle" x="693" y="-335.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">queue_mod</text>
+</a>
+</g>
+<!-- module~ordered_mod&#45;&gt;module~queue_mod -->
+<g id="edge38" class="edge"><title>module~ordered_mod&#45;&gt;module~queue_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M618.107,-310.085C627.732,-313.673 638.296,-317.61 648.378,-321.368"/>
+<polygon fill="black" stroke="black" points="647.256,-324.685 657.849,-324.898 649.701,-318.126 647.256,-324.685"/>
+</g>
+<!-- module~multiset_mod -->
+<g id="node39" class="node"><title>module~multiset_mod</title>
+<a xlink:href="../module/multiset_mod.html" xlink:title="multiset_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="1410,-250 1334,-250 1334,-224 1410,-224 1410,-250"/>
+<text text-anchor="middle" x="1372" y="-234.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">multiset_mod</text>
+</a>
+</g>
+<!-- module~dynamic_set_mod&#45;&gt;module~multiset_mod -->
+<g id="edge42" class="edge"><title>module~dynamic_set_mod&#45;&gt;module~multiset_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M1298.08,-237C1306.58,-237 1315.4,-237 1323.86,-237"/>
+<polygon fill="black" stroke="black" points="1323.94,-240.5 1333.94,-237 1323.94,-233.5 1323.94,-240.5"/>
+</g>
+<!-- module~deque_mod&#45;&gt;module~list_mod -->
+<g id="edge44" class="edge"><title>module~deque_mod&#45;&gt;module~list_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M834.103,-338C842.367,-338 851.206,-338 859.569,-338"/>
+<polygon fill="black" stroke="black" points="859.827,-341.5 869.827,-338 859.827,-334.5 859.827,-341.5"/>
+</g>
+<!-- module~data_set_mod&#45;&gt;module~dictionary_mod -->
+<g id="edge46" class="edge"><title>module~data_set_mod&#45;&gt;module~dictionary_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M1139.2,-259.181C1160.79,-274.826 1196.98,-301.038 1221.64,-318.903"/>
+<polygon fill="black" stroke="black" points="1219.69,-321.811 1229.84,-324.843 1223.79,-316.142 1219.69,-321.811"/>
+</g>
+<!-- module~data_set_mod&#45;&gt;module~dynamic_set_mod -->
+<g id="edge48" class="edge"><title>module~data_set_mod&#45;&gt;module~dynamic_set_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M1161.53,-243.128C1169.78,-242.543 1178.62,-241.917 1187.38,-241.296"/>
+<polygon fill="black" stroke="black" points="1187.87,-244.77 1197.6,-240.571 1187.38,-237.787 1187.87,-244.77"/>
+</g>
+<!-- module~countable_mod&#45;&gt;module~ordered_mod -->
+<g id="edge14" class="edge"><title>module~countable_mod&#45;&gt;module~ordered_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M482.816,-231.045C502.357,-243.91 532.424,-263.704 554.523,-278.253"/>
+<polygon fill="black" stroke="black" points="552.878,-281.36 563.155,-283.935 556.727,-275.513 552.878,-281.36"/>
+</g>
+<!-- module~countable_mod&#45;&gt;module~data_set_mod -->
+<g id="edge16" class="edge"><title>module~countable_mod&#45;&gt;module~data_set_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M506.118,-216.241C529,-215.751 557.57,-215.844 583,-218"/>
+</g>
+<!-- module~bidir_node_mod -->
+<g id="node31" class="node"><title>module~bidir_node_mod</title>
+<a xlink:href="../module/bidir_node_mod.html" xlink:title="bidir_node_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="508,-26 418,-26 418,-1.24345e-14 508,-3.55271e-15 508,-26"/>
+<text text-anchor="middle" x="463" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">bidir_node_mod</text>
+</a>
+</g>
+<!-- module~linked_node_mod&#45;&gt;module~bidir_node_mod -->
+<g id="edge30" class="edge"><title>module~linked_node_mod&#45;&gt;module~bidir_node_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M381.777,-13C390.27,-13 399.157,-13 407.807,-13"/>
+<polygon fill="black" stroke="black" points="407.815,-16.5001 417.815,-13 407.815,-9.5001 407.815,-16.5001"/>
+</g>
+<!-- module~queue_mod&#45;&gt;module~deque_mod -->
+<g id="edge36" class="edge"><title>module~queue_mod&#45;&gt;module~deque_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M728.002,-338C736.148,-338 744.937,-338 753.464,-338"/>
+<polygon fill="black" stroke="black" points="753.672,-341.5 763.672,-338 753.672,-334.5 753.672,-341.5"/>
+</g>
+</g>
+</svg>
+</div>
+                <script>var panmoduleabstract_container_modUsedByGraph = svgPanZoom('#moduleabstract_container_modUsedByGraph', {
+                    zoomEnabled: true,
+                    controlIconsEnabled: true,
+                    fit: true,
+                    center: true,});
+                    </script>
+                <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
+                <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                      </div>
+                      <div class="modal-body">
+                        
+Nodes of different colours represent the following:
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.26.3 (20100126.1600)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.80" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph1" class="graph" transform="scale(0.817602 0.817602) rotate(0) translate(4 30)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="white" points="-4,5 -4,-30 781,-30 781,5 -4,5"/>
+<!-- Module -->
+<g id="node1" class="node"><title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-26 2.13163e-14,-26 0,-1.24345e-14 54,-3.55271e-15 54,-26"/>
+<text text-anchor="middle" x="27" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node"><title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="138,-26 72,-26 72,-1.24345e-14 138,-3.55271e-15 138,-26"/>
+<text text-anchor="middle" x="105" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Type -->
+<g id="node3" class="node"><title>Type</title>
+<polygon fill="#5cb85c" stroke="#5cb85c" points="210,-26 156,-26 156,-1.24345e-14 210,-3.55271e-15 210,-26"/>
+<text text-anchor="middle" x="183" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type</text>
+</g>
+<!-- Subroutine -->
+<g id="node4" class="node"><title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="292,-26 228,-26 228,-1.24345e-14 292,-3.55271e-15 292,-26"/>
+<text text-anchor="middle" x="260" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node5" class="node"><title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="364,-26 310,-26 310,-1.24345e-14 364,-3.55271e-15 364,-26"/>
+<text text-anchor="middle" x="337" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node6" class="node"><title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="436,-26 382,-26 382,-1.24345e-14 436,-3.55271e-15 436,-26"/>
+<text text-anchor="middle" x="409" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node7" class="node"><title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="590,-26 454,-26 454,-1.24345e-14 590,-3.55271e-15 590,-26"/>
+<text text-anchor="middle" x="522" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node8" class="node"><title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="662,-26 608,-26 608,-1.24345e-14 662,-3.55271e-15 662,-26"/>
+<text text-anchor="middle" x="635" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node9" class="node"><title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="776,-26 680,-26 680,-1.24345e-14 776,-3.55271e-15 776,-26"/>
+<text text-anchor="middle" x="728" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<h5>Module Graph</h5>
+<p>Solid arrows point from a parent (sub)module to the submodule which is
+descended from it. Dashed arrows point from a module being used to the
+module using it.</p>
+<h5>Type Graph</h5>
+<p>Solid arrows point from one derived type to another which extends
+(inherits from) it. Dashed arrows point from a derived type to another
+type containing it as a components, with a label listing the name(s) of
+said component(s).</p>
+<h5>Call Graph</h5>
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.</p>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+    <br>
+    
+
+    
+    
+    
+    
+    
+
+    
+    <section>
+     <h2>Abstract Interfaces</h2>
+	 
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="interface-action_sub"></span><h3>abstract interface
+    
+  </h3></div>
+  
+  <ul class="list-group">
+    <li class="list-group-item">
+    
+    
+    <h3>
+public subroutine <a href='../interface/action_sub.html'>action_sub</a>(item)
+    
+    
+    
+</h3>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/container.html'>container</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>item</strong></td><td><p>A container object which is will be modified in some way</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+    
+    <h4>Description</h4>
+       
+       
+
+
+       
+       <p>An abstract interface for a procedure which will act on each
+  item in a list.</p>
+        
+
+    </li>
+  </ul>
+</div>
+
+    
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="interface-guard"></span><h3>abstract interface
+    
+  </h3></div>
+  
+  <ul class="list-group">
+    <li class="list-group-item">
+    
+    
+    <h3>
+private function <a href='../interface/guard.html'>guard</a>(this, lhs)
+    
+    
+    
+</h3>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/container.html'>container</a>),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>this</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(*),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>lhs</strong></td><td><p>The variable which the container contents are to be 
+ transferred to.</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>logical
+  </small></h4>
+  
+    
+        
+
+    </li>
+  </ul>
+</div>
+
+    
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="interface-test_func"></span><h3>abstract interface
+    
+  </h3></div>
+  
+  <ul class="list-group">
+    <li class="list-group-item">
+    
+    
+    <h3>
+public pure function <a href='../interface/test_func.html'>test_func</a>(item)
+    
+    
+    
+</h3>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/container.html'>container</a>),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>item</strong></td><td><p>The item which is being evaluated</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>logical
+  </small></h4>
+  <p>Whether the item passes the test or not</p>
+    
+    
+    <h4>Description</h4>
+       
+       
+
+
+       
+       <p>An abstract interface for a function which tests a
+  <a href="../type/container.html">container</a> object in some way</p>
+        
+
+    </li>
+  </ul>
+</div>
+
+    
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="interface-addition_func"></span><h3>abstract interface
+    
+  </h3></div>
+  
+  <ul class="list-group">
+    <li class="list-group-item">
+    
+    
+    <h3>
+public pure function <a href='../interface/addition_func.html'>addition_func</a>(item1, item2)
+    
+    
+    
+</h3>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/container.html'>container</a>),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>item1</strong></td><td><p>One of the items in the addition</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/container.html'>container</a>),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>item2</strong></td><td><p>The other item in the addition</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>class(<a href='../type/container.html'>container</a>),
+  allocatable</small></h4>
+  <p>The sum, <code>item1 + item2</code></p>
+    
+    
+    <h4>Description</h4>
+       
+       
+
+
+       
+       <p>Performs an addition operation on two <a href="../type/container.html">container</a> objects,
+  returning the result in a container.</p>
+        
+
+    </li>
+  </ul>
+</div>
+
+    
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="interface-subtraction_func"></span><h3>abstract interface
+    
+  </h3></div>
+  
+  <ul class="list-group">
+    <li class="list-group-item">
+    
+    
+    <h3>
+public pure function <a href='../interface/subtraction_func.html'>subtraction_func</a>(item1, item2)
+    
+    
+    
+</h3>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/container.html'>container</a>),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>item1</strong></td><td><p>The item which the other is subtracted from</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/container.html'>container</a>),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>item2</strong></td><td><p>The item subtracted from the other</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>real
+  </small></h4>
+  <p>A real number, the absolute value of which represents the
+ magnitude of the difference between <code>item1</code> and <code>item2</code>.</p>
+    
+    
+    <h4>Description</h4>
+       
+       
+
+
+       
+       <p>An abstract interface for a procedure finding the difference
+ between two items, <code>item1 - item2</code>. Note that a procedure may
+ satisfy both this abstract interface and <a href="../interface/comparison_func.html">comparison_func</a>.</p>
+        
+
+    </li>
+  </ul>
+</div>
+
+    
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="interface-comparison_func"></span><h3>abstract interface
+    
+  </h3></div>
+  
+  <ul class="list-group">
+    <li class="list-group-item">
+    
+    
+    <h3>
+public pure function <a href='../interface/comparison_func.html'>comparison_func</a>(item1, item2)
+    
+    
+    
+</h3>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/container.html'>container</a>),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>item1</strong></td><td><p>The first item in the comparison</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/container.html'>container</a>),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>item2</strong></td><td><p>The second item in the comparison</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>real
+  </small></h4>
+  <p>negative if <code>item1 &lt; item2</code>, 0 if <code>item1 == item2</code>, positive 
+ if <code>item1 &gt; item2</code></p>
+    
+    
+    <h4>Description</h4>
+       
+       
+
+
+       
+       <p>An abstract interface for a procedure comparing two
+  <a href="../type/container.html">container</a> objects. Note that a procedure may satisfy both
+ this abstract interface and <a href="../interface/subtraction_func.html">subtraction_func</a>.</p>
+        
+
+    </li>
+  </ul>
+</div>
+
+    
+    </section>
+	<br>
+    
+    
+    
+    <section>
+     <h2>Derived Types</h2>
+	 
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="type-container"></span><h3>type, public, abstract :: <a href='../type/container.html'>container</a>
+    
+  </h3></div>
+  <div class="panel-body">
+     
+     <h4>Components</h4>
+    
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Visibility</th>
+
+<th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-storage"></span>integer(kind=i1),</td>
+  
+  <td>private,</td>
+  <td>dimension(:), allocatable</td><td>::</td>
+  <td><strong>storage</strong></td><td></td><td></td><td><p>Variable in which to place data contents</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-filled"></span>logical,</td>
+  
+  <td>private</td>
+  <td></td><td>::</td>
+  <td><strong>filled</strong></td><td> =</td><td>.false.</td><td><p><code>.true.</code> if container is set, <code>.false.</code> otherwise</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+     
+     
+          
+     
+     <h4>Type-Bound Procedures</h4>
+      <table class="table table-striped varlist">
+      <tbody>
+      
+       <tr><td>procedure(guard), private, deferred :: <strong>typeguard</strong>  </td>
+       <td><p>Performs the actual transfer of the container's contents to 
+ another variable.</p></td></tr>
+      
+       <tr><td>procedure, public :: <strong>contents</strong>  </td>
+       <td><p>Retrieves the contents of the container, in the form of an
+ integer array.</p></td></tr>
+      
+       <tr><td>procedure, public :: <strong>is_filled</strong>  </td>
+       <td><p>Returns whether contents have been assigned to the container</p></td></tr>
+      
+       <tr><td>procedure, public :: <strong>set</strong>  </td>
+       <td><p>Sets the contents of the container.</p></td></tr>
+      
+       <tr><td>procedure, private, pass(rhs) :: <strong>assign_container</strong>  </td>
+       <td><p>Assigns container contents to another variable.</p></td></tr>
+      
+       <tr><td>procedure, private :: <strong>is_equal</strong>  </td>
+       <td><p>Check whether two containers have the same contents.</p></td></tr>
+      
+       <tr><td>generic, public :: <strong>assignment(=)</strong>  => assign_container </td>
+       <td></td></tr>
+      
+       <tr><td>generic, public :: <strong>operator(==)</strong>  => is_equal </td>
+       <td></td></tr>
+      
+       </tbody>
+       </table>
+     
+     
+     <h4>Description</h4>
+       
+       <p>An abstract derived type which contains data. This type can be
+ used for a sort of unlimited polymorphism. It is extended to
+ create different classes capable of holding particular 
+ data-types. Extensions must implement the procedure 
+ <a href="../type/container.html#boundprocedure-typeguard">typeguard</a> in order to provide the ability to
+ transfer data out of the container and into a variable. Assuming
+ that you are creating a concrete class called 
+ <code>example_container</code>, this should be implemented as follows:</p>
+     
+  </div>
+</div>
+
+     
+    </section>
+	<br>
+    
+    
+     
+    <section>
+    <h2>Functions</h2>
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-contents"></span><h3>
+private pure function <a href='../proc/contents.html'>contents</a>(this)
+    
+    
+    
+</h3></div>
+  <div class="panel-body">
+       
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/container.html'>container</a>),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>this</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>integer(kind=i1),
+  dimension(:),allocatable</small></h4>
+  
+    
+    
+    <h4>Description</h4>
+       
+       
+
+<dl class="dl-horizontal">
+    
+    <dt>Author</dt><dd>Chris MacMackin</dd>
+    
+    
+    <dt>Date</dt><dd>December 2015</dd>
+    
+    
+    
+    
+  </dl>
+
+
+       
+       <p>Returns the contents, encoded as a character array, of the 
+ container.</p>
+        
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-is_filled"></span><h3>
+private elemental function <a href='../proc/is_filled.html'>is_filled</a>(this)
+    
+    
+    
+</h3></div>
+  <div class="panel-body">
+       
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/container.html'>container</a>),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>this</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>logical
+  </small></h4>
+  
+    
+    
+    <h4>Description</h4>
+       
+       
+
+<dl class="dl-horizontal">
+    
+    <dt>Author</dt><dd>Chris MacMackin</dd>
+    
+    
+    <dt>Date</dt><dd>March 2016</dd>
+    
+    
+    
+    
+  </dl>
+
+
+       
+       <p>Returns <code>.true.</code> if a value has been assigned to the container,
+ <code>.false.</code> otherwise.</p>
+        
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-is_equal"></span><h3>
+private elemental function <a href='../proc/is_equal.html'>is_equal</a>(lhs, rhs)
+    
+    
+    
+</h3></div>
+  <div class="panel-body">
+       
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/container.html'>container</a>),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>lhs</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/container.html'>container</a>),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>rhs</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>logical
+  </small></h4>
+  
+    
+    
+    <h4>Description</h4>
+       
+       
+
+<dl class="dl-horizontal">
+    
+    <dt>Author</dt><dd>Chris MacMackin</dd>
+    
+    
+    <dt>Date</dt><dd>December 2015</dd>
+    
+    
+    
+    
+  </dl>
+
+
+       
+       <p>Checks whether two containers are of the same type and are
+ storing the same contents.</p>
+        
+
+  </div>
+  </div>
+
+    
+    </section>
+    <br>
+    
+
+    
+    <section>
+    <h2>Subroutines</h2>
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-assign_container"></span><h3>
+private subroutine <a href='../proc/assign_container.html'>assign_container</a>(lhs, rhs)
+    
+    
+    
+</h3></div>
+  <div class="panel-body">
+       
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(*),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>lhs</strong></td><td><p>The variable which the container contents will be assigned to.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/container.html'>container</a>),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>rhs</strong></td><td><p>The container variable.</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+    
+    <h4>Description</h4>
+       
+       
+
+<dl class="dl-horizontal">
+    
+    <dt>Author</dt><dd>Chris MacMackin</dd>
+    
+    
+    <dt>Date</dt><dd>December 2015</dd>
+    
+    
+    
+    
+  </dl>
+
+
+       
+       <p>Transfers the contents of the container to another variable.
+ If the other variable is another container of the same type
+ then the contents will be transferred. If the other variable is
+ the same type as the contents of the container (as determined
+ by the <a href="../type/container.html#boundprocedure-typeguard">typeguard</a> routine provided for that 
+ concrete type extension) then it will be given the value held by
+ the container. Otherwise, an error message will be printed and 
+ the program stopped. If compiled with <code>gfortran</code> then a backtrace
+ will also be printed. In the event that the container was never
+ set to a value, then this also constitutes an error.</p>
+        
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-set"></span><h3>
+private subroutine <a href='../proc/set.html'>set</a>(this, content)
+    
+    
+    
+</h3></div>
+  <div class="panel-body">
+       
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/container.html'>container</a>),</td>
+  <td>intent(out)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>this</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>content</strong></td><td><p>The value to be placed in the container</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+    
+    <h4>Description</h4>
+       
+       
+
+<dl class="dl-horizontal">
+    
+    <dt>Author</dt><dd>Chris MacMackin</dd>
+    
+    
+    <dt>Date</dt><dd>December 2015</dd>
+    
+    
+    
+    
+  </dl>
+
+
+       
+       <p>Sets the contents of the storage array to value passed. The type
+ of the variable provided must be the same as the container
+ variable is designed to accept (as determined by the
+ concrete type implementation of the <a href="../type/container.html#boundprocedure-typeguard">typeguard</a>
+ method in the extension) or be of the same type of container.
+ Otherwise an error message will be printed and the program will 
+ exit. If <code>gfortran</code> was used to compile then a backtrace will
+ also be printed.</p>
+        
+
+  </div>
+  </div>
+
+    
+    </section>    
+    <br>
+    
+    
+    
+    </div>
+  </div>
+
+    <hr>
+    <footer>
+        <div class="row">
+        <div class="col-md-4">&copy; 2016 </div>
+	<div class="col-md-4"><span class="text-center"> FIAT was developed by Chris MacMackin</span></div>
+        <div class="col-md-4"><span class="pull-right">Documentation generated by <a href="https://github.com/cmacmackin/ford">FORD</a></span></div>
+        </div>
+        <br>
+    </footer>
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js'],
+        'HTML-CSS': { 
+           styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: '#000000 ! important'} }
+        }
+      });
+    </script>
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  </body>
+</html>

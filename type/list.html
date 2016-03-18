@@ -1,0 +1,3445 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	 
+	 <meta name="description" content="Fortran Implementation of Abstract Types: generic implementations of common data structures in modern, object oriented Fortran.">
+    
+    <meta name="author" content="Chris MacMackin" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>list &ndash; FIAT </title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">FIAT </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+				
+                
+            <li><a href="../lists/files.html">Source Files</a></li>
+				
+				
+            <li><a href="../lists/modules.html">Modules</a></li>
+				
+				
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+				
+				
+            <li><a href="../lists/absint.html">Abstract Interfaces</a></li>
+								
+            <li><a href="../lists/types.html">Derived Types</a></li>
+				
+				
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>list
+    <small>Derived Type</small>
+    
+    </h1>
+	 
+<div class="row">
+<div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+    <li><i class="fa fa-pencil"></i> Chris MacMackin</li>
+     
+     
+    <li><i class="fa fa-calendar-o"></i> March 2016</li>
+     
+     
+     
+    
+    
+    <li><i class="fa fa-code"></i><a href="../src/list.f90"> Source File</a></li>
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+     <li><a href='../sourcefile/list.f90.html'>list.f90</a></li>
+  
+     <li><a href='../module/list_mod.html'>list_mod</a></li>
+  
+     <li class="active">list</li>
+  </ol>
+</div>
+</div>
+</div>
+    
+  </div>
+  
+  <div class="row">
+    <div class="col-lg-3">
+    
+<div id="sidebar">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <div class="panel panel-primary">
+    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#boundprocs">Type-Bound Procedures</a></h3></div>
+    <div id="boundprocs" class="panel-collapse collapse">
+        <div class="list-group">
+          
+          <a class="list-group-item" href="../type/list.html#boundprocedure-append%7E2">append</a>
+          
+          <a class="list-group-item" href="../type/list.html#boundprocedure-get%7E2">get</a>
+          
+          <a class="list-group-item" href="../type/list.html#boundprocedure-set_single%7E2">set_single</a>
+          
+          <a class="list-group-item" href="../type/list.html#boundprocedure-set_multiple%7E2">set_multiple</a>
+          
+          <a class="list-group-item" href="../type/list.html#boundprocedure-set%7E3">set</a>
+          
+          <a class="list-group-item" href="../type/list.html#boundprocedure-get_index%7E2">get_index</a>
+          
+          <a class="list-group-item" href="../type/list.html#boundprocedure-get_last_index%7E2">get_last_index</a>
+          
+          <a class="list-group-item" href="../type/list.html#boundprocedure-get_indices%7E2">get_indices</a>
+          
+          <a class="list-group-item" href="../type/list.html#boundprocedure-slice%7E2">slice</a>
+          
+          <a class="list-group-item" href="../type/list.html#boundprocedure-foreach%7E2">foreach</a>
+          
+          <a class="list-group-item" href="../type/list.html#boundprocedure-insert%7E2">insert</a>
+          
+          <a class="list-group-item" href="../type/list.html#boundprocedure-remove%7E3">remove</a>
+          
+          <a class="list-group-item" href="../type/list.html#boundprocedure-remove_last%7E2">remove_last</a>
+          
+          <a class="list-group-item" href="../type/list.html#boundprocedure-remove_all%7E2">remove_all</a>
+          
+          <a class="list-group-item" href="../type/list.html#boundprocedure-delete_single%7E2">delete_single</a>
+          
+          <a class="list-group-item" href="../type/list.html#boundprocedure-delete_multiple%7E2">delete_multiple</a>
+          
+          <a class="list-group-item" href="../type/list.html#boundprocedure-delete_slice%7E2">delete_slice</a>
+          
+          <a class="list-group-item" href="../type/list.html#boundprocedure-delete">delete</a>
+          
+          <a class="list-group-item" href="../type/list.html#boundprocedure-has%7E3">has</a>
+          
+          <a class="list-group-item" href="../type/list.html#boundprocedure-sort%7E2">sort</a>
+          
+          <a class="list-group-item" href="../type/list.html#boundprocedure-min%7E3">min</a>
+          
+          <a class="list-group-item" href="../type/list.html#boundprocedure-max%7E3">max</a>
+          
+          <a class="list-group-item" href="../type/list.html#boundprocedure-nearest%7E3">nearest</a>
+          
+          <a class="list-group-item" href="../type/list.html#boundprocedure-sum%7E3">sum</a>
+          
+          <a class="list-group-item" href="../type/list.html#boundprocedure-filter%7E3">filter</a>
+          
+          <a class="list-group-item" href="../type/list.html#boundprocedure-to_array%7E2">to_array</a>
+          
+        </div>
+    </div>
+  </div>
+  
+  
+  
+  
+  <div class="panel panel-primary">
+    <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+    <div class="list-group">
+      <a class="list-group-item" href="../type/list.html#src">list</a>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="panel panel-default">
+    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#alltypes">All Derived Types</a></h3></div>
+    <div id="alltypes" class="panel-collapse collapse">
+        <div class="list-group">
+          
+          <a class="list-group-item" href="../type/array_list.html">array_list</a>
+          
+          <a class="list-group-item" href="../type/bidir_node.html">bidir_node</a>
+          
+          <a class="list-group-item" href="../type/character_container.html">character_container</a>
+          
+          <a class="list-group-item" href="../type/complex16_container.html">complex16_container</a>
+          
+          <a class="list-group-item" href="../type/complex4_container.html">complex4_container</a>
+          
+          <a class="list-group-item" href="../type/complex8_container.html">complex8_container</a>
+          
+          <a class="list-group-item" href="../type/complex_container.html">complex_container</a>
+          
+          <a class="list-group-item" href="../type/container.html">container</a>
+          
+          <a class="list-group-item" href="../type/countable.html">countable</a>
+          
+          <a class="list-group-item" href="../type/data_set.html">data_set</a>
+          
+          <a class="list-group-item" href="../type/deque.html">deque</a>
+          
+          <a class="list-group-item" href="../type/dictionary.html">dictionary</a>
+          
+          <a class="list-group-item" href="../type/dynamic_set.html">dynamic_set</a>
+          
+          <a class="list-group-item" href="../type/int1_container.html">int1_container</a>
+          
+          <a class="list-group-item" href="../type/int2_container.html">int2_container</a>
+          
+          <a class="list-group-item" href="../type/int4_container.html">int4_container</a>
+          
+          <a class="list-group-item" href="../type/int8_container.html">int8_container</a>
+          
+          <a class="list-group-item" href="../type/int_container.html">int_container</a>
+          
+          <a class="list-group-item" href="../type/iterable.html">iterable</a>
+          
+          <a class="list-group-item" href="../type/iterator.html">iterator</a>
+          
+          <a class="list-group-item" href="../type/linked_node.html">linked_node</a>
+          
+          <a class="list-group-item" href="../type/list.html">list</a>
+          
+          <a class="list-group-item" href="../type/logical_container.html">logical_container</a>
+          
+          <a class="list-group-item" href="../type/map.html">map</a>
+          
+          <a class="list-group-item" href="../type/multimap.html">multimap</a>
+          
+          <a class="list-group-item" href="../type/multiset.html">multiset</a>
+          
+          <a class="list-group-item" href="../type/node.html">node</a>
+          
+          <a class="list-group-item" href="../type/ordered.html">ordered</a>
+          
+          <a class="list-group-item" href="../type/queue.html">queue</a>
+          
+          <a class="list-group-item" href="../type/real16_container.html">real16_container</a>
+          
+          <a class="list-group-item" href="../type/real4_container.html">real4_container</a>
+          
+          <a class="list-group-item" href="../type/real8_container.html">real8_container</a>
+          
+          <a class="list-group-item" href="../type/real_container.html">real_container</a>
+          
+        </div>
+    </div>
+  </div>
+  
+</div>
+
+    </div>
+    
+    <div class="col-lg-9" id='text'>
+    <h2>type, public, abstract, extends(<a href='../type/deque.html'>deque</a>) :: list</h2>
+    
+    
+                <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.26.3 (20100126.1600)
+ -->
+<!-- Title: type~~list~~InheritsGraph Pages: 1 -->
+<svg id="typelistInheritsGraph" width="518pt" height="34pt"
+ viewBox="0.00 0.00 518.00 34.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="type~~list~~InheritsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 30)">
+<title>type~~list~~InheritsGraph</title>
+<polygon fill="white" stroke="white" points="-4,5 -4,-30 515,-30 515,5 -4,5"/>
+<!-- type~list -->
+<g id="node1" class="node"><title>type~list</title>
+<polygon fill="none" stroke="black" points="510,-26 456,-26 456,-1.24345e-14 510,-3.55271e-15 510,-26"/>
+<text text-anchor="middle" x="483" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50">list</text>
+</g>
+<!-- type~deque -->
+<g id="node2" class="node"><title>type~deque</title>
+<a xlink:href="../type/deque.html" xlink:title="deque">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="420,-26 366,-26 366,-1.24345e-14 420,-3.55271e-15 420,-26"/>
+<text text-anchor="middle" x="393" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">deque</text>
+</a>
+</g>
+<!-- type~deque&#45;&gt;type~list -->
+<g id="edge10" class="edge"><title>type~deque&#45;&gt;type~list</title>
+<path fill="none" stroke="black" d="M420.003,-13C428.028,-13 436.967,-13 445.531,-13"/>
+<polygon fill="black" stroke="black" points="445.705,-16.5001 455.705,-13 445.705,-9.5001 445.705,-16.5001"/>
+</g>
+<!-- type~queue -->
+<g id="node3" class="node"><title>type~queue</title>
+<a xlink:href="../type/queue.html" xlink:title="queue">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="330,-26 276,-26 276,-1.24345e-14 330,-3.55271e-15 330,-26"/>
+<text text-anchor="middle" x="303" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">queue</text>
+</a>
+</g>
+<!-- type~queue&#45;&gt;type~deque -->
+<g id="edge8" class="edge"><title>type~queue&#45;&gt;type~deque</title>
+<path fill="none" stroke="black" d="M330.003,-13C338.028,-13 346.967,-13 355.531,-13"/>
+<polygon fill="black" stroke="black" points="355.705,-16.5001 365.705,-13 355.705,-9.5001 355.705,-16.5001"/>
+</g>
+<!-- type~ordered -->
+<g id="node4" class="node"><title>type~ordered</title>
+<a xlink:href="../type/ordered.html" xlink:title="ordered">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="240,-26 186,-26 186,-1.24345e-14 240,-3.55271e-15 240,-26"/>
+<text text-anchor="middle" x="213" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ordered</text>
+</a>
+</g>
+<!-- type~ordered&#45;&gt;type~queue -->
+<g id="edge6" class="edge"><title>type~ordered&#45;&gt;type~queue</title>
+<path fill="none" stroke="black" d="M240.003,-13C248.028,-13 256.967,-13 265.531,-13"/>
+<polygon fill="black" stroke="black" points="265.705,-16.5001 275.705,-13 265.705,-9.5001 265.705,-16.5001"/>
+</g>
+<!-- type~countable -->
+<g id="node5" class="node"><title>type~countable</title>
+<a xlink:href="../type/countable.html" xlink:title="countable">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="149,-26 91,-26 91,-1.24345e-14 149,-3.55271e-15 149,-26"/>
+<text text-anchor="middle" x="120" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">countable</text>
+</a>
+</g>
+<!-- type~countable&#45;&gt;type~ordered -->
+<g id="edge4" class="edge"><title>type~countable&#45;&gt;type~ordered</title>
+<path fill="none" stroke="black" d="M149.681,-13C157.92,-13 166.973,-13 175.592,-13"/>
+<polygon fill="black" stroke="black" points="175.807,-16.5001 185.807,-13 175.807,-9.5001 175.807,-16.5001"/>
+</g>
+<!-- type~iterable -->
+<g id="node6" class="node"><title>type~iterable</title>
+<a xlink:href="../type/iterable.html" xlink:title="iterable">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="54,-26 2.13163e-14,-26 0,-1.24345e-14 54,-3.55271e-15 54,-26"/>
+<text text-anchor="middle" x="27" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">iterable</text>
+</a>
+</g>
+<!-- type~iterable&#45;&gt;type~countable -->
+<g id="edge2" class="edge"><title>type~iterable&#45;&gt;type~countable</title>
+<path fill="none" stroke="black" d="M54.4001,-13C62.3993,-13 71.3113,-13 79.9236,-13"/>
+<polygon fill="black" stroke="black" points="80.1985,-16.5001 90.1985,-13 80.1984,-9.5001 80.1985,-16.5001"/>
+</g>
+</g>
+</svg>
+</div>
+                <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
+                <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                      </div>
+                      <div class="modal-body">
+                        
+Nodes of different colours represent the following:
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.26.3 (20100126.1600)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.80" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph1" class="graph" transform="scale(0.817602 0.817602) rotate(0) translate(4 30)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="white" points="-4,5 -4,-30 781,-30 781,5 -4,5"/>
+<!-- Module -->
+<g id="node1" class="node"><title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-26 2.13163e-14,-26 0,-1.24345e-14 54,-3.55271e-15 54,-26"/>
+<text text-anchor="middle" x="27" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node"><title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="138,-26 72,-26 72,-1.24345e-14 138,-3.55271e-15 138,-26"/>
+<text text-anchor="middle" x="105" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Type -->
+<g id="node3" class="node"><title>Type</title>
+<polygon fill="#5cb85c" stroke="#5cb85c" points="210,-26 156,-26 156,-1.24345e-14 210,-3.55271e-15 210,-26"/>
+<text text-anchor="middle" x="183" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type</text>
+</g>
+<!-- Subroutine -->
+<g id="node4" class="node"><title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="292,-26 228,-26 228,-1.24345e-14 292,-3.55271e-15 292,-26"/>
+<text text-anchor="middle" x="260" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node5" class="node"><title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="364,-26 310,-26 310,-1.24345e-14 364,-3.55271e-15 364,-26"/>
+<text text-anchor="middle" x="337" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node6" class="node"><title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="436,-26 382,-26 382,-1.24345e-14 436,-3.55271e-15 436,-26"/>
+<text text-anchor="middle" x="409" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node7" class="node"><title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="590,-26 454,-26 454,-1.24345e-14 590,-3.55271e-15 590,-26"/>
+<text text-anchor="middle" x="522" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node8" class="node"><title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="662,-26 608,-26 608,-1.24345e-14 662,-3.55271e-15 662,-26"/>
+<text text-anchor="middle" x="635" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node9" class="node"><title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="776,-26 680,-26 680,-1.24345e-14 776,-3.55271e-15 776,-26"/>
+<text text-anchor="middle" x="728" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<h5>Module Graph</h5>
+<p>Solid arrows point from a parent (sub)module to the submodule which is
+descended from it. Dashed arrows point from a module being used to the
+module using it.</p>
+<h5>Type Graph</h5>
+<p>Solid arrows point from one derived type to another which extends
+(inherits from) it. Dashed arrows point from a derived type to another
+type containing it as a components, with a label listing the name(s) of
+said component(s).</p>
+<h5>Call Graph</h5>
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.</p>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+    <br><br>
+    
+    <p>An abstract data type representing a list. This is a fully dynamic
+ means of storing data of a single type and comes with many advanced
+ type-bound procedures for manipulating said data. This derived type
+ aims to provide many of the same features found in lists in 
+ higher-level languages such as Python</p>
+    
+    
+    <h3>Inherited By</h3>
+    
+                <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.26.3 (20100126.1600)
+ -->
+<!-- Title: type~~list~~InheritedByGraph Pages: 1 -->
+<svg id="typelistInheritedByGraph" width="154pt" height="34pt"
+ viewBox="0.00 0.00 154.00 34.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="type~~list~~InheritedByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 30)">
+<title>type~~list~~InheritedByGraph</title>
+<polygon fill="white" stroke="white" points="-4,5 -4,-30 151,-30 151,5 -4,5"/>
+<!-- type~list -->
+<g id="node1" class="node"><title>type~list</title>
+<polygon fill="none" stroke="black" points="54,-26 2.13163e-14,-26 0,-1.24345e-14 54,-3.55271e-15 54,-26"/>
+<text text-anchor="middle" x="27" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50">list</text>
+</g>
+<!-- type~array_list -->
+<g id="node2" class="node"><title>type~array_list</title>
+<a xlink:href="../type/array_list.html" xlink:title="array_list">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="146,-26 90,-26 90,-1.24345e-14 146,-3.55271e-15 146,-26"/>
+<text text-anchor="middle" x="118" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">array_list</text>
+</a>
+</g>
+<!-- type~list&#45;&gt;type~array_list -->
+<g id="edge2" class="edge"><title>type~list&#45;&gt;type~array_list</title>
+<path fill="none" stroke="black" d="M54.303,-13C62.268,-13 71.1237,-13 79.6375,-13"/>
+<polygon fill="black" stroke="black" points="79.77,-16.5001 89.77,-13 79.77,-9.5001 79.77,-16.5001"/>
+</g>
+</g>
+</svg>
+</div>
+                <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
+                <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                      </div>
+                      <div class="modal-body">
+                        
+Nodes of different colours represent the following:
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.26.3 (20100126.1600)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.80" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph1" class="graph" transform="scale(0.817602 0.817602) rotate(0) translate(4 30)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="white" points="-4,5 -4,-30 781,-30 781,5 -4,5"/>
+<!-- Module -->
+<g id="node1" class="node"><title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-26 2.13163e-14,-26 0,-1.24345e-14 54,-3.55271e-15 54,-26"/>
+<text text-anchor="middle" x="27" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node"><title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="138,-26 72,-26 72,-1.24345e-14 138,-3.55271e-15 138,-26"/>
+<text text-anchor="middle" x="105" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Type -->
+<g id="node3" class="node"><title>Type</title>
+<polygon fill="#5cb85c" stroke="#5cb85c" points="210,-26 156,-26 156,-1.24345e-14 210,-3.55271e-15 210,-26"/>
+<text text-anchor="middle" x="183" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type</text>
+</g>
+<!-- Subroutine -->
+<g id="node4" class="node"><title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="292,-26 228,-26 228,-1.24345e-14 292,-3.55271e-15 292,-26"/>
+<text text-anchor="middle" x="260" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node5" class="node"><title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="364,-26 310,-26 310,-1.24345e-14 364,-3.55271e-15 364,-26"/>
+<text text-anchor="middle" x="337" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node6" class="node"><title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="436,-26 382,-26 382,-1.24345e-14 436,-3.55271e-15 436,-26"/>
+<text text-anchor="middle" x="409" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node7" class="node"><title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="590,-26 454,-26 454,-1.24345e-14 590,-3.55271e-15 590,-26"/>
+<text text-anchor="middle" x="522" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node8" class="node"><title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="662,-26 608,-26 608,-1.24345e-14 662,-3.55271e-15 662,-26"/>
+<text text-anchor="middle" x="635" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node9" class="node"><title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="776,-26 680,-26 680,-1.24345e-14 776,-3.55271e-15 776,-26"/>
+<text text-anchor="middle" x="728" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<h5>Module Graph</h5>
+<p>Solid arrows point from a parent (sub)module to the submodule which is
+descended from it. Dashed arrows point from a module being used to the
+module using it.</p>
+<h5>Type Graph</h5>
+<p>Solid arrows point from one derived type to another which extends
+(inherits from) it. Dashed arrows point from a derived type to another
+type containing it as a components, with a label listing the name(s) of
+said component(s).</p>
+<h5>Call Graph</h5>
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.</p>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+    
+    
+    
+    
+    
+    
+    
+     
+    <section>
+    <h2>Type-Bound Procedures</h2>
+    
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-append%7E2"></span><h3>procedure(<a href='../interface/append_sub.html'>append_sub</a>), public, deferred :: <strong>append</strong>  
+    
+  </h3></div>
+  
+  <div class="panel-body">
+    
+
+
+    <p>Add an item to the end of the list</p>
+  </div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+         
+            
+    
+    <h3>
+subroutine <a href='../interface/append_sub.html'>append_sub</a>(this, item)
+    
+    
+    
+<small>Prototype</small></h3>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/list.html'>list</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>this</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>item</strong></td><td><p>Item to be appended to list</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+        
+
+         
+      
+      </li>
+    
+  </ul>
+</div>
+
+    
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-get%7E2"></span><h3>procedure(<a href='../interface/get_func.html'>get_func</a>), public, deferred :: <strong>get</strong>  
+    
+  </h3></div>
+  
+  <div class="panel-body">
+    
+
+
+    <p>Get the item at the specified index</p>
+  </div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+         
+            
+    
+    <h3>
+pure function <a href='../interface/get_func.html'>get_func</a>(this, element)
+    
+    
+    
+<small>Prototype</small></h3>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/list.html'>list</a>),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>this</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>element</strong></td><td><p>The index (starting from 1) of the element to return</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>class(<a href='../type/container.html'>container</a>),
+  allocatable</small></h4>
+  <p>The item with index <code>element</code></p>
+    
+        
+
+         
+      
+      </li>
+    
+  </ul>
+</div>
+
+    
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-set_single%7E2"></span><h3>procedure(<a href='../interface/set_single_sub.html'>set_single_sub</a>), private, deferred :: <strong>set_single</strong>  
+    
+  </h3></div>
+  
+  <div class="panel-body">
+    
+
+
+    <p>Set the specified element to the specified value</p>
+  </div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+         
+            
+    
+    <h3>
+subroutine <a href='../interface/set_single_sub.html'>set_single_sub</a>(this, element, item)
+    
+    
+    
+<small>Prototype</small></h3>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/list.html'>list</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>this</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>element</strong></td><td><p>The index (starting from 1) of the element whose value is to be set.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>item</strong></td><td><p>The value to store in the specified element</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+        
+
+         
+      
+      </li>
+    
+  </ul>
+</div>
+
+    
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-set_multiple%7E2"></span><h3>procedure(<a href='../interface/set_multiple_sub.html'>set_multiple_sub</a>), private, deferred :: <strong>set_multiple</strong>  
+    
+  </h3></div>
+  
+  <div class="panel-body">
+    
+
+
+    <p>Set the specified elements to the specified values</p>
+  </div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+         
+            
+    
+    <h3>
+subroutine <a href='../interface/set_multiple_sub.html'>set_multiple_sub</a>(this, elements, items)
+    
+    
+    
+<small>Prototype</small></h3>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/list.html'>list</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>this</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>dimension(:)</td><td>::</td>
+  <td><strong>elements</strong></td><td><p>The indices (starting from 1) of the elements whose values 
+ are to be set.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(*),</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>dimension(:)</td><td>::</td>
+  <td><strong>items</strong></td><td><p>The values to be stored in the specified elements. Each item
+ is placed in the element specified by the integer in the
+ corresponding position in the array <code>elements</code>.</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+        
+
+         
+      
+      </li>
+    
+  </ul>
+</div>
+
+    
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-set%7E3"></span><h3>generic, public :: <strong>set</strong>  => <a href='../type/list.html#boundprocedure-set_single%7E2'>set_single</a>, <a href='../type/list.html#boundprocedure-set_multiple%7E2'>set_multiple</a> 
+    
+  </h3></div>
+  
+  <div class="panel-body">
+    
+
+
+    <p>Set the value of one or more elements in the list</p>
+  </div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+         
+            
+                
+    
+    <h3>
+subroutine <a href='../interface/set_single_sub.html'>set_single_sub</a>(this, element, item)
+    
+    
+    
+<small>Prototype</small></h3>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/list.html'>list</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>this</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>element</strong></td><td><p>The index (starting from 1) of the element whose value is to be set.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>item</strong></td><td><p>The value to store in the specified element</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+        
+
+            
+         
+      
+      </li>
+    
+      <li class="list-group-item">
+      
+         
+            
+                
+    
+    <h3>
+subroutine <a href='../interface/set_multiple_sub.html'>set_multiple_sub</a>(this, elements, items)
+    
+    
+    
+<small>Prototype</small></h3>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/list.html'>list</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>this</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>dimension(:)</td><td>::</td>
+  <td><strong>elements</strong></td><td><p>The indices (starting from 1) of the elements whose values 
+ are to be set.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(*),</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>dimension(:)</td><td>::</td>
+  <td><strong>items</strong></td><td><p>The values to be stored in the specified elements. Each item
+ is placed in the element specified by the integer in the
+ corresponding position in the array <code>elements</code>.</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+        
+
+            
+         
+      
+      </li>
+    
+  </ul>
+</div>
+
+    
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-get_index%7E2"></span><h3>procedure(<a href='../interface/get_index_func.html'>get_index_func</a>), public, deferred :: <strong>get_index</strong>  
+    
+  </h3></div>
+  
+  <div class="panel-body">
+    
+
+
+    <p>Get the index of the first occurrence of this item in the list</p>
+  </div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+         
+            
+    
+    <h3>
+pure function <a href='../interface/get_index_func.html'>get_index_func</a>(this, item)
+    
+    
+    
+<small>Prototype</small></h3>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/list.html'>list</a>),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>this</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>item</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>integer
+  </small></h4>
+  <p>Position of the first occurrence of <code>item</code> in list</p>
+    
+        
+
+         
+      
+      </li>
+    
+  </ul>
+</div>
+
+    
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-get_last_index%7E2"></span><h3>procedure(<a href='../interface/get_last_index_func.html'>get_last_index_func</a>), public, deferred :: <strong>get_last_index</strong>  
+    
+  </h3></div>
+  
+  <div class="panel-body">
+    
+
+
+    <p>Get the index of the last occurrence of this item in the list</p>
+  </div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+         
+            
+    
+    <h3>
+pure function <a href='../interface/get_last_index_func.html'>get_last_index_func</a>(this, item)
+    
+    
+    
+<small>Prototype</small></h3>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/list.html'>list</a>),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>this</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>item</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>integer
+  </small></h4>
+  <p>Position of the last occurrence of <code>item</code> in list</p>
+    
+        
+
+         
+      
+      </li>
+    
+  </ul>
+</div>
+
+    
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-get_indices%7E2"></span><h3>procedure(<a href='../interface/get_indices_func.html'>get_indices_func</a>), public, deferred :: <strong>get_indices</strong>  
+    
+  </h3></div>
+  
+  <div class="panel-body">
+    
+
+
+    <p>Get the indices of all occurrences of this item in the list</p>
+  </div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+         
+            
+    
+    <h3>
+pure function <a href='../interface/get_indices_func.html'>get_indices_func</a>(this, item)
+    
+    
+    
+<small>Prototype</small></h3>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/list.html'>list</a>),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>this</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>item</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>integer,
+  dimension(:),allocatable</small></h4>
+  <p>Positions of the all occurrences of <code>item</code> in list</p>
+    
+        
+
+         
+      
+      </li>
+    
+  </ul>
+</div>
+
+    
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-slice%7E2"></span><h3>procedure(<a href='../interface/slice_func.html'>slice_func</a>), public, deferred :: <strong>slice</strong>  
+    
+  </h3></div>
+  
+  <div class="panel-body">
+    
+
+
+    <p>Returns a list containing the items with indices in the
+ specified range</p>
+  </div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+         
+            
+    
+    <h3>
+function <a href='../interface/slice_func.html'>slice_func</a>(this, start_element, end_element)
+    
+    
+    
+<small>Prototype</small></h3>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/list.html'>list</a>),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>this</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>start_element</strong></td><td><p>The index of the first element in the slice to be returned</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>end_element</strong></td><td><p>The index of the last element in the slice to be returned</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>class(<a href='../type/list.html'>list</a>),
+  allocatable</small></h4>
+  <p>A list containing the elements within the slice.</p>
+    
+        
+
+         
+      
+      </li>
+    
+  </ul>
+</div>
+
+    
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-foreach%7E2"></span><h3>procedure(<a href='../interface/foreach_sub.html'>foreach_sub</a>), public, deferred :: <strong>foreach</strong>  
+    
+  </h3></div>
+  
+  <div class="panel-body">
+    
+
+
+    <p>Perform the provided procedure on each element of the list</p>
+  </div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+         
+            
+    
+    <h3>
+subroutine <a href='../interface/foreach_sub.html'>foreach_sub</a>(this, action)
+    
+    
+    
+<small>Prototype</small></h3>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/list.html'>list</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>this</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>procedure(<a href='../interface/action_sub.html'>action_sub</a>)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>action</strong></td><td><p>A procedure to act on each element of the list</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+        
+
+         
+      
+      </li>
+    
+  </ul>
+</div>
+
+    
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-insert%7E2"></span><h3>procedure(<a href='../interface/insert_sub.html'>insert_sub</a>), public, deferred :: <strong>insert</strong>  
+    
+  </h3></div>
+  
+  <div class="panel-body">
+    
+
+
+    <p>Add the item to the specified position in the list, moving
+ all succeeding elements forward by one position</p>
+  </div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+         
+            
+    
+    <h3>
+subroutine <a href='../interface/insert_sub.html'>insert_sub</a>(this, position, item)
+    
+    
+    
+<small>Prototype</small></h3>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/list.html'>list</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>this</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>position</strong></td><td><p>The location at which the new element will be placed</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>item</strong></td><td><p>The value to be placed in the list</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+        
+
+         
+      
+      </li>
+    
+  </ul>
+</div>
+
+    
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-remove%7E3"></span><h3>procedure(<a href='../interface/remove_sub.html'>remove_sub</a>), public, deferred :: <strong>remove</strong>  
+    
+  </h3></div>
+  
+  <div class="panel-body">
+    
+
+
+    <p>Remove the first occurrence of the specified item from the list</p>
+  </div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+         
+            
+    
+    <h3>
+subroutine <a href='../interface/remove_sub.html'>remove_sub</a>(this, item)
+    
+    
+    
+<small>Prototype</small></h3>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/list.html'>list</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>this</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>item</strong></td><td><p>An item, the first occurrence of which will be removed from
+ the list</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+        
+
+         
+      
+      </li>
+    
+  </ul>
+</div>
+
+    
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-remove_last%7E2"></span><h3>procedure(<a href='../interface/remove_last_sub.html'>remove_last_sub</a>), public, deferred :: <strong>remove_last</strong>  
+    
+  </h3></div>
+  
+  <div class="panel-body">
+    
+
+
+    <p>Remove the last occurrence of the specified item from the list</p>
+  </div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+         
+            
+    
+    <h3>
+subroutine <a href='../interface/remove_last_sub.html'>remove_last_sub</a>(this, item)
+    
+    
+    
+<small>Prototype</small></h3>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/list.html'>list</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>this</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>item</strong></td><td><p>An item, the last occurrence of which will be removed from
+ the list</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+        
+
+         
+      
+      </li>
+    
+  </ul>
+</div>
+
+    
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-remove_all%7E2"></span><h3>procedure(<a href='../interface/remove_all_sub.html'>remove_all_sub</a>), public, deferred :: <strong>remove_all</strong>  
+    
+  </h3></div>
+  
+  <div class="panel-body">
+    
+
+
+    <p>Remove the all occurrences of the specified item from the list</p>
+  </div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+         
+            
+    
+    <h3>
+subroutine <a href='../interface/remove_all_sub.html'>remove_all_sub</a>(this, item)
+    
+    
+    
+<small>Prototype</small></h3>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/list.html'>list</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>this</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>item</strong></td><td><p>An item, all occurrences of which will be removed from the
+ list</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+        
+
+         
+      
+      </li>
+    
+  </ul>
+</div>
+
+    
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-delete_single%7E2"></span><h3>procedure(<a href='../interface/delete_single_sub.html'>delete_single_sub</a>), private, deferred :: <strong>delete_single</strong>  
+    
+  </h3></div>
+  
+  <div class="panel-body">
+    
+
+
+    <p>Remove the item from the list at the specified index</p>
+  </div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+         
+            
+    
+    <h3>
+subroutine <a href='../interface/delete_single_sub.html'>delete_single_sub</a>(this, element)
+    
+    
+    
+<small>Prototype</small></h3>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/list.html'>list</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>this</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>element</strong></td><td><p>The position of the element to be deleted from the list</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+        
+
+         
+      
+      </li>
+    
+  </ul>
+</div>
+
+    
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-delete_multiple%7E2"></span><h3>procedure(<a href='../interface/delete_multiple_sub.html'>delete_multiple_sub</a>), private, deferred :: <strong>delete_multiple</strong>  
+    
+  </h3></div>
+  
+  <div class="panel-body">
+    
+
+
+    <p>Remove the items from the list at the specified indices</p>
+  </div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+         
+            
+    
+    <h3>
+subroutine <a href='../interface/delete_multiple_sub.html'>delete_multiple_sub</a>(this, element)
+    
+    
+    
+<small>Prototype</small></h3>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/list.html'>list</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>this</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>dimension(:)</td><td>::</td>
+  <td><strong>element</strong></td><td><p>The positions of the elements to be deleted from the list</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+        
+
+         
+      
+      </li>
+    
+  </ul>
+</div>
+
+    
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-delete_slice%7E2"></span><h3>procedure(<a href='../interface/delete_slice_sub.html'>delete_slice_sub</a>), private, deferred :: <strong>delete_slice</strong>  
+    
+  </h3></div>
+  
+  <div class="panel-body">
+    
+
+
+    <p>Remove the items from the list within the specified slice</p>
+  </div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+         
+            
+    
+    <h3>
+subroutine <a href='../interface/delete_slice_sub.html'>delete_slice_sub</a>(this, start_element, end_element)
+    
+    
+    
+<small>Prototype</small></h3>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/list.html'>list</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>this</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>start_element</strong></td><td><p>Index of the first element in the slice to be deleted</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>end_element</strong></td><td><p>Index of the last element in the slice to be deleted</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+        
+
+         
+      
+      </li>
+    
+  </ul>
+</div>
+
+    
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-delete"></span><h3>generic, public :: <strong>delete</strong>  => <a href='../type/list.html#boundprocedure-delete_single%7E2'>delete_single</a>, <a href='../type/list.html#boundprocedure-delete_multiple%7E2'>delete_multiple</a>, <a href='../type/list.html#boundprocedure-delete_slice%7E2'>delete_slice</a> 
+    
+  </h3></div>
+  
+  <div class="panel-body">
+    
+
+
+    <p>Remove one or more elements from the list</p>
+  </div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+         
+            
+                
+    
+    <h3>
+subroutine <a href='../interface/delete_single_sub.html'>delete_single_sub</a>(this, element)
+    
+    
+    
+<small>Prototype</small></h3>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/list.html'>list</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>this</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>element</strong></td><td><p>The position of the element to be deleted from the list</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+        
+
+            
+         
+      
+      </li>
+    
+      <li class="list-group-item">
+      
+         
+            
+                
+    
+    <h3>
+subroutine <a href='../interface/delete_multiple_sub.html'>delete_multiple_sub</a>(this, element)
+    
+    
+    
+<small>Prototype</small></h3>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/list.html'>list</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>this</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>dimension(:)</td><td>::</td>
+  <td><strong>element</strong></td><td><p>The positions of the elements to be deleted from the list</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+        
+
+            
+         
+      
+      </li>
+    
+      <li class="list-group-item">
+      
+         
+            
+                
+    
+    <h3>
+subroutine <a href='../interface/delete_slice_sub.html'>delete_slice_sub</a>(this, start_element, end_element)
+    
+    
+    
+<small>Prototype</small></h3>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/list.html'>list</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>this</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>start_element</strong></td><td><p>Index of the first element in the slice to be deleted</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>end_element</strong></td><td><p>Index of the last element in the slice to be deleted</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+        
+
+            
+         
+      
+      </li>
+    
+  </ul>
+</div>
+
+    
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-has%7E3"></span><h3>procedure(<a href='../interface/has_func%7E2.html'>has_func</a>), public, deferred :: <strong>has</strong>  
+    
+  </h3></div>
+  
+  <div class="panel-body">
+    
+
+
+    <p>Returns <code>.true.</code> if the specified item is present in the list.</p>
+  </div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+         
+            
+    
+    <h3>
+elemental function <a href='../interface/has_func%7E2.html'>has_func</a>(this, item)
+    
+    
+    
+<small>Prototype</small></h3>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/list.html'>list</a>),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>this</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>item</strong></td><td><p>A value whose presence in the list is being checked for</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>logical
+  </small></h4>
+  <p><code>.true.</code> if <code>item</code> is present in list, <code>.false.</code> otherwise</p>
+    
+        
+
+         
+      
+      </li>
+    
+  </ul>
+</div>
+
+    
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-sort%7E2"></span><h3>procedure(<a href='../interface/sort_sub.html'>sort_sub</a>), public, deferred :: <strong>sort</strong>  
+    
+  </h3></div>
+  
+  <div class="panel-body">
+    
+
+
+    <p>Sorts the list in place using the provided comparison procedure</p>
+  </div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+         
+            
+    
+    <h3>
+subroutine <a href='../interface/sort_sub.html'>sort_sub</a>(this, comparison)
+    
+    
+    
+<small>Prototype</small></h3>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/list.html'>list</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>this</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>procedure(<a href='../interface/comparison_func.html'>comparison_func</a>)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>comparison</strong></td><td><p>A procedure which evaluates whether a <a href="../type/container.html">container</a> object is
+ less than, equal to, or greater than another</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+        
+
+         
+      
+      </li>
+    
+  </ul>
+</div>
+
+    
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-min%7E3"></span><h3>procedure(<a href='../interface/min_func%7E2.html'>min_func</a>), public, deferred :: <strong>min</strong>  
+    
+  </h3></div>
+  
+  <div class="panel-body">
+    
+
+
+    <p>Returns the smallest item in the list as determined using the
+ provided comparison procedure</p>
+  </div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+         
+            
+    
+    <h3>
+pure function <a href='../interface/min_func%7E2.html'>min_func</a>(this, comparison)
+    
+    
+    
+<small>Prototype</small></h3>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/list.html'>list</a>),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>this</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>procedure(<a href='../interface/comparison_func.html'>comparison_func</a>)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>comparison</strong></td><td><p>A procedure which evaluates whether a <a href="../type/container.html">container</a> object is
+ less than, equal to, or greater than another    </p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>class(<a href='../type/container.html'>container</a>),
+  allocatable</small></h4>
+  <p>The smallest item in the list, as determined by the
+ <code>comparison</code> function</p>
+    
+        
+
+         
+      
+      </li>
+    
+  </ul>
+</div>
+
+    
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-max%7E3"></span><h3>procedure(<a href='../interface/max_func%7E2.html'>max_func</a>), public, deferred :: <strong>max</strong>  
+    
+  </h3></div>
+  
+  <div class="panel-body">
+    
+
+
+    <p>Returns the largest item in the list as determined using the
+ provided comparison procedure</p>
+  </div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+         
+            
+    
+    <h3>
+pure function <a href='../interface/max_func%7E2.html'>max_func</a>(this, comparison)
+    
+    
+    
+<small>Prototype</small></h3>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/list.html'>list</a>),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>this</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>procedure(<a href='../interface/comparison_func.html'>comparison_func</a>)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>comparison</strong></td><td><p>A procedure which evaluates whether a <a href="../type/container.html">container</a> object is
+ less than, equal to, or greater than another    </p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>class(<a href='../type/container.html'>container</a>),
+  allocatable</small></h4>
+  <p>The largest item in the list, as determined by the
+ <code>comparison</code> function</p>
+    
+        
+
+         
+      
+      </li>
+    
+  </ul>
+</div>
+
+    
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-nearest%7E3"></span><h3>procedure(<a href='../interface/nearest_func%7E2.html'>nearest_func</a>), public, deferred :: <strong>nearest</strong>  
+    
+  </h3></div>
+  
+  <div class="panel-body">
+    
+
+
+    <p>Returns the item in the list for which the provided subtraction
+ procedure returns the smallest absolute value</p>
+  </div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+         
+            
+    
+    <h3>
+pure function <a href='../interface/nearest_func%7E2.html'>nearest_func</a>(this, item, subtraction)
+    
+    
+    
+<small>Prototype</small></h3>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/list.html'>list</a>),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>this</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>item</strong></td><td><p>The value which those in the list are being compared to</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>procedure(<a href='../interface/subtraction_func.html'>subtraction_func</a>)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>subtraction</strong></td><td><p>A function determining the magnitude of the difference
+ between two items</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>class(<a href='../type/container.html'>container</a>),
+  allocatable</small></h4>
+  <p>The value from the list which, when passed to <code>subtraction</code>
+ with <code>item</code> as the other argument, returns the smallest value</p>
+    
+        
+
+         
+      
+      </li>
+    
+  </ul>
+</div>
+
+    
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-sum%7E3"></span><h3>procedure(<a href='../interface/sum_func%7E2.html'>sum_func</a>), public, deferred :: <strong>sum</strong>  
+    
+  </h3></div>
+  
+  <div class="panel-body">
+    
+
+
+    <p>Returns an item representing the sum as determined by
+ iteratively applying the provided addition procedure to all
+ elements in the list</p>
+  </div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+         
+            
+    
+    <h3>
+pure function <a href='../interface/sum_func%7E2.html'>sum_func</a>(this, addition)
+    
+    
+    
+<small>Prototype</small></h3>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/list.html'>list</a>),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>this</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>procedure(<a href='../interface/addition_func.html'>addition_func</a>)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>addition</strong></td><td><p>A procedure performing addition between two <a href="../type/container.html">container</a>
+ objects and returning the result in another container</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>class(<a href='../type/container.html'>container</a>),
+  allocatable</small></h4>
+  <p>A container holding the sum of all of the items held within
+ this list</p>
+    
+        
+
+         
+      
+      </li>
+    
+  </ul>
+</div>
+
+    
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-filter%7E3"></span><h3>procedure(<a href='../interface/filter_func%7E2.html'>filter_func</a>), public, deferred :: <strong>filter</strong>  
+    
+  </h3></div>
+  
+  <div class="panel-body">
+    
+
+
+    <p>Returns a list containing all elements from this list for which
+ the provided test procedure returns <code>.true.</code></p>
+  </div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+         
+            
+    
+    <h3>
+pure function <a href='../interface/filter_func%7E2.html'>filter_func</a>(this, test)
+    
+    
+    
+<small>Prototype</small></h3>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/list.html'>list</a>),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>this</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>procedure(<a href='../interface/test_func.html'>test_func</a>)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>test</strong></td><td><p>A test for which the values that pass will be returned in a
+ new list</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>class(<a href='../type/list.html'>list</a>),
+  allocatable</small></h4>
+  <p>Contains those items in this list for which <code>test</code> returns
+ <code>.true.</code></p>
+    
+        
+
+         
+      
+      </li>
+    
+  </ul>
+</div>
+
+    
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-to_array%7E2"></span><h3>procedure(<a href='../interface/to_array_func.html'>to_array_func</a>), public, deferred :: <strong>to_array</strong>  
+    
+  </h3></div>
+  
+  <div class="panel-body">
+    
+
+
+    <p>Returns an array of containers holding the contents of this
+ list.</p>
+  </div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+         
+            
+    
+    <h3>
+pure function <a href='../interface/to_array_func.html'>to_array_func</a>(this)
+    
+    
+    
+<small>Prototype</small></h3>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/list.html'>list</a>),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>this</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>class(<a href='../type/container.html'>container</a>),
+  dimension(:),allocatable</small></h4>
+  <p>An array of <a href="../type/container.html">container</a> objects holding the contents of
+ this list</p>
+    
+        
+
+         
+      
+      </li>
+    
+  </ul>
+</div>
+
+    
+    </section>
+    
+    
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="highlight"><pre><span></span>  <span class="k">type</span><span class="p">,</span> <span class="k">abstract</span><span class="p">,</span> <span class="k">extends</span><span class="p">(</span><span class="n">deque</span><span class="p">),</span> <span class="k">public</span> <span class="kd">::</span> <span class="n">list</span>
+    <span class="c">!* Author: Chris MacMackin</span>
+    <span class="c">!  Date: March 2016</span>
+    <span class="c">!</span>
+    <span class="c">! An abstract data type representing a list. This is a fully dynamic</span>
+    <span class="c">! means of storing data of a single type and comes with many advanced</span>
+    <span class="c">! type-bound procedures for manipulating said data. This derived type</span>
+    <span class="c">! aims to provide many of the same features found in lists in </span>
+    <span class="c">! higher-level languages such as Python</span>
+    <span class="c">!</span>
+  <span class="k">contains</span>
+<span class="k">    procedure</span><span class="p">(</span><span class="n">append_sub</span><span class="p">),</span> <span class="k">deferred</span> <span class="kd">::</span> <span class="n">append</span>
+      <span class="c">!! Add an item to the end of the list</span>
+    <span class="k">procedure</span><span class="p">(</span><span class="n">get_func</span><span class="p">),</span> <span class="k">deferred</span> <span class="kd">::</span> <span class="n">get</span>
+      <span class="c">!! Get the item at the specified index</span>
+    <span class="k">procedure</span><span class="p">(</span><span class="n">set_single_sub</span><span class="p">),</span> <span class="k">deferred</span><span class="p">,</span> <span class="k">private</span> <span class="kd">::</span> <span class="n">set_single</span>
+      <span class="c">!! Set the specified element to the specified value</span>
+    <span class="k">procedure</span><span class="p">(</span><span class="n">set_multiple_sub</span><span class="p">),</span> <span class="k">deferred</span><span class="p">,</span> <span class="k">private</span> <span class="kd">::</span> <span class="n">set_multiple</span>
+      <span class="c">!! Set the specified elements to the specified values</span>
+    <span class="k">generic</span> <span class="kd">::</span> <span class="n">set</span> <span class="o">=&gt;</span> <span class="n">set_single</span><span class="p">,</span> <span class="n">set_multiple</span>
+      <span class="c">!! Set the value of one or more elements in the list</span>
+    <span class="k">procedure</span><span class="p">(</span><span class="n">get_index_func</span><span class="p">),</span> <span class="k">deferred</span> <span class="kd">::</span> <span class="n">get_index</span>
+      <span class="c">!! Get the index of the first occurrence of this item in the list</span>
+    <span class="k">procedure</span><span class="p">(</span><span class="n">get_last_index_func</span><span class="p">),</span> <span class="k">deferred</span> <span class="kd">::</span> <span class="n">get_last_index</span>
+      <span class="c">!! Get the index of the last occurrence of this item in the list</span>
+    <span class="k">procedure</span><span class="p">(</span><span class="n">get_indices_func</span><span class="p">),</span> <span class="k">deferred</span> <span class="kd">::</span> <span class="n">get_indices</span>
+      <span class="c">!! Get the indices of all occurrences of this item in the list</span>
+    <span class="k">procedure</span><span class="p">(</span><span class="n">slice_func</span><span class="p">),</span> <span class="k">deferred</span> <span class="kd">::</span> <span class="n">slice</span>
+      <span class="c">!! Returns a list containing the items with indices in the</span>
+      <span class="c">!! specified range</span>
+    <span class="k">procedure</span><span class="p">(</span><span class="n">foreach_sub</span><span class="p">),</span> <span class="k">deferred</span> <span class="kd">::</span> <span class="n">foreach</span>
+      <span class="c">!! Perform the provided procedure on each element of the list</span>
+    <span class="k">procedure</span><span class="p">(</span><span class="n">insert_sub</span><span class="p">),</span> <span class="k">deferred</span> <span class="kd">::</span> <span class="n">insert</span>
+      <span class="c">!! Add the item to the specified position in the list, moving</span>
+      <span class="c">!! all succeeding elements forward by one position</span>
+    <span class="k">procedure</span><span class="p">(</span><span class="n">remove_sub</span><span class="p">),</span> <span class="k">deferred</span> <span class="kd">::</span> <span class="n">remove</span>
+      <span class="c">!! Remove the first occurrence of the specified item from the list</span>
+    <span class="k">procedure</span><span class="p">(</span><span class="n">remove_last_sub</span><span class="p">),</span> <span class="k">deferred</span> <span class="kd">::</span> <span class="n">remove_last</span>
+      <span class="c">!! Remove the last occurrence of the specified item from the list</span>
+    <span class="k">procedure</span><span class="p">(</span><span class="n">remove_all_sub</span><span class="p">),</span> <span class="k">deferred</span> <span class="kd">::</span> <span class="n">remove_all</span>
+      <span class="c">!! Remove the all occurrences of the specified item from the list</span>
+    <span class="k">procedure</span><span class="p">(</span><span class="n">delete_single_sub</span><span class="p">),</span> <span class="k">deferred</span><span class="p">,</span> <span class="k">private</span> <span class="kd">::</span> <span class="n">delete_single</span>
+      <span class="c">!! Remove the item from the list at the specified index</span>
+    <span class="k">procedure</span><span class="p">(</span><span class="n">delete_multiple_sub</span><span class="p">),</span> <span class="k">deferred</span><span class="p">,</span> <span class="k">private</span> <span class="kd">::</span> <span class="n">delete_multiple</span>
+      <span class="c">!! Remove the items from the list at the specified indices</span>
+    <span class="k">procedure</span><span class="p">(</span><span class="n">delete_slice_sub</span><span class="p">),</span> <span class="k">deferred</span><span class="p">,</span> <span class="k">private</span> <span class="kd">::</span> <span class="n">delete_slice</span>
+      <span class="c">!! Remove the items from the list within the specified slice</span>
+    <span class="k">generic</span> <span class="kd">::</span> <span class="n">delete</span> <span class="o">=&gt;</span> <span class="n">delete_single</span><span class="p">,</span> <span class="n">delete_multiple</span><span class="p">,</span> <span class="n">delete_slice</span>
+      <span class="c">!! Remove one or more elements from the list</span>
+    <span class="k">procedure</span><span class="p">(</span><span class="n">has_func</span><span class="p">),</span> <span class="k">deferred</span> <span class="kd">::</span> <span class="n">has</span>
+      <span class="c">!! Returns `.true.` if the specified item is present in the list.</span>
+    <span class="k">procedure</span><span class="p">(</span><span class="n">sort_sub</span><span class="p">),</span> <span class="k">deferred</span> <span class="kd">::</span> <span class="n">sort</span>
+      <span class="c">!! Sorts the list in place using the provided comparison procedure</span>
+    <span class="k">procedure</span><span class="p">(</span><span class="n">min_func</span><span class="p">),</span> <span class="k">deferred</span> <span class="kd">::</span> <span class="nb">min</span>
+      <span class="c">!! Returns the smallest item in the list as determined using the</span>
+      <span class="c">!! provided comparison procedure</span>
+    <span class="k">procedure</span><span class="p">(</span><span class="n">max_func</span><span class="p">),</span> <span class="k">deferred</span> <span class="kd">::</span> <span class="nb">max</span>
+      <span class="c">!! Returns the largest item in the list as determined using the</span>
+      <span class="c">!! provided comparison procedure</span>
+    <span class="k">procedure</span><span class="p">(</span><span class="n">nearest_func</span><span class="p">),</span> <span class="k">deferred</span> <span class="kd">::</span> <span class="nb">nearest</span>
+      <span class="c">!! Returns the item in the list for which the provided subtraction</span>
+      <span class="c">!! procedure returns the smallest absolute value</span>
+    <span class="k">procedure</span><span class="p">(</span><span class="n">sum_func</span><span class="p">),</span> <span class="k">deferred</span> <span class="kd">::</span> <span class="nb">sum</span>
+      <span class="c">!! Returns an item representing the sum as determined by</span>
+      <span class="c">!! iteratively applying the provided addition procedure to all</span>
+      <span class="c">!! elements in the list</span>
+    <span class="k">procedure</span><span class="p">(</span><span class="n">filter_func</span><span class="p">),</span> <span class="k">deferred</span> <span class="kd">::</span> <span class="n">filter</span>
+      <span class="c">!! Returns a list containing all elements from this list for which</span>
+      <span class="c">!! the provided test procedure returns `.true.`</span>
+    <span class="k">procedure</span><span class="p">(</span><span class="n">to_array_func</span><span class="p">),</span> <span class="k">deferred</span> <span class="kd">::</span> <span class="n">to_array</span>
+      <span class="c">!! Returns an array of containers holding the contents of this</span>
+      <span class="c">!! list.</span>
+  <span class="k">end type </span><span class="n">list</span>
+</pre></div>
+
+    </section>
+    
+    
+    </div>
+  </div>
+
+    <hr>
+    <footer>
+        <div class="row">
+        <div class="col-md-4">&copy; 2016 </div>
+	<div class="col-md-4"><span class="text-center"> FIAT was developed by Chris MacMackin</span></div>
+        <div class="col-md-4"><span class="pull-right">Documentation generated by <a href="https://github.com/cmacmackin/ford">FORD</a></span></div>
+        </div>
+        <br>
+    </footer>
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js'],
+        'HTML-CSS': { 
+           styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: '#000000 ! important'} }
+        }
+      });
+    </script>
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  </body>
+</html>

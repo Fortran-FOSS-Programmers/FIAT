@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	 
+	 <meta name="description" content="Fortran Implementation of Abstract Types: generic implementations of common data structures in modern, object oriented Fortran.">
+    
+    <meta name="author" content="Chris MacMackin" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>multiset_mod &ndash; FIAT</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">FIAT </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+				
+                
+            <li><a href="../lists/files.html">Source Files</a></li>
+				
+				
+            <li><a href="../lists/modules.html">Modules</a></li>
+				
+				
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+				
+				
+            <li><a href="../lists/absint.html">Abstract Interfaces</a></li>
+								
+            <li><a href="../lists/types.html">Derived Types</a></li>
+				
+				
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>multiset_mod 
+    <small>Module</small>
+    
+    </h1>
+	 
+<div class="row">
+<div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+    <li><i class="fa fa-pencil"></i> Chris MacMackin</li>
+     
+     
+    <li><i class="fa fa-calendar-o"></i> March 2016</li>
+     
+     
+    <li><i class="fa fa-legal"></i> LGPLv3</li>
+     
+     
+    
+    
+    <li><i class="fa fa-code"></i><a href="../src/multiset.f90"> Source File</a></li>
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+     <li><a href='../sourcefile/multiset.f90.html'>multiset.f90</a></li>
+  
+     <li class="active">multiset_mod</li>
+  </ol>
+</div>
+</div>
+</div>
+    
+  </div>
+  
+  <div class="row">
+    <div class="col-lg-3">
+    
+<div id="sidebar">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <div class="panel panel-primary">
+    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#absints">Abstract Interfaces</a></h3></div>
+    <div id="absints" class="panel-collapse collapse">
+        <div class="list-group">
+          
+          <a class="list-group-item" href="../module/multiset_mod.html#interface-get_func%7E4">get_func</a>
+          
+        </div>
+    </div>
+  </div>
+  
+  
+  
+  <div class="panel panel-primary">
+    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#types">Derived Types</a></h3></div>
+    <div id="types" class="panel-collapse collapse">
+      <div class="list-group">
+        
+        <a class="list-group-item" href="../module/multiset_mod.html#type-multiset">multiset</a>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <hr>
+  
+  <div class="panel panel-default">
+    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#allmods">All Modules</a></h3></div>
+    <div id="allmods" class="panel-collapse collapse">
+        <div class="list-group">
+          
+          <a class="list-group-item" href="../module/abstract_container_mod.html">abstract_container_mod</a>
+          
+          <a class="list-group-item" href="../module/array_list_mod.html">array_list_mod</a>
+          
+          <a class="list-group-item" href="../module/bidir_node_mod.html">bidir_node_mod</a>
+          
+          <a class="list-group-item" href="../module/container_mod.html">container_mod</a>
+          
+          <a class="list-group-item" href="../module/countable_mod.html">countable_mod</a>
+          
+          <a class="list-group-item" href="../module/data_set_mod.html">data_set_mod</a>
+          
+          <a class="list-group-item" href="../module/deque_mod.html">deque_mod</a>
+          
+          <a class="list-group-item" href="../module/dictionary_mod.html">dictionary_mod</a>
+          
+          <a class="list-group-item" href="../module/dynamic_set_mod.html">dynamic_set_mod</a>
+          
+          <a class="list-group-item" href="../module/iterable_mod.html">iterable_mod</a>
+          
+          <a class="list-group-item" href="../module/iterator_mod.html">iterator_mod</a>
+          
+          <a class="list-group-item" href="../module/linked_node_mod.html">linked_node_mod</a>
+          
+          <a class="list-group-item" href="../module/list_mod.html">list_mod</a>
+          
+          <a class="list-group-item" href="../module/map_mod.html">map_mod</a>
+          
+          <a class="list-group-item" href="../module/multimap_mod.html">multimap_mod</a>
+          
+          <a class="list-group-item" href="../module/multiset_mod.html">multiset_mod</a>
+          
+          <a class="list-group-item" href="../module/node_mod.html">node_mod</a>
+          
+          <a class="list-group-item" href="../module/ordered_mod.html">ordered_mod</a>
+          
+          <a class="list-group-item" href="../module/queue_mod.html">queue_mod</a>
+          
+        </div>
+    </div>
+  </div>
+  
+</div>
+
+    </div>
+    
+    <div class="col-lg-9" id='text'>
+    
+    
+  
+    <ul class="list-inline">
+      <li><h4>Uses:</h4></li>
+      
+      <li><a href='../module/dynamic_set_mod.html'>dynamic_set_mod</a></li>
+      
+    </ul>
+  
+
+    
+                <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.26.3 (20100126.1600)
+ -->
+<!-- Title: module~~multiset_mod~~UsesGraph Pages: 1 -->
+<svg id="modulemultiset_modUsesGraph" width="641pt" height="100pt"
+ viewBox="0.00 0.00 641.00 99.76" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~multiset_mod~~UsesGraph" class="graph" transform="scale(0.425631 0.425631) rotate(0) translate(4 230.371)">
+<title>module~~multiset_mod~~UsesGraph</title>
+<polygon fill="white" stroke="white" points="-4,5 -4,-230.371 1503,-230.371 1503,5 -4,5"/>
+<!-- module~multiset_mod -->
+<g id="node1" class="node"><title>module~multiset_mod</title>
+<polygon fill="none" stroke="black" points="1498,-191 1422,-191 1422,-165 1498,-165 1498,-191"/>
+<text text-anchor="middle" x="1460" y="-175.55" font-family="Helvetica,sans-Serif" font-size="10.50">multiset_mod</text>
+</g>
+<!-- module~dynamic_set_mod -->
+<g id="node2" class="node"><title>module~dynamic_set_mod</title>
+<a xlink:href="../module/dynamic_set_mod.html" xlink:title="dynamic_set_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="1386,-191 1286,-191 1286,-165 1386,-165 1386,-191"/>
+<text text-anchor="middle" x="1336" y="-175.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dynamic_set_mod</text>
+</a>
+</g>
+<!-- module~dynamic_set_mod&#45;&gt;module~multiset_mod -->
+<g id="edge50" class="edge"><title>module~dynamic_set_mod&#45;&gt;module~multiset_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M1386.08,-178C1394.58,-178 1403.4,-178 1411.86,-178"/>
+<polygon fill="black" stroke="black" points="1411.94,-181.5 1421.94,-178 1411.94,-174.5 1411.94,-181.5"/>
+</g>
+<!-- module~iterable_mod -->
+<g id="node3" class="node"><title>module~iterable_mod</title>
+<a xlink:href="../module/iterable_mod.html" xlink:title="iterable_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="473,-130 399,-130 399,-104 473,-104 473,-130"/>
+<text text-anchor="middle" x="436" y="-114.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">iterable_mod</text>
+</a>
+</g>
+<!-- module~iterable_mod&#45;&gt;module~dynamic_set_mod -->
+<g id="edge44" class="edge"><title>module~iterable_mod&#45;&gt;module~dynamic_set_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M448.217,-103.971C462.028,-89.9103 485.764,-67.6985 510,-54 575.704,-16.8633 595.527,-0 671,-0 671,-0 671,-0 1090,-0 1195.73,-0 1286.79,-109.266 1321.27,-156.581"/>
+<polygon fill="black" stroke="black" points="1318.56,-158.807 1327.22,-164.911 1324.25,-154.739 1318.56,-158.807"/>
+</g>
+<!-- module~countable_mod -->
+<g id="node12" class="node"><title>module~countable_mod</title>
+<a xlink:href="../module/countable_mod.html" xlink:title="countable_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="596,-89 510,-89 510,-63 596,-63 596,-89"/>
+<text text-anchor="middle" x="553" y="-73.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">countable_mod</text>
+</a>
+</g>
+<!-- module~iterable_mod&#45;&gt;module~countable_mod -->
+<g id="edge10" class="edge"><title>module~iterable_mod&#45;&gt;module~countable_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M473.341,-103.915C483.684,-100.29 495.047,-96.3084 505.87,-92.5158"/>
+<polygon fill="black" stroke="black" points="507.332,-95.7119 515.612,-89.1017 505.017,-89.1058 507.332,-95.7119"/>
+</g>
+<!-- module~ordered_mod -->
+<g id="node16" class="node"><title>module~ordered_mod</title>
+<a xlink:href="../module/ordered_mod.html" xlink:title="ordered_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="709,-130 633,-130 633,-104 709,-104 709,-130"/>
+<text text-anchor="middle" x="671" y="-114.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ordered_mod</text>
+</a>
+</g>
+<!-- module~iterable_mod&#45;&gt;module~ordered_mod -->
+<g id="edge28" class="edge"><title>module~iterable_mod&#45;&gt;module~ordered_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M473.757,-117C513.995,-117 577.858,-117 621.96,-117"/>
+<polygon fill="black" stroke="black" points="622.164,-120.5 632.164,-117 622.164,-113.5 622.164,-120.5"/>
+</g>
+<!-- module~abstract_container_mod -->
+<g id="node4" class="node"><title>module~abstract_container_mod</title>
+<a xlink:href="../module/abstract_container_mod.html" xlink:title="abstract_container_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="252,-171 124,-171 124,-145 252,-145 252,-171"/>
+<text text-anchor="middle" x="188" y="-155.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">abstract_container_mod</text>
+</a>
+</g>
+<!-- module~abstract_container_mod&#45;&gt;module~dynamic_set_mod -->
+<g id="edge46" class="edge"><title>module~abstract_container_mod&#45;&gt;module~dynamic_set_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M1090,-219C1161.35,-212.899 1179.6,-213.125 1250,-200 1259.77,-198.178 1270.08,-195.878 1280.03,-193.456"/>
+<polygon fill="black" stroke="black" points="1280.98,-196.826 1289.83,-191.006 1279.28,-190.035 1280.98,-196.826"/>
+</g>
+<!-- module~abstract_container_mod&#45;&gt;module~iterable_mod -->
+<g id="edge6" class="edge"><title>module~abstract_container_mod&#45;&gt;module~iterable_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M243.104,-144.958C257.653,-141.766 273.376,-138.542 288,-136 321.301,-130.211 359.102,-125.388 388.166,-122.049"/>
+<polygon fill="black" stroke="black" points="388.91,-125.487 398.454,-120.887 388.124,-118.532 388.91,-125.487"/>
+</g>
+<!-- module~data_set_mod -->
+<g id="node5" class="node"><title>module~data_set_mod</title>
+<a xlink:href="../module/data_set_mod.html" xlink:title="data_set_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="1249,-191 1169,-191 1169,-165 1249,-165 1249,-191"/>
+<text text-anchor="middle" x="1209" y="-175.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">data_set_mod</text>
+</a>
+</g>
+<!-- module~abstract_container_mod&#45;&gt;module~data_set_mod -->
+<g id="edge40" class="edge"><title>module~abstract_container_mod&#45;&gt;module~data_set_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M985,-219C1031.45,-214.508 1043.5,-222.976 1090,-219"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M1090,-219C1119.15,-216.508 1150.35,-205.41 1173.49,-195.388"/>
+<polygon fill="black" stroke="black" points="1175.19,-198.465 1182.89,-191.187 1172.33,-192.075 1175.19,-198.465"/>
+</g>
+<!-- module~iterator_mod -->
+<g id="node6" class="node"><title>module~iterator_mod</title>
+<a xlink:href="../module/iterator_mod.html" xlink:title="iterator_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="361,-171 289,-171 289,-145 361,-145 361,-171"/>
+<text text-anchor="middle" x="325" y="-155.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">iterator_mod</text>
+</a>
+</g>
+<!-- module~abstract_container_mod&#45;&gt;module~iterator_mod -->
+<g id="edge2" class="edge"><title>module~abstract_container_mod&#45;&gt;module~iterator_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M252.088,-158C260.804,-158 269.615,-158 277.955,-158"/>
+<polygon fill="black" stroke="black" points="278.223,-161.5 288.223,-158 278.223,-154.5 278.223,-161.5"/>
+</g>
+<!-- module~array_list_mod -->
+<g id="node13" class="node"><title>module~array_list_mod</title>
+<a xlink:href="../module/array_list_mod.html" xlink:title="array_list_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="1131,-191 1049,-191 1049,-165 1131,-165 1131,-191"/>
+<text text-anchor="middle" x="1090" y="-175.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">array_list_mod</text>
+</a>
+</g>
+<!-- module~abstract_container_mod&#45;&gt;module~array_list_mod -->
+<g id="edge34" class="edge"><title>module~abstract_container_mod&#45;&gt;module~array_list_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M887,-219C930.324,-214.517 941.647,-223.193 985,-219"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M985,-219C1010.73,-216.512 1037.86,-205.677 1058.1,-195.771"/>
+<polygon fill="black" stroke="black" points="1059.83,-198.818 1067.16,-191.171 1056.66,-192.576 1059.83,-198.818"/>
+</g>
+<!-- module~list_mod -->
+<g id="node15" class="node"><title>module~list_mod</title>
+<a xlink:href="../module/list_mod.html" xlink:title="list_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="1012,-191 958,-191 958,-165 1012,-165 1012,-191"/>
+<text text-anchor="middle" x="985" y="-175.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">list_mod</text>
+</a>
+</g>
+<!-- module~abstract_container_mod&#45;&gt;module~list_mod -->
+<g id="edge20" class="edge"><title>module~abstract_container_mod&#45;&gt;module~list_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M781,-219C827.97,-215.36 840.139,-223.849 887,-219"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M887,-219C911.011,-216.516 936.087,-205.854 954.863,-196.026"/>
+<polygon fill="black" stroke="black" points="956.694,-199.015 963.804,-191.16 953.347,-192.866 956.694,-199.015"/>
+</g>
+<!-- module~abstract_container_mod&#45;&gt;module~ordered_mod -->
+<g id="edge26" class="edge"><title>module~abstract_container_mod&#45;&gt;module~ordered_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M219.398,-171.063C282.755,-195.701 430.316,-244.378 553,-219"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M553,-219C599.049,-208.651 637.093,-165.112 656.686,-138.375"/>
+<polygon fill="black" stroke="black" points="659.678,-140.205 662.608,-130.024 653.968,-136.156 659.678,-140.205"/>
+</g>
+<!-- module~deque_mod -->
+<g id="node17" class="node"><title>module~deque_mod</title>
+<a xlink:href="../module/deque_mod.html" xlink:title="deque_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="922,-191 852,-191 852,-165 922,-165 922,-191"/>
+<text text-anchor="middle" x="887" y="-175.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">deque_mod</text>
+</a>
+</g>
+<!-- module~abstract_container_mod&#45;&gt;module~deque_mod -->
+<g id="edge16" class="edge"><title>module~abstract_container_mod&#45;&gt;module~deque_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M553,-219C651.867,-196.781 680.129,-228.665 781,-219"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M781,-219C807.323,-216.96 835.089,-205.851 855.597,-195.711"/>
+<polygon fill="black" stroke="black" points="857.462,-198.688 864.76,-191.006 854.265,-192.461 857.462,-198.688"/>
+</g>
+<!-- module~data_set_mod&#45;&gt;module~dynamic_set_mod -->
+<g id="edge48" class="edge"><title>module~data_set_mod&#45;&gt;module~dynamic_set_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M1249.53,-178C1257.78,-178 1266.62,-178 1275.38,-178"/>
+<polygon fill="black" stroke="black" points="1275.6,-181.5 1285.6,-178 1275.6,-174.5 1275.6,-181.5"/>
+</g>
+<!-- module~iterator_mod&#45;&gt;module~iterable_mod -->
+<g id="edge4" class="edge"><title>module~iterator_mod&#45;&gt;module~iterable_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M360.426,-144.915C370.139,-141.327 380.799,-137.39 390.972,-133.632"/>
+<polygon fill="black" stroke="black" points="392.362,-136.85 400.53,-130.102 389.936,-130.283 392.362,-136.85"/>
+</g>
+<!-- module~iterator_mod&#45;&gt;module~array_list_mod -->
+<g id="edge36" class="edge"><title>module~iterator_mod&#45;&gt;module~array_list_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M553,-158C571.501,-156.166 868.553,-134.682 887,-137"/>
+</g>
+<!-- module~iterator_mod&#45;&gt;module~ordered_mod -->
+<g id="edge22" class="edge"><title>module~iterator_mod&#45;&gt;module~ordered_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M361.808,-159.94C406.95,-161.872 485.76,-163.797 553,-158"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M553,-158C581.704,-155.154 612.432,-144.199 635.334,-134.329"/>
+<polygon fill="black" stroke="black" points="636.925,-137.452 644.641,-130.192 634.082,-131.055 636.925,-137.452"/>
+</g>
+<!-- iso_fortran_env -->
+<g id="node10" class="node"><title>iso_fortran_env</title>
+<a xlink:href="https://software.intel.com/en-us/node/511041" xlink:title="iso_fortran_env">
+<polygon fill="#337ab7" stroke="#337ab7" points="87,-171 1,-171 1,-145 87,-145 87,-171"/>
+<text text-anchor="middle" x="44" y="-155.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">iso_fortran_env</text>
+</a>
+</g>
+<!-- iso_fortran_env&#45;&gt;module~abstract_container_mod -->
+<g id="edge8" class="edge"><title>iso_fortran_env&#45;&gt;module~abstract_container_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M87.5955,-158C95.8954,-158 104.795,-158 113.741,-158"/>
+<polygon fill="black" stroke="black" points="113.832,-161.5 123.832,-158 113.832,-154.5 113.832,-161.5"/>
+</g>
+<!-- module~countable_mod&#45;&gt;module~data_set_mod -->
+<g id="edge38" class="edge"><title>module~countable_mod&#45;&gt;module~data_set_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M596.351,-64.3923C641.956,-53.2172 715.99,-38 781,-38 781,-38 781,-38 985,-38 1073.84,-38 1156.49,-118.168 1191.45,-157.174"/>
+<polygon fill="black" stroke="black" points="1188.95,-159.624 1198.17,-164.829 1194.21,-155.005 1188.95,-159.624"/>
+</g>
+<!-- module~countable_mod&#45;&gt;module~ordered_mod -->
+<g id="edge24" class="edge"><title>module~countable_mod&#45;&gt;module~ordered_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M590.66,-89.0854C601.198,-92.7468 612.785,-96.7729 623.801,-100.6"/>
+<polygon fill="black" stroke="black" points="622.698,-103.922 633.293,-103.898 624.995,-97.31 622.698,-103.922"/>
+</g>
+<!-- module~array_list_mod&#45;&gt;module~data_set_mod -->
+<g id="edge42" class="edge"><title>module~array_list_mod&#45;&gt;module~data_set_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M1131.62,-178C1140.2,-178 1149.32,-178 1158.18,-178"/>
+<polygon fill="black" stroke="black" points="1158.41,-181.5 1168.41,-178 1158.41,-174.5 1158.41,-181.5"/>
+</g>
+<!-- module~list_mod&#45;&gt;module~array_list_mod -->
+<g id="edge30" class="edge"><title>module~list_mod&#45;&gt;module~array_list_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M1012.04,-178C1020.08,-178 1029.16,-178 1038.22,-178"/>
+<polygon fill="black" stroke="black" points="1038.37,-181.5 1048.37,-178 1038.37,-174.5 1038.37,-181.5"/>
+</g>
+<!-- module~ordered_mod&#45;&gt;module~array_list_mod -->
+<g id="edge32" class="edge"><title>module~ordered_mod&#45;&gt;module~array_list_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M705.159,-103.906C734.842,-94.3932 778.793,-84.8191 816,-95 851.363,-104.676 850.496,-133.586 887,-137"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M887,-137C943.112,-140.035 957.075,-144.128 1012,-156 1020.59,-157.857 1029.64,-160.119 1038.4,-162.476"/>
+<polygon fill="black" stroke="black" points="1037.57,-165.877 1048.14,-165.162 1039.43,-159.129 1037.57,-165.877"/>
+</g>
+<!-- module~queue_mod -->
+<g id="node18" class="node"><title>module~queue_mod</title>
+<a xlink:href="../module/queue_mod.html" xlink:title="queue_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="816,-130 746,-130 746,-104 816,-104 816,-130"/>
+<text text-anchor="middle" x="781" y="-114.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">queue_mod</text>
+</a>
+</g>
+<!-- module~ordered_mod&#45;&gt;module~queue_mod -->
+<g id="edge12" class="edge"><title>module~ordered_mod&#45;&gt;module~queue_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M709.782,-117C718.137,-117 727.041,-117 735.622,-117"/>
+<polygon fill="black" stroke="black" points="735.87,-120.5 745.87,-117 735.87,-113.5 735.87,-120.5"/>
+</g>
+<!-- module~deque_mod&#45;&gt;module~list_mod -->
+<g id="edge18" class="edge"><title>module~deque_mod&#45;&gt;module~list_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M922.103,-178C930.367,-178 939.206,-178 947.569,-178"/>
+<polygon fill="black" stroke="black" points="947.827,-181.5 957.827,-178 947.827,-174.5 947.827,-181.5"/>
+</g>
+<!-- module~queue_mod&#45;&gt;module~deque_mod -->
+<g id="edge14" class="edge"><title>module~queue_mod&#45;&gt;module~deque_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M803.74,-130.086C818.83,-138.77 838.842,-150.287 855.465,-159.852"/>
+<polygon fill="black" stroke="black" points="853.885,-162.981 864.298,-164.936 857.376,-156.914 853.885,-162.981"/>
+</g>
+</g>
+</svg>
+</div>
+                <script>var panmodulemultiset_modUsesGraph = svgPanZoom('#modulemultiset_modUsesGraph', {
+                    zoomEnabled: true,
+                    controlIconsEnabled: true,
+                    fit: true,
+                    center: true,});
+                    </script>
+                <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
+                <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                      </div>
+                      <div class="modal-body">
+                        
+Nodes of different colours represent the following:
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.26.3 (20100126.1600)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.80" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph1" class="graph" transform="scale(0.817602 0.817602) rotate(0) translate(4 30)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="white" points="-4,5 -4,-30 781,-30 781,5 -4,5"/>
+<!-- Module -->
+<g id="node1" class="node"><title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-26 2.13163e-14,-26 0,-1.24345e-14 54,-3.55271e-15 54,-26"/>
+<text text-anchor="middle" x="27" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node"><title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="138,-26 72,-26 72,-1.24345e-14 138,-3.55271e-15 138,-26"/>
+<text text-anchor="middle" x="105" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Type -->
+<g id="node3" class="node"><title>Type</title>
+<polygon fill="#5cb85c" stroke="#5cb85c" points="210,-26 156,-26 156,-1.24345e-14 210,-3.55271e-15 210,-26"/>
+<text text-anchor="middle" x="183" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type</text>
+</g>
+<!-- Subroutine -->
+<g id="node4" class="node"><title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="292,-26 228,-26 228,-1.24345e-14 292,-3.55271e-15 292,-26"/>
+<text text-anchor="middle" x="260" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node5" class="node"><title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="364,-26 310,-26 310,-1.24345e-14 364,-3.55271e-15 364,-26"/>
+<text text-anchor="middle" x="337" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node6" class="node"><title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="436,-26 382,-26 382,-1.24345e-14 436,-3.55271e-15 436,-26"/>
+<text text-anchor="middle" x="409" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node7" class="node"><title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="590,-26 454,-26 454,-1.24345e-14 590,-3.55271e-15 590,-26"/>
+<text text-anchor="middle" x="522" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node8" class="node"><title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="662,-26 608,-26 608,-1.24345e-14 662,-3.55271e-15 662,-26"/>
+<text text-anchor="middle" x="635" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node9" class="node"><title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="776,-26 680,-26 680,-1.24345e-14 776,-3.55271e-15 776,-26"/>
+<text text-anchor="middle" x="728" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<h5>Module Graph</h5>
+<p>Solid arrows point from a parent (sub)module to the submodule which is
+descended from it. Dashed arrows point from a module being used to the
+module using it.</p>
+<h5>Type Graph</h5>
+<p>Solid arrows point from one derived type to another which extends
+(inherits from) it. Dashed arrows point from a derived type to another
+type containing it as a components, with a label listing the name(s) of
+said component(s).</p>
+<h5>Call Graph</h5>
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.</p>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+    
+    <p>Provides an abstract type for a multi-set data structure. These 
+ behave like a normal set, except they keep count of the number of
+ times which an item has been added.</p>
+    <br>
+    
+
+    
+    
+    
+    
+    
+
+    
+    <section>
+     <h2>Abstract Interfaces</h2>
+	 
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="interface-get_func%7E4"></span><h3>abstract interface
+    
+  </h3></div>
+  
+  <ul class="list-group">
+    <li class="list-group-item">
+    
+    
+    <h3>
+private pure function <a href='../interface/get_func%7E4.html'>get_func</a>(this, item)
+    
+    
+    
+</h3>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/multiset.html'>multiset</a>),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>this</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>item</strong></td><td><p>The item whose presence in the set is being checked</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>integer
+  </small></h4>
+  <p>The number of times this item appears in the set</p>
+    
+        
+
+    </li>
+  </ul>
+</div>
+
+    
+    </section>
+	<br>
+    
+    
+    
+    <section>
+     <h2>Derived Types</h2>
+	 
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="type-multiset"></span><h3>type, public, abstract, extends(<a href='../type/dynamic_set.html'>dynamic_set</a>) :: <a href='../type/multiset.html'>multiset</a>
+    
+  </h3></div>
+  <div class="panel-body">
+     
+     
+          
+     
+     <h4>Type-Bound Procedures</h4>
+      <table class="table table-striped varlist">
+      <tbody>
+      
+       <tr><td>procedure(get_func), public, deferred :: <strong>get</strong>  </td>
+       <td><p>Returns the number of times this item is present in the set.</p></td></tr>
+      
+       </tbody>
+       </table>
+     
+     
+     <h4>Description</h4>
+       
+       <p>Provides an abstract type for a multi-set data structure. These 
+ behave like a normal set, except they keep count of the number of
+ times which an item has been added. When an item is removed, the
+ count will be decremented by 1. The item will only become absent
+ from the list (<a href="../type/data_set.html#boundprocedure-has">has</a> returns <code>.false.</code>) when the count
+ reaches zero.</p>
+     
+  </div>
+</div>
+
+     
+    </section>
+	<br>
+    
+    
+    
+
+    
+    
+    
+    </div>
+  </div>
+
+    <hr>
+    <footer>
+        <div class="row">
+        <div class="col-md-4">&copy; 2016 </div>
+	<div class="col-md-4"><span class="text-center"> FIAT was developed by Chris MacMackin</span></div>
+        <div class="col-md-4"><span class="pull-right">Documentation generated by <a href="https://github.com/cmacmackin/ford">FORD</a></span></div>
+        </div>
+        <br>
+    </footer>
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js'],
+        'HTML-CSS': { 
+           styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: '#000000 ! important'} }
+        }
+      });
+    </script>
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  </body>
+</html>

@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	 
+	 <meta name="description" content="Fortran Implementation of Abstract Types: generic implementations of common data structures in modern, object oriented Fortran.">
+    
+    <meta name="author" content="Chris MacMackin" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>
+All Procedures &ndash; FIAT
+</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">FIAT </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+				
+                
+            <li><a href="../lists/files.html">Source Files</a></li>
+				
+				
+            <li><a href="../lists/modules.html">Modules</a></li>
+				
+				
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+				
+				
+            <li><a href="../lists/absint.html">Abstract Interfaces</a></li>
+								
+            <li><a href="../lists/types.html">Derived Types</a></li>
+				
+				
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+      <div class="row">
+        <div class="col-lg-12" id='text'>
+			 <h1>Procedures</h1>
+			 <table class="table table-striped">
+			 <thead><tr><th>Procedure</th><th>Location</th><th>Procedure Type</th><th>Description</th></tr></thead>
+			 <tbody>
+			 
+			   <tr><td><a href='../proc/array_extend.html'>array_extend</a></td><td><a href='../module/ordered_mod.html'>ordered_mod</a></td><td>Subroutine</td><td><p>Adds the elements of an array to this object.
+ </p></td></tr>
+			 
+			   <tr><td><a href='../proc/array_list_append.html'>array_list_append</a></td><td><a href='../module/array_list_mod.html'>array_list_mod</a></td><td>Subroutine</td><td><p>Adds the provided item to the end of the list.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/array_list_clear.html'>array_list_clear</a></td><td><a href='../module/array_list_mod.html'>array_list_mod</a></td><td>Subroutine</td><td><p>Removes all items from this list, but does not change its container type.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/array_list_concat.html'>array_list_concat</a></td><td><a href='../module/array_list_mod.html'>array_list_mod</a></td><td>Function</td><td><p>Join this list with an <a href="../type/ordered.html">ordered</a> object, returning the result. The 
+ contents of the returned object are ordered such that applying 
+ <a href="../type/ordered.html#boundprocedure-pop">pop</a> until it is empty would return items in the same order as 
+ calling <a href="../type/ordered.html#boundprocedure-pop">pop</a> until the list is empty and then until the second 
+ object is empty.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/array_list_contents_type.html'>array_list_contents_type</a></td><td><a href='../module/array_list_mod.html'>array_list_mod</a></td><td>Function</td><td><p>Returns a container with the dynamic type of the contents of this
+ list.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/array_list_delete_multiple.html'>array_list_delete_multiple</a></td><td><a href='../module/array_list_mod.html'>array_list_mod</a></td><td>Subroutine</td><td><p>Removes the elements at the positions specified by the indices in
+ the array <code>elements</code> from the list. The elements removed are those
+ at the specified location just before the call was made. Once all
+ removals have been performed, the remaining elements well be moved
+ backwards in position as necessary. Crashes if an element has not
+ been set.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/array_list_delete_single.html'>array_list_delete_single</a></td><td><a href='../module/array_list_mod.html'>array_list_mod</a></td><td>Subroutine</td><td><p>Removes the element at the specified position in the list, moving
+ all succeeding items back by one position. Crashes if the element
+ has not been set.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/array_list_delete_slice.html'>array_list_delete_slice</a></td><td><a href='../module/array_list_mod.html'>array_list_mod</a></td><td>Subroutine</td><td><p>Removes the element within the specified slice of the list, moving
+ all succeeding items back by the number of items deleted. The 
+ slice contains the element at the start index to the end index,
+ inclusive. Crashes if part of the slice has not been set.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/array_list_filter.html'>array_list_filter</a></td><td><a href='../module/array_list_mod.html'>array_list_mod</a></td><td>Function</td><td><p>Returns a new list containing only those items held in this list
+ which pass the provided test.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/array_list_foreach.html'>array_list_foreach</a></td><td><a href='../module/array_list_mod.html'>array_list_mod</a></td><td>Subroutine</td><td><p>Performs the specified action on each item in the list, in place.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/array_list_get.html'>array_list_get</a></td><td><a href='../module/array_list_mod.html'>array_list_mod</a></td><td>Function</td><td><p>Returns the item at the specified location in the list. Returns
+ an unallocated container if that location has not been set.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/array_list_get_index.html'>array_list_get_index</a></td><td><a href='../module/array_list_mod.html'>array_list_mod</a></td><td>Function</td><td><p>Returns the index of the first occurrence of the item in the list.
+ If there are no occurrences, then returns -1.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/array_list_get_indices.html'>array_list_get_indices</a></td><td><a href='../module/array_list_mod.html'>array_list_mod</a></td><td>Function</td><td><p>Returns an array containing the indices of all occurrences of the
+ item in the list. If there are no occurrences, then returns an
+ unallocated array.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/array_list_get_last_index.html'>array_list_get_last_index</a></td><td><a href='../module/array_list_mod.html'>array_list_mod</a></td><td>Function</td><td><p>Returns the index of the last occurrence of the item in the list.
+ If there are no occurrences, then returns -1.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/array_list_has.html'>array_list_has</a></td><td><a href='../module/array_list_mod.html'>array_list_mod</a></td><td>Function</td><td><p>Indicates whether there are any copies of the specified item
+ present in the list.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/array_list_insert.html'>array_list_insert</a></td><td><a href='../module/array_list_mod.html'>array_list_mod</a></td><td>Subroutine</td><td><p>Places the provided item into the list at the position specified,
+ moving all succeeding items forward by one. The position must be
+ one which is already filled or the length of the list plus one.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/array_list_iter.html'>array_list_iter</a></td><td><a href='../module/array_list_mod.html'>array_list_mod</a></td><td>Function</td><td><p>Returns an <a href="../interface/iterator.html">iterator</a> containing the contents of this list
+ as they were at the time this method was called.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/array_list_max.html'>array_list_max</a></td><td><a href='../module/array_list_mod.html'>array_list_mod</a></td><td>Function</td><td><p>Returns the largest item contained in the list, as determined
+ using the provided comparison function.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/array_list_min.html'>array_list_min</a></td><td><a href='../module/array_list_mod.html'>array_list_mod</a></td><td>Function</td><td><p>Returns the smallest item contained in the list, as determined
+ using the provided comparison function.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/array_list_nearest.html'>array_list_nearest</a></td><td><a href='../module/array_list_mod.html'>array_list_mod</a></td><td>Function</td><td><p>Returns the value contained in the list for which the subtraction
+ function returns the smallest absolute real number when comparing
+ with the specified <code>item</code>.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/array_list_peek.html'>array_list_peek</a></td><td><a href='../module/array_list_mod.html'>array_list_mod</a></td><td>Function</td><td><p>Returns the item at the end of the list, without removing it.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/array_list_peekleft.html'>array_list_peekleft</a></td><td><a href='../module/array_list_mod.html'>array_list_mod</a></td><td>Function</td><td><p>Returns the item at the start of the list.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/array_list_pop.html'>array_list_pop</a></td><td><a href='../module/array_list_mod.html'>array_list_mod</a></td><td>Function</td><td><p>Removes the item at the end of the list and returns it.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/array_list_popleft.html'>array_list_popleft</a></td><td><a href='../module/array_list_mod.html'>array_list_mod</a></td><td>Function</td><td><p>Removes the item at the start of the list and returns it.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/array_list_push.html'>array_list_push</a></td><td><a href='../module/array_list_mod.html'>array_list_mod</a></td><td>Subroutine</td><td><p>Adds an item to the beginning of the list.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/array_list_remove.html'>array_list_remove</a></td><td><a href='../module/array_list_mod.html'>array_list_mod</a></td><td>Subroutine</td><td><p>Remove the first occurrence of the specified item from the list,
+ moving all succeeding items back by one position. No action is
+ taken if the item is not present.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/array_list_remove_all.html'>array_list_remove_all</a></td><td><a href='../module/array_list_mod.html'>array_list_mod</a></td><td>Subroutine</td><td><p>Remove all occurrences of the specified item from the list,
+ moving all succeeding items back in position. No action is taken
+ if the item is not present.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/array_list_remove_last.html'>array_list_remove_last</a></td><td><a href='../module/array_list_mod.html'>array_list_mod</a></td><td>Subroutine</td><td><p>Remove the last occurrence of the specified item from the list,
+ moving all succeeding items back by one position. No action is
+ taken if the item is not present.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/array_list_set_multiple.html'>array_list_set_multiple</a></td><td><a href='../module/array_list_mod.html'>array_list_mod</a></td><td>Subroutine</td><td><p>Places the values of the provided array of items in the locations
+ specified by the corresponding indices in the in the array of
+ elements.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/array_list_set_single.html'>array_list_set_single</a></td><td><a href='../module/array_list_mod.html'>array_list_mod</a></td><td>Subroutine</td><td><p>Places the value of the provided element in the specified location
+ in the array. Crashes if this element is not already defined.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/array_list_size.html'>array_list_size</a></td><td><a href='../module/array_list_mod.html'>array_list_mod</a></td><td>Function</td><td><p>Returns the number of items in the list</p></td></tr>
+			 
+			   <tr><td><a href='../proc/array_list_slice.html'>array_list_slice</a></td><td><a href='../module/array_list_mod.html'>array_list_mod</a></td><td>Function</td><td><p>Returns an <a href="../type/array_list.html">array_list</a> instance containing all items in this
+ list within the specified slice, inclusive. Crashes if one of
+ the indices is outside of the list's bounds.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/array_list_sort.html'>array_list_sort</a></td><td><a href='../module/array_list_mod.html'>array_list_mod</a></td><td>Subroutine</td><td><p>Sorts the list, in place, so that all items are in ascending order
+ according the the provided comparison function.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/array_list_sum.html'>array_list_sum</a></td><td><a href='../module/array_list_mod.html'>array_list_mod</a></td><td>Function</td><td><p>Returns a <a href="../type/container.html">container</a> representing the sum of all items 
+ contained in the list. This sum is calculated by repeatedly
+ applying the addition procedure to the list's contents.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/array_list_to_array.html'>array_list_to_array</a></td><td><a href='../module/array_list_mod.html'>array_list_mod</a></td><td>Function</td><td><p>Returns copies of all items held in this list, stored within an
+ array of <a href="../type/container.html">container</a> objects.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/assign_container.html'>assign_container</a></td><td><a href='../module/abstract_container_mod.html'>abstract_container_mod</a></td><td>Subroutine</td><td><p>Transfers the contents of the container to another variable.
+ If the other variable is another container of the same type
+ then the contents will be transferred. If the other variable is
+ the same type as the contents of the container (as determined
+ by the <a href="../type/container.html#boundprocedure-typeguard">typeguard</a> routine provided for that 
+ concrete type extension) then it will be given the value held by
+ the container. Otherwise, an error message will be printed and 
+ the program stopped. If compiled with <code>gfortran</code> then a backtrace
+ will also be printed. In the event that the container was never
+ set to a value, then this also constitutes an error.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/character_guard.html'>character_guard</a></td><td><a href='../module/container_mod.html'>container_mod</a></td><td>Function</td><td><p>Transfers the container's contents to the variable on the left
+ hand side of the equals sign if it is of the correct type.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/complex16_guard.html'>complex16_guard</a></td><td><a href='../module/container_mod.html'>container_mod</a></td><td>Function</td><td><p>Transfers the container's contents to the variable on the left
+ hand side of the equals sign if it is of the correct type.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/complex4_guard.html'>complex4_guard</a></td><td><a href='../module/container_mod.html'>container_mod</a></td><td>Function</td><td><p>Transfers the container's contents to the variable on the left
+ hand side of the equals sign if it is of the correct type.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/complex8_guard.html'>complex8_guard</a></td><td><a href='../module/container_mod.html'>container_mod</a></td><td>Function</td><td><p>Transfers the container's contents to the variable on the left
+ hand side of the equals sign if it is of the correct type.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/complex_guard.html'>complex_guard</a></td><td><a href='../module/container_mod.html'>container_mod</a></td><td>Function</td><td><p>Transfers the container's contents to the variable on the left
+ hand side of the equals sign if it is of the correct type.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/constructor.html'>constructor</a></td><td><a href='../module/iterator_mod.html'>iterator_mod</a></td><td>Function</td><td><p>Creates an iterator from an array of containers containing
+ the data to be returned upon iteration. The data is returned
+ starting with the first element of the array and ending with
+ the last.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/contents.html'>contents</a></td><td><a href='../module/abstract_container_mod.html'>abstract_container_mod</a></td><td>Function</td><td><p>Returns the contents, encoded as a character array, of the 
+ container.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/contents_type.html'>contents_type</a></td><td><a href='../module/iterator_mod.html'>iterator_mod</a></td><td>Function</td><td><p>Returns a container with the dynamic type of that used to hold
+ the contents of this iterator</p></td></tr>
+			 
+			   <tr><td><a href='../proc/get_contents.html'>get_contents</a></td><td><a href='../module/node_mod.html'>node_mod</a></td><td>Function</td><td><p>An accessor returning a <a href="../type/container.html">container</a> object storing the value
+ placed in the node. If the contents have not been set then an
+ unallocated container is returned.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/get_next.html'>get_next</a></td><td><a href='../module/linked_node_mod.html'>linked_node_mod</a></td><td>Function</td><td><p>Returns a pointer to the node which this ones points to, i.e. the
+ next node in the chain. If this node does not point at another 
+ one, then a null pointer is returned.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/get_prev.html'>get_prev</a></td><td><a href='../module/bidir_node_mod.html'>bidir_node_mod</a></td><td>Function</td><td><p>Returns a pointer to the previous node in the chain. If this node
+ does not point at a previous one one, then a null pointer is
+ returned.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/has_contents.html'>has_contents</a></td><td><a href='../module/node_mod.html'>node_mod</a></td><td>Function</td><td><p>Returns whether or not a values has been assigned to the node.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/has_next.html'>has_next</a></td><td><a href='../module/iterator_mod.html'>iterator_mod</a></td><td>Function</td><td><p>Returns <code>.true.</code> if there are any remaining objects through which
+ to iterate, and <code>.false.</code> otherwise.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/has_next%7E2.html'>has_next</a></td><td><a href='../module/linked_node_mod.html'>linked_node_mod</a></td><td>Function</td><td><p>Returns whether or not this node points at another one, forming
+ a chain.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/has_prev.html'>has_prev</a></td><td><a href='../module/bidir_node_mod.html'>bidir_node_mod</a></td><td>Function</td><td><p>Returns whether or not this node points to a previous one, forming
+ a chain in the backwards direction.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/int1_guard.html'>int1_guard</a></td><td><a href='../module/container_mod.html'>container_mod</a></td><td>Function</td><td><p>Transfers the container's contents to the variable on the left
+ hand side of the equals sign if it is of the correct type.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/int2_guard.html'>int2_guard</a></td><td><a href='../module/container_mod.html'>container_mod</a></td><td>Function</td><td><p>Transfers the container's contents to the variable on the left
+ hand side of the equals sign if it is of the correct type.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/int4_guard.html'>int4_guard</a></td><td><a href='../module/container_mod.html'>container_mod</a></td><td>Function</td><td><p>Transfers the container's contents to the variable on the left
+ hand side of the equals sign if it is of the correct type.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/int8_guard.html'>int8_guard</a></td><td><a href='../module/container_mod.html'>container_mod</a></td><td>Function</td><td><p>Transfers the container's contents to the variable on the left
+ hand side of the equals sign if it is of the correct type.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/int_guard.html'>int_guard</a></td><td><a href='../module/container_mod.html'>container_mod</a></td><td>Function</td><td><p>Transfers the container's contents to the variable on the left
+ hand side of the equals sign if it is of the correct type.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/is_equal.html'>is_equal</a></td><td><a href='../module/abstract_container_mod.html'>abstract_container_mod</a></td><td>Function</td><td><p>Checks whether two containers are of the same type and are
+ storing the same contents.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/is_filled.html'>is_filled</a></td><td><a href='../module/abstract_container_mod.html'>abstract_container_mod</a></td><td>Function</td><td><p>Returns <code>.true.</code> if a value has been assigned to the container,
+ <code>.false.</code> otherwise.</p></td></tr>
+			 
+			   <tr><td><a href='../interface/iterator.html'>iterator</a></td><td><a href='../module/iterator_mod.html'>iterator_mod</a></td><td>Interface</td><td></td></tr>
+			 
+			   <tr><td><a href='../proc/iterator_extend.html'>iterator_extend</a></td><td><a href='../module/ordered_mod.html'>ordered_mod</a></td><td>Subroutine</td><td><p>Adds the contents of an <a href="../type/iterable.html">iterable</a> object to this data structure.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/logical_guard.html'>logical_guard</a></td><td><a href='../module/container_mod.html'>container_mod</a></td><td>Function</td><td><p>Transfers the container's contents to the variable on the left
+ hand side of the equals sign if it is of the correct type.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/next.html'>next</a></td><td><a href='../module/iterator_mod.html'>iterator_mod</a></td><td>Function</td><td><p>Returns the next item stored in the iterator. If there are no
+ more items present then an empty <a href="../type/container.html">container</a> is returned. If
+ there are no contents stored in this iterator then it returns
+ an unallocated <a href="../type/container.html">container</a>.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/queue_is_fifo.html'>queue_is_fifo</a></td><td><a href='../module/queue_mod.html'>queue_mod</a></td><td>Function</td><td><p>Returns <code>.true.</code>, indicating that queues are a "first in first 
+ out" data structure.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/real16_guard.html'>real16_guard</a></td><td><a href='../module/container_mod.html'>container_mod</a></td><td>Function</td><td><p>Transfers the container's contents to the variable on the left
+ hand side of the equals sign if it is of the correct type.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/real4_guard.html'>real4_guard</a></td><td><a href='../module/container_mod.html'>container_mod</a></td><td>Function</td><td><p>Transfers the container's contents to the variable on the left
+ hand side of the equals sign if it is of the correct type.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/real8_guard.html'>real8_guard</a></td><td><a href='../module/container_mod.html'>container_mod</a></td><td>Function</td><td><p>Transfers the container's contents to the variable on the left
+ hand side of the equals sign if it is of the correct type.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/real_guard.html'>real_guard</a></td><td><a href='../module/container_mod.html'>container_mod</a></td><td>Function</td><td><p>Transfers the container's contents to the variable on the left
+ hand side of the equals sign if it is of the correct type.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/reset.html'>reset</a></td><td><a href='../module/iterator_mod.html'>iterator_mod</a></td><td>Subroutine</td><td><p>Resets the position of the iterator to the start, so it is as
+ though the <a href="../type/iterator.html#boundprocedure-next">next</a> routine has never been
+ called.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/set.html'>set</a></td><td><a href='../module/abstract_container_mod.html'>abstract_container_mod</a></td><td>Subroutine</td><td><p>Sets the contents of the storage array to value passed. The type
+ of the variable provided must be the same as the container
+ variable is designed to accept (as determined by the
+ concrete type implementation of the <a href="../type/container.html#boundprocedure-typeguard">typeguard</a>
+ method in the extension) or be of the same type of container.
+ Otherwise an error message will be printed and the program will 
+ exit. If <code>gfortran</code> was used to compile then a backtrace will
+ also be printed.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/set_contents.html'>set_contents</a></td><td><a href='../module/node_mod.html'>node_mod</a></td><td>Subroutine</td><td><p>Places a new value into storage within the node. This value must
+ already be heald within an allocatable <a href="../type/container.html">container</a>. The actual
+ argument will be deallocated after the subroutine call, as its
+ allocation is moved to the contents of the node.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/set_next.html'>set_next</a></td><td><a href='../module/linked_node_mod.html'>linked_node_mod</a></td><td>Subroutine</td><td><p>Sets the node which this one points to (i.e. sets the next node in
+ the chain). If this node already points to another one, the 
+ pointer will, by default, be nullified. This may result in a
+ memory leak. Optionally, by setting <code>deallocate_old=.true.</code>, the
+ next node (and all nodes it points to) can be deallocated. This
+ may result in a segfault if another part of the program tries to
+ access the former next node.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/set_prev.html'>set_prev</a></td><td><a href='../module/bidir_node_mod.html'>bidir_node_mod</a></td><td>Subroutine</td><td><p>Sets the pointer to the previous node in the chain. If this node
+ already points to a previous one, the pointer will, by default, be
+ nullified. This may result in a memory leak. Optionally, by
+ setting <code>deallocate_old=.true.</code>, the previous node (and all nodes
+ it points to) can be deallocated. This may result in a segfault if
+ another part of the program tries to access the former previous
+ node. The new previous node will not automatically be set to have
+ this one as the next, with the same rules applied to deallocation.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/unset_contents.html'>unset_contents</a></td><td><a href='../module/node_mod.html'>node_mod</a></td><td>Subroutine</td><td><p>Deallocates the value stored within the  node.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/unset_next.html'>unset_next</a></td><td><a href='../module/linked_node_mod.html'>linked_node_mod</a></td><td>Subroutine</td><td><p>Unsets the pointer to the next node in the chain, severing it.
+ By default, the pointer is only nullified. This may result in a
+ memory leak. Optionally, by setting <code>deallocate_old=.true.</code>, the
+ next node (and all nodes it points to) can be deallocated. This
+ may result in a segfault if another part of the program tries to
+ access the former next node.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/unset_prev.html'>unset_prev</a></td><td><a href='../module/bidir_node_mod.html'>bidir_node_mod</a></td><td>Subroutine</td><td><p>Unsets the pointer to the previous node in the chain, severing it.
+ By default, the pointer is only nullified. This may result in a
+ memory leak. Optionally, by setting <code>deallocate_old=.true.</code>, the
+ previous node (and all previous nodes it points to) can be
+ deallocated. This may result in a segfault if another part of the
+ program tries to access the former previous node.</p></td></tr>
+			 
+			 </tbody></table>
+             
+                <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.26.3 (20100126.1600)
+ -->
+<!-- Title: call~~graph~~CallGraph Pages: 1 -->
+<svg id="callgraphCallGraph" width="244pt" height="3246pt"
+ viewBox="0.00 0.00 244.00 3246.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="call~~graph~~CallGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 3242)">
+<title>call~~graph~~CallGraph</title>
+<polygon fill="white" stroke="white" points="-4,5 -4,-3242 241,-3242 241,5 -4,5"/>
+<!-- proc~array_list_max -->
+<g id="node1" class="node"><title>proc~array_list_max</title>
+<a xlink:href="../proc/array_list_max.html" xlink:title="array_list_max">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="108,-26 26,-26 26,-1.24345e-14 108,-3.55271e-15 108,-26"/>
+<text text-anchor="middle" x="67" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">array_list_max</text>
+</a>
+</g>
+<!-- proc~array_list_to_array -->
+<g id="node2" class="node"><title>proc~array_list_to_array</title>
+<a xlink:href="../proc/array_list_to_array.html" xlink:title="array_list_to_array">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="118,-70 16,-70 16,-44 118,-44 118,-70"/>
+<text text-anchor="middle" x="67" y="-54.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">array_list_to_array</text>
+</a>
+</g>
+<!-- proc~queue_is_fifo -->
+<g id="node3" class="node"><title>proc~queue_is_fifo</title>
+<a xlink:href="../proc/queue_is_fifo.html" xlink:title="queue_is_fifo">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="105,-114 29,-114 29,-88 105,-88 105,-114"/>
+<text text-anchor="middle" x="67" y="-98.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">queue_is_fifo</text>
+</a>
+</g>
+<!-- proc~contents -->
+<g id="node4" class="node"><title>proc~contents</title>
+<a xlink:href="../proc/contents.html" xlink:title="contents">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="94,-158 40,-158 40,-132 94,-132 94,-158"/>
+<text text-anchor="middle" x="67" y="-142.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">contents</text>
+</a>
+</g>
+<!-- proc~array_list_concat -->
+<g id="node5" class="node"><title>proc~array_list_concat</title>
+<a xlink:href="../proc/array_list_concat.html" xlink:title="array_list_concat">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="114,-202 20,-202 20,-176 114,-176 114,-202"/>
+<text text-anchor="middle" x="67" y="-186.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">array_list_concat</text>
+</a>
+</g>
+<!-- proc~has_next -->
+<g id="node6" class="node"><title>proc~has_next</title>
+<a xlink:href="../proc/has_next.html" xlink:title="has_next">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="95,-246 39,-246 39,-220 95,-220 95,-246"/>
+<text text-anchor="middle" x="67" y="-230.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">has_next</text>
+</a>
+</g>
+<!-- proc~array_list_peek -->
+<g id="node7" class="node"><title>proc~array_list_peek</title>
+<a xlink:href="../proc/array_list_peek.html" xlink:title="array_list_peek">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="109,-290 25,-290 25,-264 109,-264 109,-290"/>
+<text text-anchor="middle" x="67" y="-274.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">array_list_peek</text>
+</a>
+</g>
+<!-- proc~real_guard -->
+<g id="node8" class="node"><title>proc~real_guard</title>
+<a xlink:href="../proc/real_guard.html" xlink:title="real_guard">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="99,-334 35,-334 35,-308 99,-308 99,-334"/>
+<text text-anchor="middle" x="67" y="-318.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">real_guard</text>
+</a>
+</g>
+<!-- proc~unset_next -->
+<g id="node9" class="node"><title>proc~unset_next</title>
+<a xlink:href="../proc/unset_next.html" xlink:title="unset_next">
+<polygon fill="#d9534f" stroke="#d9534f" points="99,-378 35,-378 35,-352 99,-352 99,-378"/>
+<text text-anchor="middle" x="67" y="-362.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">unset_next</text>
+</a>
+</g>
+<!-- proc~unset_contents -->
+<g id="node10" class="node"><title>proc~unset_contents</title>
+<a xlink:href="../proc/unset_contents.html" xlink:title="unset_contents">
+<polygon fill="#d9534f" stroke="#d9534f" points="109,-422 25,-422 25,-396 109,-396 109,-422"/>
+<text text-anchor="middle" x="67" y="-406.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">unset_contents</text>
+</a>
+</g>
+<!-- proc~array_list_contents_type -->
+<g id="node11" class="node"><title>proc~array_list_contents_type</title>
+<a xlink:href="../proc/array_list_contents_type.html" xlink:title="array_list_contents_type">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="131,-466 3,-466 3,-440 131,-440 131,-466"/>
+<text text-anchor="middle" x="67" y="-450.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">array_list_contents_type</text>
+</a>
+</g>
+<!-- proc~logical_guard -->
+<g id="node12" class="node"><title>proc~logical_guard</title>
+<a xlink:href="../proc/logical_guard.html" xlink:title="logical_guard">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="105,-510 29,-510 29,-484 105,-484 105,-510"/>
+<text text-anchor="middle" x="67" y="-494.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">logical_guard</text>
+</a>
+</g>
+<!-- proc~set_contents -->
+<g id="node13" class="node"><title>proc~set_contents</title>
+<a xlink:href="../proc/set_contents.html" xlink:title="set_contents">
+<polygon fill="#d9534f" stroke="#d9534f" points="103,-554 31,-554 31,-528 103,-528 103,-554"/>
+<text text-anchor="middle" x="67" y="-538.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">set_contents</text>
+</a>
+</g>
+<!-- proc~array_list_size -->
+<g id="node14" class="node"><title>proc~array_list_size</title>
+<a xlink:href="../proc/array_list_size.html" xlink:title="array_list_size">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="107,-598 27,-598 27,-572 107,-572 107,-598"/>
+<text text-anchor="middle" x="67" y="-582.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">array_list_size</text>
+</a>
+</g>
+<!-- proc~get_contents -->
+<g id="node15" class="node"><title>proc~get_contents</title>
+<a xlink:href="../proc/get_contents.html" xlink:title="get_contents">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="104,-642 30,-642 30,-616 104,-616 104,-642"/>
+<text text-anchor="middle" x="67" y="-626.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">get_contents</text>
+</a>
+</g>
+<!-- proc~int4_guard -->
+<g id="node16" class="node"><title>proc~int4_guard</title>
+<a xlink:href="../proc/int4_guard.html" xlink:title="int4_guard">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="99,-686 35,-686 35,-660 99,-660 99,-686"/>
+<text text-anchor="middle" x="67" y="-670.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">int4_guard</text>
+</a>
+</g>
+<!-- proc~array_list_clear -->
+<g id="node17" class="node"><title>proc~array_list_clear</title>
+<a xlink:href="../proc/array_list_clear.html" xlink:title="array_list_clear">
+<polygon fill="#d9534f" stroke="#d9534f" points="109,-730 25,-730 25,-704 109,-704 109,-730"/>
+<text text-anchor="middle" x="67" y="-714.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">array_list_clear</text>
+</a>
+</g>
+<!-- proc~has_contents -->
+<g id="node18" class="node"><title>proc~has_contents</title>
+<a xlink:href="../proc/has_contents.html" xlink:title="has_contents">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="105,-774 29,-774 29,-748 105,-748 105,-774"/>
+<text text-anchor="middle" x="67" y="-758.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">has_contents</text>
+</a>
+</g>
+<!-- proc~array_list_nearest -->
+<g id="node19" class="node"><title>proc~array_list_nearest</title>
+<a xlink:href="../proc/array_list_nearest.html" xlink:title="array_list_nearest">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="116,-818 18,-818 18,-792 116,-792 116,-818"/>
+<text text-anchor="middle" x="67" y="-802.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">array_list_nearest</text>
+</a>
+</g>
+<!-- proc~has_next~2 -->
+<g id="node20" class="node"><title>proc~has_next~2</title>
+<a xlink:href="../proc/has_next%7E2.html" xlink:title="has_next">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="95,-862 39,-862 39,-836 95,-836 95,-862"/>
+<text text-anchor="middle" x="67" y="-846.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">has_next</text>
+</a>
+</g>
+<!-- proc~array_list_iter -->
+<g id="node21" class="node"><title>proc~array_list_iter</title>
+<a xlink:href="../proc/array_list_iter.html" xlink:title="array_list_iter">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="105,-906 29,-906 29,-880 105,-880 105,-906"/>
+<text text-anchor="middle" x="67" y="-890.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">array_list_iter</text>
+</a>
+</g>
+<!-- proc~array_list_append -->
+<g id="node22" class="node"><title>proc~array_list_append</title>
+<a xlink:href="../proc/array_list_append.html" xlink:title="array_list_append">
+<polygon fill="#d9534f" stroke="#d9534f" points="116,-950 18,-950 18,-924 116,-924 116,-950"/>
+<text text-anchor="middle" x="67" y="-934.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">array_list_append</text>
+</a>
+</g>
+<!-- proc~array_list_insert -->
+<g id="node23" class="node"><title>proc~array_list_insert</title>
+<a xlink:href="../proc/array_list_insert.html" xlink:title="array_list_insert">
+<polygon fill="#d9534f" stroke="#d9534f" points="111,-994 23,-994 23,-968 111,-968 111,-994"/>
+<text text-anchor="middle" x="67" y="-978.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">array_list_insert</text>
+</a>
+</g>
+<!-- proc~next -->
+<g id="node24" class="node"><title>proc~next</title>
+<a xlink:href="../proc/next.html" xlink:title="next">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="94,-1038 40,-1038 40,-1012 94,-1012 94,-1038"/>
+<text text-anchor="middle" x="67" y="-1022.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">next</text>
+</a>
+</g>
+<!-- proc~set_next -->
+<g id="node25" class="node"><title>proc~set_next</title>
+<a xlink:href="../proc/set_next.html" xlink:title="set_next">
+<polygon fill="#d9534f" stroke="#d9534f" points="94,-1082 40,-1082 40,-1056 94,-1056 94,-1082"/>
+<text text-anchor="middle" x="67" y="-1066.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">set_next</text>
+</a>
+</g>
+<!-- proc~int2_guard -->
+<g id="node26" class="node"><title>proc~int2_guard</title>
+<a xlink:href="../proc/int2_guard.html" xlink:title="int2_guard">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="99,-1126 35,-1126 35,-1100 99,-1100 99,-1126"/>
+<text text-anchor="middle" x="67" y="-1110.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">int2_guard</text>
+</a>
+</g>
+<!-- proc~array_list_remove -->
+<g id="node27" class="node"><title>proc~array_list_remove</title>
+<a xlink:href="../proc/array_list_remove.html" xlink:title="array_list_remove">
+<polygon fill="#d9534f" stroke="#d9534f" points="116,-1170 18,-1170 18,-1144 116,-1144 116,-1170"/>
+<text text-anchor="middle" x="67" y="-1154.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">array_list_remove</text>
+</a>
+</g>
+<!-- proc~array_list_get_index -->
+<g id="node28" class="node"><title>proc~array_list_get_index</title>
+<a xlink:href="../proc/array_list_get_index.html" xlink:title="array_list_get_index">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="121,-1214 13,-1214 13,-1188 121,-1188 121,-1214"/>
+<text text-anchor="middle" x="67" y="-1198.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">array_list_get_index</text>
+</a>
+</g>
+<!-- proc~array_list_remove_all -->
+<g id="node29" class="node"><title>proc~array_list_remove_all</title>
+<a xlink:href="../proc/array_list_remove_all.html" xlink:title="array_list_remove_all">
+<polygon fill="#d9534f" stroke="#d9534f" points="124,-1258 10,-1258 10,-1232 124,-1232 124,-1258"/>
+<text text-anchor="middle" x="67" y="-1242.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">array_list_remove_all</text>
+</a>
+</g>
+<!-- proc~is_filled -->
+<g id="node30" class="node"><title>proc~is_filled</title>
+<a xlink:href="../proc/is_filled.html" xlink:title="is_filled">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="94,-1302 40,-1302 40,-1276 94,-1276 94,-1302"/>
+<text text-anchor="middle" x="67" y="-1286.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">is_filled</text>
+</a>
+</g>
+<!-- proc~array_list_sum -->
+<g id="node31" class="node"><title>proc~array_list_sum</title>
+<a xlink:href="../proc/array_list_sum.html" xlink:title="array_list_sum">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="108,-1346 26,-1346 26,-1320 108,-1320 108,-1346"/>
+<text text-anchor="middle" x="67" y="-1330.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">array_list_sum</text>
+</a>
+</g>
+<!-- proc~array_list_get_last_index -->
+<g id="node32" class="node"><title>proc~array_list_get_last_index</title>
+<a xlink:href="../proc/array_list_get_last_index.html" xlink:title="array_list_get_last_index">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="132,-1390 2,-1390 2,-1364 132,-1364 132,-1390"/>
+<text text-anchor="middle" x="67" y="-1374.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">array_list_get_last_index</text>
+</a>
+</g>
+<!-- proc~iterator_extend -->
+<g id="node33" class="node"><title>proc~iterator_extend</title>
+<a xlink:href="../proc/iterator_extend.html" xlink:title="iterator_extend">
+<polygon fill="#d9534f" stroke="#d9534f" points="109,-1434 25,-1434 25,-1408 109,-1408 109,-1434"/>
+<text text-anchor="middle" x="67" y="-1418.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">iterator_extend</text>
+</a>
+</g>
+<!-- proc~array_list_peekleft -->
+<g id="node34" class="node"><title>proc~array_list_peekleft</title>
+<a xlink:href="../proc/array_list_peekleft.html" xlink:title="array_list_peekleft">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="117,-1478 17,-1478 17,-1452 117,-1452 117,-1478"/>
+<text text-anchor="middle" x="67" y="-1462.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">array_list_peekleft</text>
+</a>
+</g>
+<!-- proc~real4_guard -->
+<g id="node35" class="node"><title>proc~real4_guard</title>
+<a xlink:href="../proc/real4_guard.html" xlink:title="real4_guard">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="102,-1522 32,-1522 32,-1496 102,-1496 102,-1522"/>
+<text text-anchor="middle" x="67" y="-1506.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">real4_guard</text>
+</a>
+</g>
+<!-- proc~complex_guard -->
+<g id="node36" class="node"><title>proc~complex_guard</title>
+<a xlink:href="../proc/complex_guard.html" xlink:title="complex_guard">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="110,-1566 24,-1566 24,-1540 110,-1540 110,-1566"/>
+<text text-anchor="middle" x="67" y="-1550.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">complex_guard</text>
+</a>
+</g>
+<!-- proc~array_list_push -->
+<g id="node37" class="node"><title>proc~array_list_push</title>
+<a xlink:href="../proc/array_list_push.html" xlink:title="array_list_push">
+<polygon fill="#d9534f" stroke="#d9534f" points="109,-1610 25,-1610 25,-1584 109,-1584 109,-1610"/>
+<text text-anchor="middle" x="67" y="-1594.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">array_list_push</text>
+</a>
+</g>
+<!-- proc~constructor -->
+<g id="node38" class="node"><title>proc~constructor</title>
+<a xlink:href="../proc/constructor.html" xlink:title="constructor">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="236,-1654 170,-1654 170,-1628 236,-1628 236,-1654"/>
+<text text-anchor="middle" x="203" y="-1638.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">constructor</text>
+</a>
+</g>
+<!-- proc~array_list_min -->
+<g id="node39" class="node"><title>proc~array_list_min</title>
+<a xlink:href="../proc/array_list_min.html" xlink:title="array_list_min">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="106,-1698 28,-1698 28,-1672 106,-1672 106,-1698"/>
+<text text-anchor="middle" x="67" y="-1682.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">array_list_min</text>
+</a>
+</g>
+<!-- proc~contents_type -->
+<g id="node40" class="node"><title>proc~contents_type</title>
+<a xlink:href="../proc/contents_type.html" xlink:title="contents_type">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="106,-1742 28,-1742 28,-1716 106,-1716 106,-1742"/>
+<text text-anchor="middle" x="67" y="-1726.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">contents_type</text>
+</a>
+</g>
+<!-- proc~character_guard -->
+<g id="node41" class="node"><title>proc~character_guard</title>
+<a xlink:href="../proc/character_guard.html" xlink:title="character_guard">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="112,-1786 22,-1786 22,-1760 112,-1760 112,-1786"/>
+<text text-anchor="middle" x="67" y="-1770.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">character_guard</text>
+</a>
+</g>
+<!-- proc~set -->
+<g id="node42" class="node"><title>proc~set</title>
+<a xlink:href="../proc/set.html" xlink:title="set">
+<polygon fill="#d9534f" stroke="#d9534f" points="94,-1830 40,-1830 40,-1804 94,-1804 94,-1830"/>
+<text text-anchor="middle" x="67" y="-1814.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">set</text>
+</a>
+</g>
+<!-- proc~int1_guard -->
+<g id="node43" class="node"><title>proc~int1_guard</title>
+<a xlink:href="../proc/int1_guard.html" xlink:title="int1_guard">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="99,-1874 35,-1874 35,-1848 99,-1848 99,-1874"/>
+<text text-anchor="middle" x="67" y="-1858.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">int1_guard</text>
+</a>
+</g>
+<!-- proc~array_list_filter -->
+<g id="node44" class="node"><title>proc~array_list_filter</title>
+<a xlink:href="../proc/array_list_filter.html" xlink:title="array_list_filter">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="108,-1918 26,-1918 26,-1892 108,-1892 108,-1918"/>
+<text text-anchor="middle" x="67" y="-1902.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">array_list_filter</text>
+</a>
+</g>
+<!-- proc~set_prev -->
+<g id="node45" class="node"><title>proc~set_prev</title>
+<a xlink:href="../proc/set_prev.html" xlink:title="set_prev">
+<polygon fill="#d9534f" stroke="#d9534f" points="94,-1962 40,-1962 40,-1936 94,-1936 94,-1962"/>
+<text text-anchor="middle" x="67" y="-1946.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">set_prev</text>
+</a>
+</g>
+<!-- proc~int8_guard -->
+<g id="node46" class="node"><title>proc~int8_guard</title>
+<a xlink:href="../proc/int8_guard.html" xlink:title="int8_guard">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="99,-2006 35,-2006 35,-1980 99,-1980 99,-2006"/>
+<text text-anchor="middle" x="67" y="-1990.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">int8_guard</text>
+</a>
+</g>
+<!-- proc~complex16_guard -->
+<g id="node47" class="node"><title>proc~complex16_guard</title>
+<a xlink:href="../proc/complex16_guard.html" xlink:title="complex16_guard">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="116,-2050 18,-2050 18,-2024 116,-2024 116,-2050"/>
+<text text-anchor="middle" x="67" y="-2034.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">complex16_guard</text>
+</a>
+</g>
+<!-- proc~array_list_delete_slice -->
+<g id="node48" class="node"><title>proc~array_list_delete_slice</title>
+<a xlink:href="../proc/array_list_delete_slice.html" xlink:title="array_list_delete_slice">
+<polygon fill="#d9534f" stroke="#d9534f" points="126,-2094 8,-2094 8,-2068 126,-2068 126,-2094"/>
+<text text-anchor="middle" x="67" y="-2078.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">array_list_delete_slice</text>
+</a>
+</g>
+<!-- proc~array_list_popleft -->
+<g id="node49" class="node"><title>proc~array_list_popleft</title>
+<a xlink:href="../proc/array_list_popleft.html" xlink:title="array_list_popleft">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="114,-2138 20,-2138 20,-2112 114,-2112 114,-2138"/>
+<text text-anchor="middle" x="67" y="-2122.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">array_list_popleft</text>
+</a>
+</g>
+<!-- proc~complex8_guard -->
+<g id="node50" class="node"><title>proc~complex8_guard</title>
+<a xlink:href="../proc/complex8_guard.html" xlink:title="complex8_guard">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="113,-2182 21,-2182 21,-2156 113,-2156 113,-2182"/>
+<text text-anchor="middle" x="67" y="-2166.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">complex8_guard</text>
+</a>
+</g>
+<!-- proc~array_extend -->
+<g id="node51" class="node"><title>proc~array_extend</title>
+<a xlink:href="../proc/array_extend.html" xlink:title="array_extend">
+<polygon fill="#d9534f" stroke="#d9534f" points="105,-2226 29,-2226 29,-2200 105,-2200 105,-2226"/>
+<text text-anchor="middle" x="67" y="-2210.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">array_extend</text>
+</a>
+</g>
+<!-- proc~array_list_remove_last -->
+<g id="node52" class="node"><title>proc~array_list_remove_last</title>
+<a xlink:href="../proc/array_list_remove_last.html" xlink:title="array_list_remove_last">
+<polygon fill="#d9534f" stroke="#d9534f" points="127,-2270 7,-2270 7,-2244 127,-2244 127,-2270"/>
+<text text-anchor="middle" x="67" y="-2254.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">array_list_remove_last</text>
+</a>
+</g>
+<!-- proc~is_equal -->
+<g id="node53" class="node"><title>proc~is_equal</title>
+<a xlink:href="../proc/is_equal.html" xlink:title="is_equal">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="94,-2314 40,-2314 40,-2288 94,-2288 94,-2314"/>
+<text text-anchor="middle" x="67" y="-2298.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">is_equal</text>
+</a>
+</g>
+<!-- proc~array_list_foreach -->
+<g id="node54" class="node"><title>proc~array_list_foreach</title>
+<a xlink:href="../proc/array_list_foreach.html" xlink:title="array_list_foreach">
+<polygon fill="#d9534f" stroke="#d9534f" points="116,-2358 18,-2358 18,-2332 116,-2332 116,-2358"/>
+<text text-anchor="middle" x="67" y="-2342.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">array_list_foreach</text>
+</a>
+</g>
+<!-- proc~array_list_get -->
+<g id="node55" class="node"><title>proc~array_list_get</title>
+<a xlink:href="../proc/array_list_get.html" xlink:title="array_list_get">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="105,-2402 29,-2402 29,-2376 105,-2376 105,-2402"/>
+<text text-anchor="middle" x="67" y="-2386.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">array_list_get</text>
+</a>
+</g>
+<!-- proc~int_guard -->
+<g id="node56" class="node"><title>proc~int_guard</title>
+<a xlink:href="../proc/int_guard.html" xlink:title="int_guard">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="96,-2446 38,-2446 38,-2420 96,-2420 96,-2446"/>
+<text text-anchor="middle" x="67" y="-2430.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">int_guard</text>
+</a>
+</g>
+<!-- interface~iterator -->
+<g id="node57" class="node"><title>interface~iterator</title>
+<a xlink:href="../interface/iterator.html" xlink:title="iterator">
+<polygon fill="#a7506f" stroke="#a7506f" points="94,-1654 40,-1654 40,-1628 94,-1628 94,-1654"/>
+<text text-anchor="middle" x="67" y="-1638.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">iterator</text>
+</a>
+</g>
+<!-- interface~iterator&#45;&gt;proc~constructor -->
+<g id="edge2" class="edge"><title>interface~iterator&#45;&gt;proc~constructor</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M94.1948,-1641C112.847,-1641 137.999,-1641 159.422,-1641"/>
+<polygon fill="black" stroke="black" points="159.595,-1644.5 169.595,-1641 159.595,-1637.5 159.595,-1644.5"/>
+</g>
+<!-- proc~get_prev -->
+<g id="node58" class="node"><title>proc~get_prev</title>
+<a xlink:href="../proc/get_prev.html" xlink:title="get_prev">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="94,-2490 40,-2490 40,-2464 94,-2464 94,-2490"/>
+<text text-anchor="middle" x="67" y="-2474.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">get_prev</text>
+</a>
+</g>
+<!-- proc~reset -->
+<g id="node59" class="node"><title>proc~reset</title>
+<a xlink:href="../proc/reset.html" xlink:title="reset">
+<polygon fill="#d9534f" stroke="#d9534f" points="94,-2534 40,-2534 40,-2508 94,-2508 94,-2534"/>
+<text text-anchor="middle" x="67" y="-2518.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">reset</text>
+</a>
+</g>
+<!-- proc~array_list_get_indices -->
+<g id="node60" class="node"><title>proc~array_list_get_indices</title>
+<a xlink:href="../proc/array_list_get_indices.html" xlink:title="array_list_get_indices">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="125,-2578 9,-2578 9,-2552 125,-2552 125,-2578"/>
+<text text-anchor="middle" x="67" y="-2562.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">array_list_get_indices</text>
+</a>
+</g>
+<!-- proc~array_list_delete_multiple -->
+<g id="node61" class="node"><title>proc~array_list_delete_multiple</title>
+<a xlink:href="../proc/array_list_delete_multiple.html" xlink:title="array_list_delete_multiple">
+<polygon fill="#d9534f" stroke="#d9534f" points="134,-2622 5.68434e-14,-2622 0,-2596 134,-2596 134,-2622"/>
+<text text-anchor="middle" x="67" y="-2606.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">array_list_delete_multiple</text>
+</a>
+</g>
+<!-- proc~has_prev -->
+<g id="node62" class="node"><title>proc~has_prev</title>
+<a xlink:href="../proc/has_prev.html" xlink:title="has_prev">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="95,-2666 39,-2666 39,-2640 95,-2640 95,-2666"/>
+<text text-anchor="middle" x="67" y="-2650.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">has_prev</text>
+</a>
+</g>
+<!-- proc~real8_guard -->
+<g id="node63" class="node"><title>proc~real8_guard</title>
+<a xlink:href="../proc/real8_guard.html" xlink:title="real8_guard">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="102,-2710 32,-2710 32,-2684 102,-2684 102,-2710"/>
+<text text-anchor="middle" x="67" y="-2694.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">real8_guard</text>
+</a>
+</g>
+<!-- proc~get_next -->
+<g id="node64" class="node"><title>proc~get_next</title>
+<a xlink:href="../proc/get_next.html" xlink:title="get_next">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="94,-2754 40,-2754 40,-2728 94,-2728 94,-2754"/>
+<text text-anchor="middle" x="67" y="-2738.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">get_next</text>
+</a>
+</g>
+<!-- proc~real16_guard -->
+<g id="node65" class="node"><title>proc~real16_guard</title>
+<a xlink:href="../proc/real16_guard.html" xlink:title="real16_guard">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="105,-2798 29,-2798 29,-2772 105,-2772 105,-2798"/>
+<text text-anchor="middle" x="67" y="-2782.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">real16_guard</text>
+</a>
+</g>
+<!-- proc~array_list_delete_single -->
+<g id="node66" class="node"><title>proc~array_list_delete_single</title>
+<a xlink:href="../proc/array_list_delete_single.html" xlink:title="array_list_delete_single">
+<polygon fill="#d9534f" stroke="#d9534f" points="129,-2842 5,-2842 5,-2816 129,-2816 129,-2842"/>
+<text text-anchor="middle" x="67" y="-2826.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">array_list_delete_single</text>
+</a>
+</g>
+<!-- proc~assign_container -->
+<g id="node67" class="node"><title>proc~assign_container</title>
+<a xlink:href="../proc/assign_container.html" xlink:title="assign_container">
+<polygon fill="#d9534f" stroke="#d9534f" points="114,-2886 20,-2886 20,-2860 114,-2860 114,-2886"/>
+<text text-anchor="middle" x="67" y="-2870.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">assign_container</text>
+</a>
+</g>
+<!-- proc~unset_prev -->
+<g id="node68" class="node"><title>proc~unset_prev</title>
+<a xlink:href="../proc/unset_prev.html" xlink:title="unset_prev">
+<polygon fill="#d9534f" stroke="#d9534f" points="100,-2930 34,-2930 34,-2904 100,-2904 100,-2930"/>
+<text text-anchor="middle" x="67" y="-2914.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">unset_prev</text>
+</a>
+</g>
+<!-- proc~array_list_slice -->
+<g id="node69" class="node"><title>proc~array_list_slice</title>
+<a xlink:href="../proc/array_list_slice.html" xlink:title="array_list_slice">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="108,-2974 26,-2974 26,-2948 108,-2948 108,-2974"/>
+<text text-anchor="middle" x="67" y="-2958.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">array_list_slice</text>
+</a>
+</g>
+<!-- proc~complex4_guard -->
+<g id="node70" class="node"><title>proc~complex4_guard</title>
+<a xlink:href="../proc/complex4_guard.html" xlink:title="complex4_guard">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="113,-3018 21,-3018 21,-2992 113,-2992 113,-3018"/>
+<text text-anchor="middle" x="67" y="-3002.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">complex4_guard</text>
+</a>
+</g>
+<!-- proc~array_list_pop -->
+<g id="node71" class="node"><title>proc~array_list_pop</title>
+<a xlink:href="../proc/array_list_pop.html" xlink:title="array_list_pop">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="107,-3062 27,-3062 27,-3036 107,-3036 107,-3062"/>
+<text text-anchor="middle" x="67" y="-3046.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">array_list_pop</text>
+</a>
+</g>
+<!-- proc~array_list_has -->
+<g id="node72" class="node"><title>proc~array_list_has</title>
+<a xlink:href="../proc/array_list_has.html" xlink:title="array_list_has">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="106,-3106 28,-3106 28,-3080 106,-3080 106,-3106"/>
+<text text-anchor="middle" x="67" y="-3090.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">array_list_has</text>
+</a>
+</g>
+<!-- proc~array_list_set_single -->
+<g id="node73" class="node"><title>proc~array_list_set_single</title>
+<a xlink:href="../proc/array_list_set_single.html" xlink:title="array_list_set_single">
+<polygon fill="#d9534f" stroke="#d9534f" points="122,-3150 12,-3150 12,-3124 122,-3124 122,-3150"/>
+<text text-anchor="middle" x="67" y="-3134.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">array_list_set_single</text>
+</a>
+</g>
+<!-- proc~array_list_set_multiple -->
+<g id="node74" class="node"><title>proc~array_list_set_multiple</title>
+<a xlink:href="../proc/array_list_set_multiple.html" xlink:title="array_list_set_multiple">
+<polygon fill="#d9534f" stroke="#d9534f" points="126,-3194 8,-3194 8,-3168 126,-3168 126,-3194"/>
+<text text-anchor="middle" x="67" y="-3178.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">array_list_set_multiple</text>
+</a>
+</g>
+<!-- proc~array_list_sort -->
+<g id="node75" class="node"><title>proc~array_list_sort</title>
+<a xlink:href="../proc/array_list_sort.html" xlink:title="array_list_sort">
+<polygon fill="#d9534f" stroke="#d9534f" points="107,-3238 27,-3238 27,-3212 107,-3212 107,-3238"/>
+<text text-anchor="middle" x="67" y="-3222.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">array_list_sort</text>
+</a>
+</g>
+</g>
+</svg>
+</div>
+                <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
+                <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                      </div>
+                      <div class="modal-body">
+                        
+Nodes of different colours represent the following:
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.26.3 (20100126.1600)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.80" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph1" class="graph" transform="scale(0.817602 0.817602) rotate(0) translate(4 30)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="white" points="-4,5 -4,-30 781,-30 781,5 -4,5"/>
+<!-- Module -->
+<g id="node1" class="node"><title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-26 2.13163e-14,-26 0,-1.24345e-14 54,-3.55271e-15 54,-26"/>
+<text text-anchor="middle" x="27" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node"><title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="138,-26 72,-26 72,-1.24345e-14 138,-3.55271e-15 138,-26"/>
+<text text-anchor="middle" x="105" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Type -->
+<g id="node3" class="node"><title>Type</title>
+<polygon fill="#5cb85c" stroke="#5cb85c" points="210,-26 156,-26 156,-1.24345e-14 210,-3.55271e-15 210,-26"/>
+<text text-anchor="middle" x="183" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type</text>
+</g>
+<!-- Subroutine -->
+<g id="node4" class="node"><title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="292,-26 228,-26 228,-1.24345e-14 292,-3.55271e-15 292,-26"/>
+<text text-anchor="middle" x="260" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node5" class="node"><title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="364,-26 310,-26 310,-1.24345e-14 364,-3.55271e-15 364,-26"/>
+<text text-anchor="middle" x="337" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node6" class="node"><title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="436,-26 382,-26 382,-1.24345e-14 436,-3.55271e-15 436,-26"/>
+<text text-anchor="middle" x="409" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node7" class="node"><title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="590,-26 454,-26 454,-1.24345e-14 590,-3.55271e-15 590,-26"/>
+<text text-anchor="middle" x="522" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node8" class="node"><title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="662,-26 608,-26 608,-1.24345e-14 662,-3.55271e-15 662,-26"/>
+<text text-anchor="middle" x="635" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node9" class="node"><title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="776,-26 680,-26 680,-1.24345e-14 776,-3.55271e-15 776,-26"/>
+<text text-anchor="middle" x="728" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<h5>Module Graph</h5>
+<p>Solid arrows point from a parent (sub)module to the submodule which is
+descended from it. Dashed arrows point from a module being used to the
+module using it.</p>
+<h5>Type Graph</h5>
+<p>Solid arrows point from one derived type to another which extends
+(inherits from) it. Dashed arrows point from a derived type to another
+type containing it as a components, with a label listing the name(s) of
+said component(s).</p>
+<h5>Call Graph</h5>
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.</p>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+        </div>
+      </div>
+
+    <hr>
+    <footer>
+        <div class="row">
+        <div class="col-md-4">&copy; 2016 </div>
+	<div class="col-md-4"><span class="text-center"> FIAT was developed by Chris MacMackin</span></div>
+        <div class="col-md-4"><span class="pull-right">Documentation generated by <a href="https://github.com/cmacmackin/ford">FORD</a></span></div>
+        </div>
+        <br>
+    </footer>
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js'],
+        'HTML-CSS': { 
+           styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: '#000000 ! important'} }
+        }
+      });
+    </script>
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  </body>
+</html>

@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	 
+	 <meta name="description" content="Fortran Implementation of Abstract Types: generic implementations of common data structures in modern, object oriented Fortran.">
+    
+    <meta name="author" content="Chris MacMackin" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>dictionary_mod &ndash; FIAT</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">FIAT </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+				
+                
+            <li><a href="../lists/files.html">Source Files</a></li>
+				
+				
+            <li><a href="../lists/modules.html">Modules</a></li>
+				
+				
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+				
+				
+            <li><a href="../lists/absint.html">Abstract Interfaces</a></li>
+								
+            <li><a href="../lists/types.html">Derived Types</a></li>
+				
+				
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>dictionary_mod 
+    <small>Module</small>
+    
+    </h1>
+	 
+<div class="row">
+<div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+    <li><i class="fa fa-pencil"></i> Chris MacMackin</li>
+     
+     
+    <li><i class="fa fa-calendar-o"></i> March 2016</li>
+     
+     
+    <li><i class="fa fa-legal"></i> LGPLv3</li>
+     
+     
+    
+    
+    <li><i class="fa fa-code"></i><a href="../src/dictionary.f90"> Source File</a></li>
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+     <li><a href='../sourcefile/dictionary.f90.html'>dictionary.f90</a></li>
+  
+     <li class="active">dictionary_mod</li>
+  </ol>
+</div>
+</div>
+</div>
+    
+  </div>
+  
+  <div class="row">
+    <div class="col-lg-3">
+    
+<div id="sidebar">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <div class="panel panel-primary">
+    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#absints">Abstract Interfaces</a></h3></div>
+    <div id="absints" class="panel-collapse collapse">
+        <div class="list-group">
+          
+          <a class="list-group-item" href="../module/dictionary_mod.html#interface-keys_func">keys_func</a>
+          
+          <a class="list-group-item" href="../module/dictionary_mod.html#interface-values_func">values_func</a>
+          
+          <a class="list-group-item" href="../module/dictionary_mod.html#interface-set_func">set_func</a>
+          
+          <a class="list-group-item" href="../module/dictionary_mod.html#interface-type_func">type_func</a>
+          
+        </div>
+    </div>
+  </div>
+  
+  
+  
+  <div class="panel panel-primary">
+    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#types">Derived Types</a></h3></div>
+    <div id="types" class="panel-collapse collapse">
+      <div class="list-group">
+        
+        <a class="list-group-item" href="../module/dictionary_mod.html#type-dictionary">dictionary</a>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <hr>
+  
+  <div class="panel panel-default">
+    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#allmods">All Modules</a></h3></div>
+    <div id="allmods" class="panel-collapse collapse">
+        <div class="list-group">
+          
+          <a class="list-group-item" href="../module/abstract_container_mod.html">abstract_container_mod</a>
+          
+          <a class="list-group-item" href="../module/array_list_mod.html">array_list_mod</a>
+          
+          <a class="list-group-item" href="../module/bidir_node_mod.html">bidir_node_mod</a>
+          
+          <a class="list-group-item" href="../module/container_mod.html">container_mod</a>
+          
+          <a class="list-group-item" href="../module/countable_mod.html">countable_mod</a>
+          
+          <a class="list-group-item" href="../module/data_set_mod.html">data_set_mod</a>
+          
+          <a class="list-group-item" href="../module/deque_mod.html">deque_mod</a>
+          
+          <a class="list-group-item" href="../module/dictionary_mod.html">dictionary_mod</a>
+          
+          <a class="list-group-item" href="../module/dynamic_set_mod.html">dynamic_set_mod</a>
+          
+          <a class="list-group-item" href="../module/iterable_mod.html">iterable_mod</a>
+          
+          <a class="list-group-item" href="../module/iterator_mod.html">iterator_mod</a>
+          
+          <a class="list-group-item" href="../module/linked_node_mod.html">linked_node_mod</a>
+          
+          <a class="list-group-item" href="../module/list_mod.html">list_mod</a>
+          
+          <a class="list-group-item" href="../module/map_mod.html">map_mod</a>
+          
+          <a class="list-group-item" href="../module/multimap_mod.html">multimap_mod</a>
+          
+          <a class="list-group-item" href="../module/multiset_mod.html">multiset_mod</a>
+          
+          <a class="list-group-item" href="../module/node_mod.html">node_mod</a>
+          
+          <a class="list-group-item" href="../module/ordered_mod.html">ordered_mod</a>
+          
+          <a class="list-group-item" href="../module/queue_mod.html">queue_mod</a>
+          
+        </div>
+    </div>
+  </div>
+  
+</div>
+
+    </div>
+    
+    <div class="col-lg-9" id='text'>
+    
+    
+  
+    <ul class="list-inline">
+      <li><h4>Uses:</h4></li>
+      
+      <li><a href='../module/abstract_container_mod.html'>abstract_container_mod</a></li>
+      
+      <li><a href='../module/data_set_mod.html'>data_set_mod</a></li>
+      
+      <li><a href='../module/array_list_mod.html'>array_list_mod</a></li>
+      
+    </ul>
+  
+
+    
+                <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.26.3 (20100126.1600)
+ -->
+<!-- Title: module~~dictionary_mod~~UsesGraph Pages: 1 -->
+<svg id="moduledictionary_modUsesGraph" width="641pt" height="161pt"
+ viewBox="0.00 0.00 641.00 160.68" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~dictionary_mod~~UsesGraph" class="graph" transform="scale(0.464493 0.464493) rotate(0) translate(4 341.916)">
+<title>module~~dictionary_mod~~UsesGraph</title>
+<polygon fill="white" stroke="white" points="-4,5 -4,-341.916 1377,-341.916 1377,5 -4,5"/>
+<!-- module~dictionary_mod -->
+<g id="node1" class="node"><title>module~dictionary_mod</title>
+<polygon fill="none" stroke="black" points="1371,-38.7303 1287,-38.7303 1287,-12.7303 1371,-12.7303 1371,-38.7303"/>
+<text text-anchor="middle" x="1329" y="-23.2803" font-family="Helvetica,sans-Serif" font-size="10.50">dictionary_mod</text>
+</g>
+<!-- module~array_list_mod -->
+<g id="node2" class="node"><title>module~array_list_mod</title>
+<a xlink:href="../module/array_list_mod.html" xlink:title="array_list_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="1131,-117.73 1049,-117.73 1049,-91.7303 1131,-91.7303 1131,-117.73"/>
+<text text-anchor="middle" x="1090" y="-102.28" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">array_list_mod</text>
+</a>
+</g>
+<!-- module~array_list_mod&#45;&gt;module~dictionary_mod -->
+<g id="edge44" class="edge"><title>module~array_list_mod&#45;&gt;module~dictionary_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M1129.47,-91.6851C1170.64,-78.0769 1235.26,-56.7157 1279.75,-42.0109"/>
+<polygon fill="black" stroke="black" points="1281.08,-45.2566 1289.48,-38.795 1278.88,-38.6103 1281.08,-45.2566"/>
+</g>
+<!-- module~data_set_mod -->
+<g id="node4" class="node"><title>module~data_set_mod</title>
+<a xlink:href="../module/data_set_mod.html" xlink:title="data_set_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="1249,-38.7303 1169,-38.7303 1169,-12.7303 1249,-12.7303 1249,-38.7303"/>
+<text text-anchor="middle" x="1209" y="-23.2803" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">data_set_mod</text>
+</a>
+</g>
+<!-- module~array_list_mod&#45;&gt;module~data_set_mod -->
+<g id="edge42" class="edge"><title>module~array_list_mod&#45;&gt;module~data_set_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M1110.57,-91.6392C1117.41,-87.2509 1125.05,-82.3093 1132,-77.7303 1148.4,-66.9253 1166.61,-54.638 1181.21,-44.7213"/>
+<polygon fill="black" stroke="black" points="1183.48,-47.4076 1189.78,-38.8876 1179.54,-41.6207 1183.48,-47.4076"/>
+</g>
+<!-- module~abstract_container_mod -->
+<g id="node3" class="node"><title>module~abstract_container_mod</title>
+<a xlink:href="../module/abstract_container_mod.html" xlink:title="abstract_container_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="252,-298.73 124,-298.73 124,-272.73 252,-272.73 252,-298.73"/>
+<text text-anchor="middle" x="188" y="-283.28" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">abstract_container_mod</text>
+</a>
+</g>
+<!-- module~abstract_container_mod&#45;&gt;module~dictionary_mod -->
+<g id="edge46" class="edge"><title>module~abstract_container_mod&#45;&gt;module~dictionary_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M212.996,-272.614C239.898,-259.108 284.315,-238.554 325,-227.73"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M325,-227.73C359.064,-218.668 363.725,-204.956 398,-196.73 516.269,-168.347 551.303,-199.312 671,-177.73"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M671,-177.73C729.089,-165.213 728.996,-130.481 781,-101.73"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M781,-101.73C904.771,-33.3036 949.088,-37.779 1090,-25.7303"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M1090,-25.7303C1125.7,-20.962 1132.32,-8.66578 1168,-3.73034 1204.1,1.26337 1213.89,1.20361 1250,-3.73034 1259.94,-5.08921 1270.4,-7.36811 1280.34,-9.95727"/>
+<polygon fill="black" stroke="black" points="1279.49,-13.3541 1290.06,-12.6272 1281.35,-6.60399 1279.49,-13.3541"/>
+</g>
+<!-- module~abstract_container_mod&#45;&gt;module~array_list_mod -->
+<g id="edge32" class="edge"><title>module~abstract_container_mod&#45;&gt;module~array_list_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M240.416,-298.746C255.677,-302.131 272.433,-305.461 288,-307.73 456.891,-332.352 500.867,-322.121 671,-335.73"/>
+</g>
+<!-- module~abstract_container_mod&#45;&gt;module~data_set_mod -->
+<g id="edge40" class="edge"><title>module~abstract_container_mod&#45;&gt;module~data_set_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M1090,-25.7303C1112.38,-23.8169 1137.21,-23.5286 1158.37,-23.8302"/>
+<polygon fill="black" stroke="black" points="1158.38,-27.3308 1168.44,-24.0211 1158.51,-20.3321 1158.38,-27.3308"/>
+</g>
+<!-- module~list_mod -->
+<g id="node5" class="node"><title>module~list_mod</title>
+<a xlink:href="../module/list_mod.html" xlink:title="list_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="1012,-117.73 958,-117.73 958,-91.7303 1012,-91.7303 1012,-117.73"/>
+<text text-anchor="middle" x="985" y="-102.28" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">list_mod</text>
+</a>
+</g>
+<!-- module~abstract_container_mod&#45;&gt;module~list_mod -->
+<g id="edge10" class="edge"><title>module~abstract_container_mod&#45;&gt;module~list_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M781,-101.73C833.832,-74.5997 904.972,-84.2961 947.772,-94.2166"/>
+<polygon fill="black" stroke="black" points="947.21,-97.6821 957.755,-96.6546 948.871,-90.882 947.21,-97.6821"/>
+</g>
+<!-- module~ordered_mod -->
+<g id="node6" class="node"><title>module~ordered_mod</title>
+<a xlink:href="../module/ordered_mod.html" xlink:title="ordered_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="709,-272.73 633,-272.73 633,-246.73 709,-246.73 709,-272.73"/>
+<text text-anchor="middle" x="671" y="-257.28" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ordered_mod</text>
+</a>
+</g>
+<!-- module~abstract_container_mod&#45;&gt;module~ordered_mod -->
+<g id="edge22" class="edge"><title>module~abstract_container_mod&#45;&gt;module~ordered_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M325,-227.73C357.005,-219.875 365.411,-235.835 398,-240.73 466.634,-251.04 483.856,-253.719 553,-259.73"/>
+</g>
+<!-- module~iterator_mod -->
+<g id="node7" class="node"><title>module~iterator_mod</title>
+<a xlink:href="../module/iterator_mod.html" xlink:title="iterator_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="361,-298.73 289,-298.73 289,-272.73 361,-272.73 361,-298.73"/>
+<text text-anchor="middle" x="325" y="-283.28" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">iterator_mod</text>
+</a>
+</g>
+<!-- module~abstract_container_mod&#45;&gt;module~iterator_mod -->
+<g id="edge26" class="edge"><title>module~abstract_container_mod&#45;&gt;module~iterator_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M252.088,-285.73C260.804,-285.73 269.615,-285.73 277.955,-285.73"/>
+<polygon fill="black" stroke="black" points="278.223,-289.23 288.223,-285.73 278.223,-282.23 278.223,-289.23"/>
+</g>
+<!-- module~deque_mod -->
+<g id="node8" class="node"><title>module~deque_mod</title>
+<a xlink:href="../module/deque_mod.html" xlink:title="deque_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="922,-190.73 852,-190.73 852,-164.73 922,-164.73 922,-190.73"/>
+<text text-anchor="middle" x="887" y="-175.28" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">deque_mod</text>
+</a>
+</g>
+<!-- module~abstract_container_mod&#45;&gt;module~deque_mod -->
+<g id="edge6" class="edge"><title>module~abstract_container_mod&#45;&gt;module~deque_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M671,-177.73C729.375,-167.931 797.882,-170.216 841.834,-173.409"/>
+<polygon fill="black" stroke="black" points="841.673,-176.907 851.913,-174.188 842.213,-169.928 841.673,-176.907"/>
+</g>
+<!-- module~iterable_mod -->
+<g id="node16" class="node"><title>module~iterable_mod</title>
+<a xlink:href="../module/iterable_mod.html" xlink:title="iterable_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="473,-231.73 399,-231.73 399,-205.73 473,-205.73 473,-231.73"/>
+<text text-anchor="middle" x="436" y="-216.28" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">iterable_mod</text>
+</a>
+</g>
+<!-- module~abstract_container_mod&#45;&gt;module~iterable_mod -->
+<g id="edge16" class="edge"><title>module~abstract_container_mod&#45;&gt;module~iterable_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M325,-227.73C345.387,-222.726 368.447,-220.348 388.246,-219.268"/>
+<polygon fill="black" stroke="black" points="388.439,-222.763 398.271,-218.815 388.123,-215.77 388.439,-222.763"/>
+</g>
+<!-- module~data_set_mod&#45;&gt;module~dictionary_mod -->
+<g id="edge48" class="edge"><title>module~data_set_mod&#45;&gt;module~dictionary_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M1249.63,-25.7303C1258.13,-25.7303 1267.22,-25.7303 1276.09,-25.7303"/>
+<polygon fill="black" stroke="black" points="1276.37,-29.2304 1286.37,-25.7303 1276.37,-22.2304 1276.37,-29.2304"/>
+</g>
+<!-- module~list_mod&#45;&gt;module~array_list_mod -->
+<g id="edge28" class="edge"><title>module~list_mod&#45;&gt;module~array_list_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M1012.04,-104.73C1020.08,-104.73 1029.16,-104.73 1038.22,-104.73"/>
+<polygon fill="black" stroke="black" points="1038.37,-108.23 1048.37,-104.73 1038.37,-101.23 1038.37,-108.23"/>
+</g>
+<!-- module~ordered_mod&#45;&gt;module~array_list_mod -->
+<g id="edge30" class="edge"><title>module~ordered_mod&#45;&gt;module~array_list_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M682.513,-273.03C700.898,-292.884 739.108,-328.698 781,-335.73"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M781,-335.73C919.854,-359.038 1039.02,-188.316 1077.21,-126.496"/>
+<polygon fill="black" stroke="black" points="1080.24,-128.242 1082.44,-117.877 1074.26,-124.609 1080.24,-128.242"/>
+</g>
+<!-- module~queue_mod -->
+<g id="node9" class="node"><title>module~queue_mod</title>
+<a xlink:href="../module/queue_mod.html" xlink:title="queue_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="816,-252.73 746,-252.73 746,-226.73 816,-226.73 816,-252.73"/>
+<text text-anchor="middle" x="781" y="-237.28" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">queue_mod</text>
+</a>
+</g>
+<!-- module~ordered_mod&#45;&gt;module~queue_mod -->
+<g id="edge2" class="edge"><title>module~ordered_mod&#45;&gt;module~queue_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M709.782,-252.679C718.229,-251.143 727.236,-249.506 735.905,-247.93"/>
+<polygon fill="black" stroke="black" points="736.658,-251.35 745.87,-246.118 735.406,-244.463 736.658,-251.35"/>
+</g>
+<!-- module~iterator_mod&#45;&gt;module~array_list_mod -->
+<g id="edge34" class="edge"><title>module~iterator_mod&#45;&gt;module~array_list_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M553,-297.73C608.084,-298.907 616.079,-331.337 671,-335.73"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M671,-335.73C719.733,-339.629 732.242,-332.161 781,-335.73"/>
+</g>
+<!-- module~iterator_mod&#45;&gt;module~ordered_mod -->
+<g id="edge18" class="edge"><title>module~iterator_mod&#45;&gt;module~ordered_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M361.693,-288.852C406.721,-292.407 485.417,-297.73 553,-297.73"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M553,-297.73C582.371,-298.358 613.969,-287.512 637.068,-277.251"/>
+<polygon fill="black" stroke="black" points="638.812,-280.3 646.416,-272.924 635.871,-273.948 638.812,-280.3"/>
+</g>
+<!-- module~iterator_mod&#45;&gt;module~iterable_mod -->
+<g id="edge14" class="edge"><title>module~iterator_mod&#45;&gt;module~iterable_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M346.665,-272.653C363.473,-262.508 386.976,-248.321 405.657,-237.046"/>
+<polygon fill="black" stroke="black" points="407.637,-239.939 414.389,-231.775 404.019,-233.946 407.637,-239.939"/>
+</g>
+<!-- module~deque_mod&#45;&gt;module~list_mod -->
+<g id="edge8" class="edge"><title>module~deque_mod&#45;&gt;module~list_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M904.52,-164.679C919.617,-153.434 941.626,-137.039 958.814,-124.236"/>
+<polygon fill="black" stroke="black" points="961.372,-126.695 967.301,-117.914 957.19,-121.081 961.372,-126.695"/>
+</g>
+<!-- module~queue_mod&#45;&gt;module~deque_mod -->
+<g id="edge4" class="edge"><title>module~queue_mod&#45;&gt;module~deque_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M803.48,-226.582C818.658,-217.704 838.901,-205.864 855.657,-196.063"/>
+<polygon fill="black" stroke="black" points="857.688,-198.93 864.553,-190.86 854.154,-192.888 857.688,-198.93"/>
+</g>
+<!-- module~countable_mod -->
+<g id="node15" class="node"><title>module~countable_mod</title>
+<a xlink:href="../module/countable_mod.html" xlink:title="countable_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="596,-231.73 510,-231.73 510,-205.73 596,-205.73 596,-231.73"/>
+<text text-anchor="middle" x="553" y="-216.28" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">countable_mod</text>
+</a>
+</g>
+<!-- module~countable_mod&#45;&gt;module~data_set_mod -->
+<g id="edge38" class="edge"><title>module~countable_mod&#45;&gt;module~data_set_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M596.299,-214.167C628.2,-210.113 672.392,-203.044 710,-191.73 825.295,-157.048 843.664,-120.455 958,-82.7303 994.681,-70.6276 1096.28,-48.8773 1158.4,-36.0285"/>
+<polygon fill="black" stroke="black" points="1159.3,-39.4163 1168.39,-33.9686 1157.88,-32.5606 1159.3,-39.4163"/>
+</g>
+<!-- module~countable_mod&#45;&gt;module~ordered_mod -->
+<g id="edge20" class="edge"><title>module~countable_mod&#45;&gt;module~ordered_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M590.66,-231.816C601.198,-235.477 612.785,-239.503 623.801,-243.331"/>
+<polygon fill="black" stroke="black" points="622.698,-246.653 633.293,-246.629 624.995,-240.04 622.698,-246.653"/>
+</g>
+<!-- module~iterable_mod&#45;&gt;module~ordered_mod -->
+<g id="edge24" class="edge"><title>module~iterable_mod&#45;&gt;module~ordered_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M461.647,-231.916C484.809,-242.79 520.193,-256.878 553,-259.73"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M553,-259.73C575.713,-261.705 600.979,-261.963 622.285,-261.623"/>
+<polygon fill="black" stroke="black" points="622.472,-265.12 632.398,-261.414 622.327,-258.122 622.472,-265.12"/>
+</g>
+<!-- module~iterable_mod&#45;&gt;module~countable_mod -->
+<g id="edge12" class="edge"><title>module~iterable_mod&#45;&gt;module~countable_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M473.664,-218.73C481.922,-218.73 490.818,-218.73 499.561,-218.73"/>
+<polygon fill="black" stroke="black" points="499.709,-222.23 509.709,-218.73 499.709,-215.23 499.709,-222.23"/>
+</g>
+<!-- iso_fortran_env -->
+<g id="node29" class="node"><title>iso_fortran_env</title>
+<a xlink:href="https://software.intel.com/en-us/node/511041" xlink:title="iso_fortran_env">
+<polygon fill="#337ab7" stroke="#337ab7" points="87,-298.73 1,-298.73 1,-272.73 87,-272.73 87,-298.73"/>
+<text text-anchor="middle" x="44" y="-283.28" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">iso_fortran_env</text>
+</a>
+</g>
+<!-- iso_fortran_env&#45;&gt;module~abstract_container_mod -->
+<g id="edge36" class="edge"><title>iso_fortran_env&#45;&gt;module~abstract_container_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M87.5955,-285.73C95.8954,-285.73 104.795,-285.73 113.741,-285.73"/>
+<polygon fill="black" stroke="black" points="113.832,-289.23 123.832,-285.73 113.832,-282.23 113.832,-289.23"/>
+</g>
+</g>
+</svg>
+</div>
+                <script>var panmoduledictionary_modUsesGraph = svgPanZoom('#moduledictionary_modUsesGraph', {
+                    zoomEnabled: true,
+                    controlIconsEnabled: true,
+                    fit: true,
+                    center: true,});
+                    </script>
+                <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
+                <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                      </div>
+                      <div class="modal-body">
+                        
+Nodes of different colours represent the following:
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.26.3 (20100126.1600)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.80" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph1" class="graph" transform="scale(0.817602 0.817602) rotate(0) translate(4 30)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="white" points="-4,5 -4,-30 781,-30 781,5 -4,5"/>
+<!-- Module -->
+<g id="node1" class="node"><title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-26 2.13163e-14,-26 0,-1.24345e-14 54,-3.55271e-15 54,-26"/>
+<text text-anchor="middle" x="27" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node"><title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="138,-26 72,-26 72,-1.24345e-14 138,-3.55271e-15 138,-26"/>
+<text text-anchor="middle" x="105" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Type -->
+<g id="node3" class="node"><title>Type</title>
+<polygon fill="#5cb85c" stroke="#5cb85c" points="210,-26 156,-26 156,-1.24345e-14 210,-3.55271e-15 210,-26"/>
+<text text-anchor="middle" x="183" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type</text>
+</g>
+<!-- Subroutine -->
+<g id="node4" class="node"><title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="292,-26 228,-26 228,-1.24345e-14 292,-3.55271e-15 292,-26"/>
+<text text-anchor="middle" x="260" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node5" class="node"><title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="364,-26 310,-26 310,-1.24345e-14 364,-3.55271e-15 364,-26"/>
+<text text-anchor="middle" x="337" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node6" class="node"><title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="436,-26 382,-26 382,-1.24345e-14 436,-3.55271e-15 436,-26"/>
+<text text-anchor="middle" x="409" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node7" class="node"><title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="590,-26 454,-26 454,-1.24345e-14 590,-3.55271e-15 590,-26"/>
+<text text-anchor="middle" x="522" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node8" class="node"><title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="662,-26 608,-26 608,-1.24345e-14 662,-3.55271e-15 662,-26"/>
+<text text-anchor="middle" x="635" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node9" class="node"><title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="776,-26 680,-26 680,-1.24345e-14 776,-3.55271e-15 776,-26"/>
+<text text-anchor="middle" x="728" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<h5>Module Graph</h5>
+<p>Solid arrows point from a parent (sub)module to the submodule which is
+descended from it. Dashed arrows point from a module being used to the
+module using it.</p>
+<h5>Type Graph</h5>
+<p>Solid arrows point from one derived type to another which extends
+(inherits from) it. Dashed arrows point from a derived type to another
+type containing it as a components, with a label listing the name(s) of
+said component(s).</p>
+<h5>Call Graph</h5>
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.</p>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+    
+    <p>Provides an abstract type for mapping data structures. These are
+ data structures which consist of key-value pairs.</p>
+    
+    
+    <h3>Used By</h3>
+    
+                <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.26.3 (20100126.1600)
+ -->
+<!-- Title: module~~dictionary_mod~~UsedByGraph Pages: 1 -->
+<svg id="moduledictionary_modUsedByGraph" width="312pt" height="54pt"
+ viewBox="0.00 0.00 312.00 54.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~dictionary_mod~~UsedByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 50)">
+<title>module~~dictionary_mod~~UsedByGraph</title>
+<polygon fill="white" stroke="white" points="-4,5 -4,-50 309,-50 309,5 -4,5"/>
+<!-- module~dictionary_mod -->
+<g id="node1" class="node"><title>module~dictionary_mod</title>
+<polygon fill="none" stroke="black" points="85,-46 1,-46 1,-20 85,-20 85,-46"/>
+<text text-anchor="middle" x="43" y="-30.55" font-family="Helvetica,sans-Serif" font-size="10.50">dictionary_mod</text>
+</g>
+<!-- module~multimap_mod -->
+<g id="node2" class="node"><title>module~multimap_mod</title>
+<a xlink:href="../module/multimap_mod.html" xlink:title="multimap_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="303,-46 221,-46 221,-20 303,-20 303,-46"/>
+<text text-anchor="middle" x="262" y="-30.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">multimap_mod</text>
+</a>
+</g>
+<!-- module~dictionary_mod&#45;&gt;module~multimap_mod -->
+<g id="edge4" class="edge"><title>module~dictionary_mod&#45;&gt;module~multimap_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M85.6357,-34.277C97.4154,-34.576 110.202,-34.8507 122,-35 149.553,-35.3487 156.447,-35.3532 184,-35 192.47,-34.8914 201.456,-34.7166 210.2,-34.5143"/>
+<polygon fill="black" stroke="black" points="210.398,-38.0106 220.309,-34.2665 210.227,-31.0127 210.398,-38.0106"/>
+</g>
+<!-- module~map_mod -->
+<g id="node3" class="node"><title>module~map_mod</title>
+<a xlink:href="../module/map_mod.html" xlink:title="map_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="183,-26 123,-26 123,-1.24345e-14 183,-3.55271e-15 183,-26"/>
+<text text-anchor="middle" x="153" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">map_mod</text>
+</a>
+</g>
+<!-- module~dictionary_mod&#45;&gt;module~map_mod -->
+<g id="edge6" class="edge"><title>module~dictionary_mod&#45;&gt;module~map_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M85.5289,-25.2675C94.3065,-23.6716 103.531,-21.9943 112.244,-20.4101"/>
+<polygon fill="black" stroke="black" points="112.967,-23.8362 122.179,-18.6037 111.715,-16.9491 112.967,-23.8362"/>
+</g>
+<!-- module~map_mod&#45;&gt;module~multimap_mod -->
+<g id="edge2" class="edge"><title>module~map_mod&#45;&gt;module~multimap_mod</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M183.653,-18.6243C191.888,-20.1353 201.027,-21.8124 210.073,-23.472"/>
+<polygon fill="black" stroke="black" points="209.724,-26.9664 220.191,-25.3287 210.987,-20.0814 209.724,-26.9664"/>
+</g>
+</g>
+</svg>
+</div>
+                <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
+                <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                      </div>
+                      <div class="modal-body">
+                        
+Nodes of different colours represent the following:
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.26.3 (20100126.1600)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.80" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph1" class="graph" transform="scale(0.817602 0.817602) rotate(0) translate(4 30)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="white" points="-4,5 -4,-30 781,-30 781,5 -4,5"/>
+<!-- Module -->
+<g id="node1" class="node"><title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-26 2.13163e-14,-26 0,-1.24345e-14 54,-3.55271e-15 54,-26"/>
+<text text-anchor="middle" x="27" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node"><title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="138,-26 72,-26 72,-1.24345e-14 138,-3.55271e-15 138,-26"/>
+<text text-anchor="middle" x="105" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Type -->
+<g id="node3" class="node"><title>Type</title>
+<polygon fill="#5cb85c" stroke="#5cb85c" points="210,-26 156,-26 156,-1.24345e-14 210,-3.55271e-15 210,-26"/>
+<text text-anchor="middle" x="183" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type</text>
+</g>
+<!-- Subroutine -->
+<g id="node4" class="node"><title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="292,-26 228,-26 228,-1.24345e-14 292,-3.55271e-15 292,-26"/>
+<text text-anchor="middle" x="260" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node5" class="node"><title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="364,-26 310,-26 310,-1.24345e-14 364,-3.55271e-15 364,-26"/>
+<text text-anchor="middle" x="337" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node6" class="node"><title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="436,-26 382,-26 382,-1.24345e-14 436,-3.55271e-15 436,-26"/>
+<text text-anchor="middle" x="409" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node7" class="node"><title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="590,-26 454,-26 454,-1.24345e-14 590,-3.55271e-15 590,-26"/>
+<text text-anchor="middle" x="522" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node8" class="node"><title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="662,-26 608,-26 608,-1.24345e-14 662,-3.55271e-15 662,-26"/>
+<text text-anchor="middle" x="635" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node9" class="node"><title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="776,-26 680,-26 680,-1.24345e-14 776,-3.55271e-15 776,-26"/>
+<text text-anchor="middle" x="728" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<h5>Module Graph</h5>
+<p>Solid arrows point from a parent (sub)module to the submodule which is
+descended from it. Dashed arrows point from a module being used to the
+module using it.</p>
+<h5>Type Graph</h5>
+<p>Solid arrows point from one derived type to another which extends
+(inherits from) it. Dashed arrows point from a derived type to another
+type containing it as a components, with a label listing the name(s) of
+said component(s).</p>
+<h5>Call Graph</h5>
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.</p>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+    <br>
+    
+
+    
+    
+    
+    
+    
+
+    
+    <section>
+     <h2>Abstract Interfaces</h2>
+	 
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="interface-keys_func"></span><h3>abstract interface
+    
+  </h3></div>
+  
+  <ul class="list-group">
+    <li class="list-group-item">
+    
+    
+    <h3>
+private pure function <a href='../interface/keys_func.html'>keys_func</a>(this)
+    
+    
+    
+</h3>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/dictionary.html'>dictionary</a>),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>this</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>type(<a href='../type/array_list.html'>array_list</a>)
+  </small></h4>
+  <p>A list containing all of the keys in this dictionary</p>
+    
+        
+
+    </li>
+  </ul>
+</div>
+
+    
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="interface-values_func"></span><h3>abstract interface
+    
+  </h3></div>
+  
+  <ul class="list-group">
+    <li class="list-group-item">
+    
+    
+    <h3>
+private pure function <a href='../interface/values_func.html'>values_func</a>(this)
+    
+    
+    
+</h3>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/dictionary.html'>dictionary</a>),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>this</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>type(<a href='../type/array_list.html'>array_list</a>)
+  </small></h4>
+  <p>A list containing all of the values in this dictionary,
+ stored in the same order as their corresponding key would
+ be were <a href="../type/dictionary.html#boundprocedure-keys">keys</a> called</p>
+    
+        
+
+    </li>
+  </ul>
+</div>
+
+    
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="interface-set_func"></span><h3>abstract interface
+    
+  </h3></div>
+  
+  <ul class="list-group">
+    <li class="list-group-item">
+    
+    
+    <h3>
+private function <a href='../interface/set_func.html'>set_func</a>(this, key, val)
+    
+    
+    
+</h3>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/dictionary.html'>dictionary</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>this</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>key</strong></td><td><p>The key whose value is to be set</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>val</strong></td><td><p>The value to be assigned to the specified key</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>real
+  </small></h4>
+  
+    
+        
+
+    </li>
+  </ul>
+</div>
+
+    
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="interface-type_func"></span><h3>abstract interface
+    
+  </h3></div>
+  
+  <ul class="list-group">
+    <li class="list-group-item">
+    
+    
+    <h3>
+private pure function <a href='../interface/type_func.html'>type_func</a>(this)
+    
+    
+    
+</h3>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/dictionary.html'>dictionary</a>),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>this</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>class(<a href='../type/container.html'>container</a>),
+  allocatable</small></h4>
+  <p>A container of the dynamic type used to store this 
+ dictionary's keys or values.</p>
+    
+        
+
+    </li>
+  </ul>
+</div>
+
+    
+    </section>
+	<br>
+    
+    
+    
+    <section>
+     <h2>Derived Types</h2>
+	 
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="type-dictionary"></span><h3>type, public, abstract, extends(<a href='../type/data_set.html'>data_set</a>) :: <a href='../type/dictionary.html'>dictionary</a>
+    
+  </h3></div>
+  <div class="panel-body">
+     
+     
+          
+     
+     <h4>Type-Bound Procedures</h4>
+      <table class="table table-striped varlist">
+      <tbody>
+      
+       <tr><td>procedure(keys_func), public, deferred :: <strong>keys</strong>  </td>
+       <td><p>Returns a list of the keys in this dictionary</p></td></tr>
+      
+       <tr><td>procedure(values_func), public, deferred :: <strong>values</strong>  </td>
+       <td><p>Returns a list of the values stored in this dictionary, in the
+ same order as the corresponding keys are returned when
+ <a href="../type/dictionary.html#boundprocedure-keys">keys</a> is called</p></td></tr>
+      
+       <tr><td>procedure(set_func), public, deferred :: <strong>set</strong>  </td>
+       <td><p>Sets the given key to the give value</p></td></tr>
+      
+       <tr><td>procedure(type_func), public, deferred :: <strong>key_type</strong>  </td>
+       <td><p>Returns a <a href="../type/container.html">container</a> of the dynamics type used to store keys</p></td></tr>
+      
+       <tr><td>procedure(type_func), public, deferred :: <strong>value_type</strong>  </td>
+       <td><p>Returns a <a href="../type/container.html">container</a> of dynamics the type used to store 
+ values</p></td></tr>
+      
+       </tbody>
+       </table>
+     
+     
+     <h4>Description</h4>
+       
+       <p>An abstract type for mapping data structures. These are data 
+ structures which consist of key-value pairs. Examples of such
+ structures are 
+ <a href="https://docs.python.org/2/library/stdtypes.html#mapping-types-dict">dictionaries</a> 
+ in Python or a
+ <a href="https://en.wikibooks.org/wiki/Perl_Programming/Hash_Variables">hash</a>
+ variable in Perl.</p>
+     
+  </div>
+</div>
+
+     
+    </section>
+	<br>
+    
+    
+    
+
+    
+    
+    
+    </div>
+  </div>
+
+    <hr>
+    <footer>
+        <div class="row">
+        <div class="col-md-4">&copy; 2016 </div>
+	<div class="col-md-4"><span class="text-center"> FIAT was developed by Chris MacMackin</span></div>
+        <div class="col-md-4"><span class="pull-right">Documentation generated by <a href="https://github.com/cmacmackin/ford">FORD</a></span></div>
+        </div>
+        <br>
+    </footer>
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js'],
+        'HTML-CSS': { 
+           styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: '#000000 ! important'} }
+        }
+      });
+    </script>
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  </body>
+</html>

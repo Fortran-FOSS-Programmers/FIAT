@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	 
+	 <meta name="description" content="Fortran Implementation of Abstract Types: generic implementations of common data structures in modern, object oriented Fortran.">
+    
+    <meta name="author" content="Chris MacMackin" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>max_func &ndash; FIAT</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">FIAT </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+				
+                
+            <li><a href="../lists/files.html">Source Files</a></li>
+				
+				
+            <li><a href="../lists/modules.html">Modules</a></li>
+				
+				
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+				
+				
+            <li><a href="../lists/absint.html">Abstract Interfaces</a></li>
+								
+            <li><a href="../lists/types.html">Derived Types</a></li>
+				
+				
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>max_func
+	 <small>Abstract Interface</small>
+    
+    </h1>
+	 
+<div class="row">
+<div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     
+     
+     
+    
+    
+    <li><i class="fa fa-code"></i><a href="../src/data_set.f90"> Source File</a></li>
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+     <li><a href='../sourcefile/data_set.f90.html'>data_set.f90</a></li>
+  
+     <li><a href='../module/data_set_mod.html'>data_set_mod</a></li>
+  
+     <li class="active">max_func</li>
+  </ol>
+</div>
+</div>
+</div>
+    
+  </div>
+  
+  <div class="row">
+    <div class="col-lg-3">
+    
+<div id="sidebar">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <div class="panel panel-default">
+    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#allabsints">All Abstract Interfaces</a></h3></div>
+    <div id="allabsints" class="panel-collapse collapse">
+        <div class="list-group">
+          
+          <a class="list-group-item" href="../interface/action_sub.html">action_sub</a>
+          
+          <a class="list-group-item" href="../interface/addition_func.html">addition_func</a>
+          
+          <a class="list-group-item" href="../interface/append_sub.html">append_sub</a>
+          
+          <a class="list-group-item" href="../interface/blank_sub.html">blank_sub</a>
+          
+          <a class="list-group-item" href="../interface/clear_sub.html">clear_sub</a>
+          
+          <a class="list-group-item" href="../interface/comparison_func.html">comparison_func</a>
+          
+          <a class="list-group-item" href="../interface/concat_func.html">concat_func</a>
+          
+          <a class="list-group-item" href="../interface/container_return.html">container_return</a>
+          
+          <a class="list-group-item" href="../interface/delete_multiple_sub.html">delete_multiple_sub</a>
+          
+          <a class="list-group-item" href="../interface/delete_single_sub.html">delete_single_sub</a>
+          
+          <a class="list-group-item" href="../interface/delete_slice_sub.html">delete_slice_sub</a>
+          
+          <a class="list-group-item" href="../interface/diff_func.html">diff_func</a>
+          
+          <a class="list-group-item" href="../interface/empty_func.html">empty_func</a>
+          
+          <a class="list-group-item" href="../interface/enum_func.html">enum_func</a>
+          
+          <a class="list-group-item" href="../interface/filter_func.html">filter_func</a>
+          
+          <a class="list-group-item" href="../interface/filter_func%7E2.html">filter_func</a>
+          
+          <a class="list-group-item" href="../interface/foreach_sub.html">foreach_sub</a>
+          
+          <a class="list-group-item" href="../interface/get_count_func.html">get_count_func</a>
+          
+          <a class="list-group-item" href="../interface/get_func.html">get_func</a>
+          
+          <a class="list-group-item" href="../interface/get_func%7E2.html">get_func</a>
+          
+          <a class="list-group-item" href="../interface/get_func%7E3.html">get_func</a>
+          
+          <a class="list-group-item" href="../interface/get_func%7E4.html">get_func</a>
+          
+          <a class="list-group-item" href="../interface/get_index_func.html">get_index_func</a>
+          
+          <a class="list-group-item" href="../interface/get_indices_func.html">get_indices_func</a>
+          
+          <a class="list-group-item" href="../interface/get_last_index_func.html">get_last_index_func</a>
+          
+          <a class="list-group-item" href="../interface/guard.html">guard</a>
+          
+          <a class="list-group-item" href="../interface/has_func.html">has_func</a>
+          
+          <a class="list-group-item" href="../interface/has_func%7E2.html">has_func</a>
+          
+          <a class="list-group-item" href="../interface/insert_sub.html">insert_sub</a>
+          
+          <a class="list-group-item" href="../interface/intersect_func.html">intersect_func</a>
+          
+          <a class="list-group-item" href="../interface/iter_sub.html">iter_sub</a>
+          
+          <a class="list-group-item" href="../interface/iterator_return.html">iterator_return</a>
+          
+          <a class="list-group-item" href="../interface/keys_func.html">keys_func</a>
+          
+          <a class="list-group-item" href="../interface/logical_return.html">logical_return</a>
+          
+          <a class="list-group-item" href="../interface/max_func.html">max_func</a>
+          
+          <a class="list-group-item" href="../interface/max_func%7E2.html">max_func</a>
+          
+          <a class="list-group-item" href="../interface/min_func.html">min_func</a>
+          
+          <a class="list-group-item" href="../interface/min_func%7E2.html">min_func</a>
+          
+          <a class="list-group-item" href="../interface/multiple_sub.html">multiple_sub</a>
+          
+          <a class="list-group-item" href="../interface/nearest_func.html">nearest_func</a>
+          
+          <a class="list-group-item" href="../interface/nearest_func%7E2.html">nearest_func</a>
+          
+          <a class="list-group-item" href="../interface/peek_func.html">peek_func</a>
+          
+          <a class="list-group-item" href="../interface/peek_func%7E2.html">peek_func</a>
+          
+          <a class="list-group-item" href="../interface/peek_func%7E3.html">peek_func</a>
+          
+          <a class="list-group-item" href="../interface/pop_func.html">pop_func</a>
+          
+          <a class="list-group-item" href="../interface/pop_func%7E2.html">pop_func</a>
+          
+          <a class="list-group-item" href="../interface/pop_func%7E3.html">pop_func</a>
+          
+          <a class="list-group-item" href="../interface/pure_diff_func.html">pure_diff_func</a>
+          
+          <a class="list-group-item" href="../interface/push_sub.html">push_sub</a>
+          
+          <a class="list-group-item" href="../interface/push_sub%7E2.html">push_sub</a>
+          
+          <a class="list-group-item" href="../interface/relation_func.html">relation_func</a>
+          
+          <a class="list-group-item" href="../interface/remove_all_sub.html">remove_all_sub</a>
+          
+          <a class="list-group-item" href="../interface/remove_last_sub.html">remove_last_sub</a>
+          
+          <a class="list-group-item" href="../interface/remove_sub.html">remove_sub</a>
+          
+          <a class="list-group-item" href="../interface/remove_val_sub.html">remove_val_sub</a>
+          
+          <a class="list-group-item" href="../interface/set_func.html">set_func</a>
+          
+          <a class="list-group-item" href="../interface/set_multiple_sub.html">set_multiple_sub</a>
+          
+          <a class="list-group-item" href="../interface/set_single_sub.html">set_single_sub</a>
+          
+          <a class="list-group-item" href="../interface/single_sub.html">single_sub</a>
+          
+          <a class="list-group-item" href="../interface/size_func.html">size_func</a>
+          
+          <a class="list-group-item" href="../interface/slice_func.html">slice_func</a>
+          
+          <a class="list-group-item" href="../interface/sort_sub.html">sort_sub</a>
+          
+          <a class="list-group-item" href="../interface/subtraction_func.html">subtraction_func</a>
+          
+          <a class="list-group-item" href="../interface/sum_func.html">sum_func</a>
+          
+          <a class="list-group-item" href="../interface/sum_func%7E2.html">sum_func</a>
+          
+          <a class="list-group-item" href="../interface/test_func.html">test_func</a>
+          
+          <a class="list-group-item" href="../interface/to_array_func.html">to_array_func</a>
+          
+          <a class="list-group-item" href="../interface/type_func.html">type_func</a>
+          
+          <a class="list-group-item" href="../interface/union_func.html">union_func</a>
+          
+          <a class="list-group-item" href="../interface/update_map_sub.html">update_map_sub</a>
+          
+          <a class="list-group-item" href="../interface/update_multimap_sub.html">update_multimap_sub</a>
+          
+          <a class="list-group-item" href="../interface/update_sub.html">update_sub</a>
+          
+          <a class="list-group-item" href="../interface/values_func.html">values_func</a>
+          
+        </div>
+    </div>
+  </div> 
+  
+</div>
+
+    </div>
+    
+    <div class="col-lg-9" id='text'>
+	
+    
+    <h2>abstract interface <br>
+    
+private pure function max_func(this, comparison)
+    
+    
+    
+</h2>    
+    
+
+    
+  
+
+
+    <h3>Arguments</h3>
+    
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-this%7E14"></span>class(<a href='../type/data_set.html'>data_set</a>),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>this</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-comparison%7E2"></span>procedure(<a href='../interface/comparison_func.html'>comparison_func</a>)</td>
+  <td></td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>comparison</strong></td><td><p>A procedure which evaluates whether a <a href="../type/container.html">container</a> object is
+ less than, equal to, or greater than another    </p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+    
+    
+    
+    
+    
+    
+    
+	 <h3>Return Value <span class="anchor" id="variable-max_func"></span><small>class(<a href='../type/container.html'>container</a>),
+  allocatable</small></h3>
+    <p>The largest item in the set, as determined by the
+ <code>comparison</code> function</p>
+    
+    
+    <br>
+
+ </div>
+</div>
+
+    <hr>
+    <footer>
+        <div class="row">
+        <div class="col-md-4">&copy; 2016 </div>
+	<div class="col-md-4"><span class="text-center"> FIAT was developed by Chris MacMackin</span></div>
+        <div class="col-md-4"><span class="pull-right">Documentation generated by <a href="https://github.com/cmacmackin/ford">FORD</a></span></div>
+        </div>
+        <br>
+    </footer>
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js'],
+        'HTML-CSS': { 
+           styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: '#000000 ! important'} }
+        }
+      });
+    </script>
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  </body>
+</html>
