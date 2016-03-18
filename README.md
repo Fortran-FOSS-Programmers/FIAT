@@ -11,7 +11,10 @@ These will be implemented in a generic manner using a `container` type. This
 was originally developed in [PolyCon](https://github.com/cmacmackin/PolyCon),
 but has since been folded into FIAT, with some improvements. See the
 wiki for a list of data structures which are to be implemented and information
-for those wishing to contribute.
+for those wishing to contribute. Also take a look at the
+[API documentation](http://fortran-foss-programmers.github.io/FIAT/)
+for a detailed description of the methods which will be supported.
+
 
 ## License
 FIAT is licensed under the GNU Lesser General Public License (LGPL) v3.0 or
