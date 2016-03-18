@@ -281,7 +281,6 @@ contains
     class(*), intent(in)    ::  content
       !! The value to be placed in the container
     class(*), allocatable   ::  tmp
-    allocate(tmp, source=content)
     if (.not. allocated(this%storage)) allocate(this%storage(1))
     if (same_type_as(this, content)) then
       select type(content)
@@ -291,11 +290,13 @@ contains
             this%storage = content%storage
           else
             this%filled = .false.
-            if (allocated(this%storage)) deallocate(this%storage)
+            deallocate(this%storage)
           endif
           return
       end select
-    else if (this%typeguard(tmp)) then
+    end if
+    allocate(tmp, source=content)
+    if (this%typeguard(tmp)) then
       this%filled = .true.
       this%storage = transfer(content, this%storage)
     else

@@ -184,6 +184,14 @@ contains
       class default
         @assertAll(transfer(this%inval, mold)==transfer(this%outval, mold), message='Container not assigned new value.')
     end select
+    deallocate(test_subject2)
+    allocate(test_subject2, source=this%container_obj)
+    @assertTrue(test_subject1%is_filled(),message='test_subject1 is empty')
+    call test_subject1%set(test_subject2)
+    @assertFalse(test_subject2%is_filled(),message='Container not empty after set to hold empty container.')
+    call test_subject2%set(this%outval)
+    test_subject2 = test_subject1
+    @assertFalse(test_subject2%is_filled(),message='Container not empty after empty container assigned to it.')
   end subroutine test_storage
 
 @Test
