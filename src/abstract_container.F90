@@ -273,10 +273,16 @@ contains
     !!
     !! @Warning During the initial phase of writing unit tests for the 
     !! containers, I found that when content is class(container) then
-    !! ~5GB of memory would end up being allocated at line 207. After
-    !! various experiments which involved moving the code around, it
-    !! stopped doing this when I changed it back. I have no idea why
-    !! it works now and suspect that this is a bug with gfortran 5.3.0.
+    !! ~5GB of memory would end up being allocated when allocating tmp.
+    !! After various experiments, I found that changing where tmp is
+    !! allocated, so that this is only done if it is not being allocated
+    !! to another container type, stopped this from happening. However,
+    !! I'm still not clear on exactly what the cause of the bug is 
+    !! (similar things occasionally happened when DEallocating a 
+    !! container) and suspect its origin is a compiler bug. As such, I'm
+    !! keeping this note here for information in case the issue ever
+    !! arises again.
+    !!
     class(container), intent(out)  ::  this
     class(*), intent(in)    ::  content
       !! The value to be placed in the container
